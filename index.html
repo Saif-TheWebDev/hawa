@@ -3,71 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hawa Restaurant &amp; Party Centre — Mymensingh, Bangladesh</title>
-  <meta name="description" content="Hawa Restaurant & Party Centre — Near Dhaka Bypass, Maskanda Road, Mymensingh. Bangladeshi, Chinese, Indian & Thai cuisine. Open 24 hours. Call +880 1705-036161." />
+  <title>Hawa Restaurant &amp; Party Centre — Best Biryani &amp; Beef Roast in Mymensingh</title>
+  <meta name="description" content="Hawa Restaurant & Party Centre — Near Dhaka Bypass, Maskanda Road, Mymensingh 2200. Bangladeshi, Chinese, Indian & Thai cuisine, party centre & home delivery. Open 24 hours. Call +880 1705-036161." />
+  <link rel="canonical" href="https://hawa-restaurant-saif-pro1.vercel.app/" />
+  <meta name="theme-color" content="#0f0b08" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hawa Restaurant & Party Centre — Mymensingh" />
+  <meta property="og:description" content="Hand-ground masala, signature Beef Roast, Kacchi Biryani and a full party centre. Open 24 hours near Dhaka Bypass, Mymensingh." />
+  <meta property="og:url" content="https://hawa-restaurant-saif-pro1.vercel.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hawa Restaurant & Party Centre — Mymensingh" />
+  <meta name="twitter:description" content="Open 24 hours · +880 1705-036161 · Maskanda Road, Mymensingh" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Sora:wght@300;400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Hawa Restaurant & Party Centre",
+    "servesCuisine": ["Bangladeshi", "Chinese", "Indian", "Thai"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Maskanda Road, Dhaka Bypass Mor",
+      "addressLocality": "Mymensingh",
+      "postalCode": "2200",
+      "addressCountry": "BD"
+    },
+    "telephone": "+880 1705-036161",
+    "email": "hawatheplace@gmail.com",
+    "url": "https://www.facebook.com/Hawarestauratandpartycentre",
+    "geo": { "@type": "GeoCoordinates", "latitude": 24.7177746, "longitude": 90.4095268 },
+    "openingHours": "Mo-Su 00:00-24:00",
+    "priceRange": "৳৳"
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ===== Navigation ===== -->
   <header class="nav" id="nav">
     <div class="nav-inner container">
-      <a href="#home" class="brand">
+      <a href="#home" class="brand" aria-label="Hawa Restaurant home">
         <span class="brand-mark">হাওয়া</span>
         <span class="brand-name">Hawa <em>Restaurant &amp; Party Centre</em></span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-      <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#party">Party Centre</a>
-        <a href="#visit">Visit Us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#visit" class="nav-link">Visit Us</a>
         <a class="btn btn-call" href="tel:+8801705036161">📞 +880 1705-036161</a>
       </nav>
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
     </div>
   </header>
 
+  <main id="main">
   <!-- ===== Hero ===== -->
   <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
+    <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="container hero-content">
-      <p class="hero-kicker reveal">ময়মনসিংহ · Dhaka Bypass Mor</p>
-      <h1 class="reveal">Hawa <span>Restaurant</span><br/>&amp; Party Centre</h1>
-      <p class="hero-sub reveal">Where Mymensingh gathers for hand-ground spices, slow-cooked korma and celebrations that last all night.</p>
-      <div class="hero-cta reveal">
-        <a href="#menu" class="btn btn-primary">Explore the Menu</a>
-        <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener" class="btn btn-ghost">📘 Follow on Facebook</a>
+      <p class="hero-kicker reveal"><span class="kicker-line"></span>ময়মনসিংহ · Dhaka Bypass Mor<span class="kicker-line"></span></p>
+      <h1 class="reveal" style="--d:.08s">Hawa <span class="grad-text">Restaurant</span><br/>&amp; Party Centre</h1>
+      <p class="hero-sub reveal" style="--d:.16s">Where Mymensingh gathers for hand-ground spices, slow-cooked korma and celebrations that last all night.</p>
+      <div class="hero-cta reveal" style="--d:.24s">
+        <a href="#menu" class="btn btn-primary btn-shine">Explore the Menu</a>
+        <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener" class="btn btn-glass">📘 Follow on Facebook</a>
       </div>
-      <div class="hero-badges reveal">
-        <span>🇧🇩 Bangladeshi</span><span>🥘 Chinese</span><span>🍛 Indian</span><span>🌶️ Thai</span><span>🕐 Open 24 Hours</span>
+      <div class="hero-chips reveal" style="--d:.32s">
+        <a class="chip" href="#visit">🕐 <span class="open-pill" id="openPill">Open now</span></a>
+        <a class="chip" href="tel:+8801705036161">📞 +880 1705-036161</a>
+        <a class="chip" href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener">📍 Dhaka Bypass Mor</a>
+      </div>
+      <div class="hero-badges reveal" style="--d:.4s">
+        <span>🇧🇩 Bangladeshi</span><span>🥘 Chinese</span><span>🍛 Indian</span><span>🌶️ Thai</span><span>🎉 Party Centre</span>
       </div>
     </div>
+    <a class="scroll-hint" href="#about" aria-label="Scroll to about section"><span></span></a>
   </section>
 
-  <!-- ===== About ===== -->
+  <!-- ===== About + stats ===== -->
   <section class="section" id="about">
     <div class="container about-grid">
       <div class="about-text reveal">
         <p class="section-kicker">Our Story</p>
-        <h2>A table that feels like <span class="accent">home</span></h2>
+        <h2>A table that feels like <span class="grad-text">home</span></h2>
         <p>Hawa Restaurant &amp; Party Centre sits in the heart of Mymensingh, near Dhaka Bypass on Maskanda Road — the city's favourite stop for family dinners, friend hangouts and big celebrations.</p>
         <p>Every dish is cooked with fresh, hand-ground masala. From our signature <strong>Beef Roast</strong> to tender <strong>Chicken Korma</strong>, spicy <strong>Masala Bhuna</strong> and the season's fresh <strong>Hilsa fry</strong>, flavour and quality are never compromised.</p>
-        <blockquote class="quote">
+        <ul class="check-list">
+          <li>Fresh, hand-ground masala in every dish</li>
+          <li>Dine-in, takeaway &amp; home delivery</li>
+          <li>Spacious party centre for any occasion</li>
+        </ul>
+      </div>
+      <div class="about-side">
+        <blockquote class="quote reveal" style="--d:.1s">
           “We came with the whole family — the ambience and food quality amazed us. The Beef Roast is truly exceptional!”
           <cite>— Sohel Rana, regular guest</cite>
         </blockquote>
-      </div>
-      <div class="about-facts reveal">
-        <div class="fact"><span class="fact-num">24/7</span><span class="fact-label">Open every day</span></div>
-        <div class="fact"><span class="fact-num">5+</span><span class="fact-label">Cuisines served</span></div>
-        <div class="fact"><span class="fact-num">100%</span><span class="fact-label">Fresh masala</span></div>
-        <div class="fact"><span class="fact-num">★</span><span class="fact-label">Party &amp; banquet hall</span></div>
+        <div class="stats reveal" style="--d:.2s">
+          <div class="stat"><span class="stat-num" data-count="24" data-suffix="/7">0</span><span class="stat-label">Open every day</span></div>
+          <div class="stat"><span class="stat-num" data-count="5" data-suffix="+">0</span><span class="stat-label">Cuisines served</span></div>
+          <div class="stat"><span class="stat-num" data-count="30" data-suffix="+">0</span><span class="stat-label">Signature dishes</span></div>
+          <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">0</span><span class="stat-label">Fresh masala</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -76,34 +125,105 @@
   <section class="section section-dark" id="menu">
     <div class="container">
       <p class="section-kicker center reveal">Signature Dishes</p>
-      <h2 class="center reveal">What Mymensingh comes for</h2>
+      <h2 class="center reveal" style="--d:.06s">What Mymensingh <span class="grad-text">comes for</span></h2>
 
-      <div class="menu-feature reveal">
-        <div class="menu-feature-img" style="background-image:url('https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg')"></div>
+      <div class="menu-feature reveal" style="--d:.12s">
+        <div class="menu-feature-img img-zoom" style="background-image:url('https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg')"></div>
         <div class="menu-feature-body">
+          <span class="tag">Chef's pick</span>
           <h3>Kacchi Biryani &amp; Rice Platters</h3>
           <p>Fragrant basmati rice slow-cooked with marinated mutton, saffron and fried onions — served the traditional Bangladeshi way.</p>
         </div>
       </div>
 
-      <div class="menu-feature reverse reveal">
-        <div class="menu-feature-img" style="background-image:url('assets/dish-grill.jpg')"></div>
+      <div class="menu-feature reverse reveal" style="--d:.18s">
+        <div class="menu-feature-img img-zoom" style="background-image:url('https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg')"></div>
         <div class="menu-feature-body">
-          <h3>From the Grill</h3>
-          <p>Chicken tikka, beef seekh kebab and sizzling platters straight off the charcoal grill, with fresh green chutney and onions.</p>
+          <span class="tag tag-alt">From the charcoal grill</span>
+          <h3>Tikka, Kebab &amp; Sizzling Platters</h3>
+          <p>Chicken tikka, beef seekh kebab and sizzling platters straight off the grill, with fresh green chutney and onions.</p>
         </div>
       </div>
 
-      <div class="menu-grid">
-        <div class="menu-card reveal"><h4>🥩 Beef Roast</h4><p>Spicy, slow-cooked beef — the house favourite that keeps meat lovers coming back.</p></div>
-        <div class="menu-card reveal"><h4>🍗 Chicken Korma</h4><p>Tender chicken in a golden, creamy masala gravy. Mild, rich and comforting.</p></div>
-        <div class="menu-card reveal"><h4>🌶️ Masala Bhuna</h4><p>A fiery, deeply spiced meat dish for those who like real heat.</p></div>
-        <div class="menu-card reveal"><h4>🐟 Ilish (Hilsa) Fry</h4><p>Bangladesh's national fish, fried crisp with mustard — best in season.</p></div>
-        <div class="menu-card reveal"><h4>🥘 Chinese &amp; Thai</h4><p>Fried rice, noodles, sizzling dishes and Thai curries alongside the classics.</p></div>
-        <div class="menu-card reveal"><h4>🍰 Desserts &amp; Drinks</h4><p>Finish with sweet treats, borhani and fresh juices.</p></div>
+      <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories" style="--d:.1s">
+        <button class="menu-tab active" role="tab" aria-selected="true" data-filter="all">All</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-filter="grill">🔥 Grill</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-filter="curry">🍛 Curries &amp; Roasts</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-filter="rice">🍚 Rice &amp; Biryani</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-filter="asian">🥡 Chinese &amp; Thai</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-filter="sweet">🍰 Desserts &amp; Drinks</button>
       </div>
 
-      <p class="menu-note reveal">Full menu available on our <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">Facebook page</a> · Dine-in, takeaway &amp; home delivery available.</p>
+      <div class="menu-grid" id="menuGrid">
+        <div class="menu-card reveal" data-cat="curry" style="--d:.05s"><div class="menu-card-top"><h4>🥩 Beef Roast</h4><span class="price">৳650</span></div><p>Spicy, slow-cooked beef — the house favourite. <span class="spicy">🌶️🌶️</span></p><span class="pick">★ Popular</span></div>
+        <div class="menu-card reveal" data-cat="curry" style="--d:.1s"><div class="menu-card-top"><h4>🍗 Chicken Korma</h4><span class="price">৳480</span></div><p>Tender chicken in a golden, creamy masala gravy.</p></div>
+        <div class="menu-card reveal" data-cat="curry" style="--d:.15s"><div class="menu-card-top"><h4>🌶️ Masala Bhuna</h4><span class="price">৳550</span></div><p>A fiery, deeply spiced meat dish. <span class="spicy">🌶️🌶️🌶️</span></p></div>
+        <div class="menu-card reveal" data-cat="curry" style="--d:.2s"><div class="menu-card-top"><h4>🐟 Ilish (Hilsa) Fry</h4><span class="price">Seasonal</span></div><p>Bangladesh's national fish, fried crisp with mustard.</p></div>
+        <div class="menu-card reveal" data-cat="rice" style="--d:.05s"><div class="menu-card-top"><h4>🍚 Kacchi Biryani (Mutton)</h4><span class="price">৳420</span></div><p>Saffron rice, marinated mutton, fried onion &amp; egg. <span class="pick">★ Chef's pick</span></p></div>
+        <div class="menu-card reveal" data-cat="rice" style="--d:.1s"><div class="menu-card-top"><h4>🍗 Chicken Biryani</h4><span class="price">৳320</span></div><p>Classic comfort biryani with raita &amp; salad.</p></div>
+        <div class="menu-card reveal" data-cat="grill" style="--d:.05s"><div class="menu-card-top"><h4>🍢 Chicken Tikka</h4><span class="price">৳380</span></div><p>Charcoal-grilled, yogurt-marinated, smoky &amp; juicy.</p></div>
+        <div class="menu-card reveal" data-cat="grill" style="--d:.1s"><div class="menu-card-top"><h4>🥩 Beef Seekh Kebab</h4><span class="price">৳450</span></div><p>Hand-minced beef kebab with green chutney.</p></div>
+        <div class="menu-card reveal" data-cat="grill" style="--d:.15s"><div class="menu-card-top"><h4>🍢 Sizzling Platter</h4><span class="price">৳1,200</span></div><p>Mixed grill for the table — tikka, kebab &amp; wings.</p></div>
+        <div class="menu-card reveal" data-cat="asian" style="--d:.05s"><div class="menu-card-top"><h4>🍜 Chicken Fried Rice</h4><span class="price">৳260</span></div><p>Wok-fried rice with egg, veggies &amp; soy glaze.</p></div>
+        <div class="menu-card reveal" data-cat="asian" style="--d:.1s"><div class="menu-card-top"><h4>🥡 Chowmein</h4><span class="price">৳280</span></div><p>Stir-fried noodles with chicken &amp; crunchy vegetables.</p></div>
+        <div class="menu-card reveal" data-cat="asian" style="--d:.15s"><div class="menu-card-top"><h4>🥥 Thai Green Curry</h4><span class="price">৳520</span></div><p>Coconut curry with basil, bamboo shoots &amp; your choice of protein.</p></div>
+        <div class="menu-card reveal" data-cat="sweet" style="--d:.05s"><div class="menu-card-top"><h4>🍮 Firni</h4><span class="price">৳120</span></div><p>Creamy rice-pudding dessert, chilled &amp; lightly sweet.</p></div>
+        <div class="menu-card reveal" data-cat="sweet" style="--d:.1s"><div class="menu-card-top"><h4>🥤 Borhani &amp; Fresh Juices</h4><span class="price">৳60+</span></div><p>The perfect cool-down after a spicy meal.</p></div>
+      </div>
+
+      <p class="menu-note reveal">Full menu on our <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">Facebook page</a> · Dine-in, takeaway &amp; home delivery · Prices are indicative.</p>
+    </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <p class="section-kicker center reveal">Gallery</p>
+      <h2 class="center reveal" style="--d:.06s">A peek inside <span class="grad-text">Hawa</span></h2>
+      <div class="gallery-grid">
+        <button class="gallery-item reveal" style="--d:.05s" data-full="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" data-caption="The dining hall, warm and ready for guests">
+          <img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Hawa dining hall with tables set for dinner" loading="lazy" />
+          <span class="gallery-cap">The dining hall</span>
+        </button>
+        <button class="gallery-item reveal" style="--d:.12s" data-full="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" data-caption="Kacchi biryani on a traditional brass plate">
+          <img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" alt="Kacchi biryani platter with mutton" loading="lazy" />
+          <span class="gallery-cap">Kacchi biryani</span>
+        </button>
+        <button class="gallery-item reveal" style="--d:.19s" data-full="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" data-caption="Sizzling grill platter with kebabs">
+          <img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" alt="Grilled tikka and kebabs on a sizzling plate" loading="lazy" />
+          <span class="gallery-cap">From the grill</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reviews ===== -->
+  <section class="section section-dark" id="reviews">
+    <div class="container">
+      <p class="section-kicker center reveal">Guestbook</p>
+      <h2 class="center reveal" style="--d:.06s">What guests <span class="grad-text">say</span></h2>
+      <div class="slider reveal" id="slider" style="--d:.12s" aria-live="polite">
+        <div class="slides" id="slides">
+          <figure class="slide active">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“We came with the whole family — the ambience and food quality amazed us. The Beef Roast is truly exceptional!”</blockquote>
+            <figcaption>— Sohel Rana · Family dinner</figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Best kacchi biryani in Mymensingh, hands down. Generous portions and the staff treat you like family.”</blockquote>
+            <figcaption>— Nusrat Jahan · Birthday celebration</figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+            <blockquote>“Booked the party centre for our office event — smooth arrangements, great food, and open late. Highly recommended.”</blockquote>
+            <figcaption>— Tanvir Hasan · Corporate event</figcaption>
+          </figure>
+        </div>
+        <button class="slider-btn prev" id="prevSlide" aria-label="Previous review">‹</button>
+        <button class="slider-btn next" id="nextSlide" aria-label="Next review">›</button>
+        <div class="dots" id="dots"></div>
+      </div>
     </div>
   </section>
 
@@ -112,21 +232,21 @@
     <div class="container party-grid">
       <div class="reveal">
         <p class="section-kicker">Celebrations</p>
-        <h2>The Party Centre</h2>
+        <h2>The <span class="grad-text">Party Centre</span></h2>
         <p>Big parties, family gatherings, birthdays and grand feasts — Hawa's party centre has all the space and arrangements you need, right beside the restaurant. Book ahead and let us handle the rest.</p>
         <ul class="check-list">
           <li>Spacious banquet &amp; open-air arrangements</li>
           <li>Full catering menu for any occasion</li>
           <li>Perfect for weddings, birthdays &amp; corporate events</li>
         </ul>
-        <a class="btn btn-primary" href="tel:+8801705036161">Book the Party Centre</a>
+        <a class="btn btn-primary btn-shine" href="tel:+8801705036161">📞 Book the Party Centre</a>
       </div>
-      <div class="party-card reveal">
+      <div class="party-card reveal" style="--d:.12s">
         <h3>Reserve your table or event</h3>
-        <p><strong>📞</strong> <a href="tel:+8801705036161">+880 1705-036161</a></p>
-        <p><strong>✉️</strong> <a href="mailto:hawatheplace@gmail.com">hawatheplace@gmail.com</a></p>
+        <p><strong>📞</strong> <a href="tel:+8801705036161" class="copyable" data-copy="+880 1705-036161">+880 1705-036161</a> <button class="copy-btn" data-copy="+880 1705-036161" aria-label="Copy phone number">⧉</button></p>
+        <p><strong>✉️</strong> <a href="mailto:hawatheplace@gmail.com" class="copyable" data-copy="hawatheplace@gmail.com">hawatheplace@gmail.com</a> <button class="copy-btn" data-copy="hawatheplace@gmail.com" aria-label="Copy email">⧉</button></p>
         <p><strong>📘</strong> <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">facebook.com/Hawarestauratandpartycentre</a></p>
-        <p class="party-hours">🕐 Open 24 hours, every day</p>
+        <p class="party-hours">🕐 <span class="open-pill" id="openPill2">Open now</span> · 24 hours, every day</p>
       </div>
     </div>
   </section>
@@ -135,7 +255,7 @@
   <section class="section section-dark" id="visit">
     <div class="container">
       <p class="section-kicker center reveal">Find Us</p>
-      <h2 class="center reveal">Visit Hawa in Mymensingh</h2>
+      <h2 class="center reveal" style="--d:.06s">Visit Hawa in <span class="grad-text">Mymensingh</span></h2>
       <div class="visit-grid">
         <div class="visit-info reveal">
           <div class="info-row"><span class="info-icon">📍</span><div><strong>Address</strong><br/>Near Dhaka Bypass, Maskanda Road,<br/>Dhaka Bypass Mor, Mymensingh 2200, Bangladesh</div></div>
@@ -143,14 +263,15 @@
           <div class="info-row"><span class="info-icon">✉️</span><div><strong>Email</strong><br/><a href="mailto:hawatheplace@gmail.com">hawatheplace@gmail.com</a></div></div>
           <div class="info-row"><span class="info-icon">🕐</span><div><strong>Hours</strong><br/>Open 24 hours — Monday to Sunday</div></div>
           <div class="info-row"><span class="info-icon">🚗</span><div><strong>Getting here</strong><br/>0.3 mi from Mymensingh Junction Station, right off Dhaka Bypass</div></div>
-          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener">Get Directions</a>
+          <a class="btn btn-primary btn-shine" href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener">🧭 Get Directions</a>
         </div>
-        <div class="map-wrap reveal">
+        <div class="map-wrap reveal" style="--d:.12s">
           <iframe title="Hawa Restaurant & Party Centre on Google Maps" src="https://www.google.com/maps?q=24.7177746,90.4095268&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
     </div>
   </section>
+  </main>
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
@@ -159,14 +280,28 @@
         <span class="brand-mark">হাওয়া</span>
         <p>Hawa Restaurant &amp; Party Centre · Mymensingh, Bangladesh</p>
       </div>
-      <div class="footer-links">
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
         <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">Facebook</a>
         <a href="tel:+8801705036161">Call Us</a>
         <a href="mailto:hawatheplace@gmail.com">Email</a>
-      </div>
+      </nav>
       <p class="footer-small">© <span id="year"></span> Hawa Restaurant &amp; Party Centre · Made with ❤️ in Mymensingh</p>
     </div>
   </footer>
+
+  <!-- ===== Lightbox ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">‹</button>
+    <figure><img id="lbImg" src="" alt="" /><figcaption id="lbCap"></figcaption></figure>
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next image">›</button>
+  </div>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="app.js"></script>
 </body>
