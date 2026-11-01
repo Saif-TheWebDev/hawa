@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Order — Hawa Restaurant & Party Centre, Mymensingh</title>
+  <meta name="description" content="Live delivery tracking for your Hawa order — watch the rider move from Dhaka Bypass Mor to your door with live ETA." />
+  <meta name="theme-color" content="#0e0b08" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23d9f24f'>🛵</text></svg>" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="index.html" class="brand" aria-label="Hawa home">
+        <span class="brand-logo"><img src="https://imagedelivery.net/qIRo83zFfiIySsaoR7E3zQ/places/ee6adb0d-8815-4777-9931-a5e731b4c43e/primary/487c2da6-31e8-4ad9-9e5f-f6093110d1d7/public" alt="Hawa logo" /></span>
+        <span class="brand-name">Hawa<small>Live tracking</small></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">🍽️ Order Online</a>
+        <a class="nav-link active" href="track.html">🛵 Track Order</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn">🛒 Cart <span class="cart-count" id="cartCount" style="display:none">0</span></button>
+        <a class="btn-call" href="tel:+8801705036161">📞 Call</a>
+      </div>
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="section-kicker reveal">🛵 Live tracking</p>
+        <h1 class="display h-lg reveal" style="--d:.05s">Where's <span class="blaze-text">my food?</span></h1>
+        <p class="reveal" style="--d:.12s">Live status, ETA and the rider's route — from Hawa's kitchen at Dhaka Bypass Mor to your door.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container" id="trackRoot"></div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="section-kicker">History</p><h2 class="display h-md">Past <span class="acid-text">orders</span></h2></div>
+          <a class="btn btn-acid" href="menu.html">Order again →</a>
+        </div>
+        <div id="historyList"></div>
+      </div>
+    </section>
+  </main>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

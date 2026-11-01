@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online — Hawa Restaurant & Party Centre, Mymensingh</title>
+  <meta name="description" content="Order Beef Roast, Kacchi Biryani, kebabs & more from Hawa, Mymensingh. Delivery or pickup, live tracking, open 24/7. Promo HAWA10." />
+  <meta name="theme-color" content="#0e0b08" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ff4d00'>হ</text></svg>" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="index.html" class="brand" aria-label="Hawa home">
+        <span class="brand-logo"><img src="https://imagedelivery.net/qIRo83zFfiIySsaoR7E3zQ/places/ee6adb0d-8815-4777-9931-a5e731b4c43e/primary/487c2da6-31e8-4ad9-9e5f-f6093110d1d7/public" alt="Hawa Restaurant logo" /></span>
+        <span class="brand-name">Hawa<small>Order online</small></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="menu.html">🍽️ Order Online</a>
+        <a class="nav-link" href="track.html">🛵 Track Order</a>
+        <a class="nav-link" href="index.html#visit">Visit</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="drawerBtn">🛒 Cart <span class="cart-count" id="cartCount" style="display:none">0</span></button>
+        <a class="btn-call" href="tel:+8801705036161">📞 Call</a>
+      </div>
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="section-kicker reveal">Hawa · Mymensingh · Open 24/7</p>
+        <h1 class="display h-lg reveal" style="--d:.05s">The <span class="blaze-text">menu</span></h1>
+        <p class="reveal" style="--d:.12s">Tap + to add. Delivery fee ৳40 — <strong>FREE on orders over ৳800</strong>. Promo code: <strong>HAWA10</strong>.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="search-wrap reveal">
+          <input class="search-input" id="searchInput" type="search" placeholder="🔍 Search dishes… (try 'biryani' or 'বিফ')" aria-label="Search dishes" />
+        </div>
+        <div class="menu-layout">
+          <aside class="menu-side reveal" aria-label="Categories">
+            <h3>Categories</h3>
+            <div class="cat-list" id="catList"></div>
+          </aside>
+          <div>
+            <div class="menu-toolbar reveal"><span class="result-count" id="resultCount"></span><span class="sticker">🛵 ~35 min delivery</span></div>
+            <div class="dish-grid" id="dishGrid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart-bar" id="cartBar" role="button" tabindex="0" aria-label="View cart and checkout">
+    <span><span class="cnt">0 items</span> · <span class="total">৳0</span></span>
+    <span class="go">Checkout →</span>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer-head"><h3>Your cart</h3><button class="drawer-close" id="drawerClose" aria-label="Close cart">✕</button></div>
+    <div class="drawer-body" id="drawerBody"></div>
+    <div class="drawer-foot" id="drawerFoot">
+      <div class="sum-row"><span>Subtotal</span><span id="sumSub">৳0</span></div>
+      <div class="sum-row"><span>Delivery fee</span><span id="sumFee">৳40</span></div>
+      <div class="sum-row total"><span>Total</span><span id="sumTotal">৳0</span></div>
+      <a class="btn btn-blaze btn-block" href="checkout.html" style="margin-top:14px">Checkout →</a>
+    </div>
+  </aside>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

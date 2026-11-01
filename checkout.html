@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Hawa Restaurant & Party Centre, Mymensingh</title>
+  <meta name="description" content="Checkout your Hawa order — delivery details, payment (Cash/bKash/Nagad/Rocket) and live tracking after placing." />
+  <meta name="theme-color" content="#0e0b08" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ff4d00'>হ</text></svg>" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="index.html" class="brand" aria-label="Hawa home">
+        <span class="brand-logo"><img src="https://imagedelivery.net/qIRo83zFfiIySsaoR7E3zQ/places/ee6adb0d-8815-4777-9931-a5e731b4c43e/primary/487c2da6-31e8-4ad9-9e5f-f6093110d1d7/public" alt="Hawa logo" /></span>
+        <span class="brand-name">Hawa<small>Checkout</small></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">🍽️ Order Online</a>
+        <a class="nav-link" href="track.html">🛵 Track Order</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn">🛒 Cart <span class="cart-count" id="cartCount" style="display:none">0</span></button>
+        <a class="btn-call" href="tel:+8801705036161">📞 Call</a>
+      </div>
+      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="section-kicker reveal">Almost there</p>
+        <h1 class="display h-lg reveal" style="--d:.05s">Check<span class="blaze-text">out</span></h1>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="steps reveal" aria-hidden="true">
+          <div class="step">1 · Menu</div>
+          <div class="step">2 · Cart</div>
+          <div class="step on">3 · Checkout</div>
+          <div class="step">4 · Track</div>
+        </div>
+
+        <div class="panel reveal" id="coEmpty" style="display:none;text-align:center;padding:60px 20px">
+          <div style="font-size:3.5rem">🛒</div>
+          <h2 class="display h-md">Your cart is empty</h2>
+          <p style="color:var(--muted);margin:12px 0 22px">Add some dishes first — the Beef Roast is calling.</p>
+          <a class="btn btn-blaze" href="menu.html">Browse menu →</a>
+        </div>
+
+        <div class="checkout-layout">
+          <form class="panel reveal" id="checkoutForm">
+            <h2>Delivery details</h2>
+            <div class="form-grid">
+              <div class="field"><label for="fName">Full name *</label><input id="fName" name="name" required placeholder="e.g. Sohel Rana" /></div>
+              <div class="field"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" required type="tel" placeholder="01XXXXXXXXX" pattern="[0-9+ ]{11,14}" /></div>
+              <div class="field full"><label for="fAddr">Delivery address *</label><input id="fAddr" name="address" required placeholder="House, road, area — Mymensingh" /></div>
+              <div class="field full"><label for="fArea">Area *</label>
+                <select id="fArea" name="area" required>
+                  <option value="">Select area…</option>
+                  <option>Maskanda / Dhaka Bypass Mor</option>
+                  <option>Ganginar Par</option>
+                  <option>Kismorganj / Courtbari</option>
+                  <option>Town Hall / Ananda Mohan College</option>
+                  <option>Shikaribazar</option>
+                  <option>Mymensingh Sadar</option>
+                  <option>Other (mention in address)</option>
+                </select>
+              </div>
+              <div class="field full"><label for="fNote">Order note</label><textarea id="fNote" name="note" rows="2" placeholder="Extra spicy? No onion? Gate code?"></textarea></div>
+            </div>
+            <h2 style="margin-top:24px">Payment</h2>
+            <div class="pay-methods">
+              <div class="pay-opt selected" data-pay="Cash on Delivery"><span class="p-ico">💵</span> Cash on Delivery</div>
+              <div class="pay-opt" data-pay="bKash"><span class="p-ico">🩷</span> bKash</div>
+              <div class="pay-opt" data-pay="Nagad"><span class="p-ico">🧡</span> Nagad</div>
+              <div class="pay-opt" data-pay="Rocket"><span class="p-ico">🚀</span> Rocket</div>
+            </div>
+            <input type="hidden" name="pay" id="payMethod" value="Cash on Delivery" />
+            <h2 style="margin-top:24px">Promo code</h2>
+            <div class="promo-row">
+              <input id="promoInput" placeholder="Try HAWA10" aria-label="Promo code" />
+              <button type="button" class="btn btn-cream" id="promoApply">Apply</button>
+            </div>
+            <p class="promo-msg" id="promoMsg"></p>
+            <button class="btn btn-blaze btn-block" type="submit" style="margin-top:22px;font-size:1.05rem;padding:18px">🛵 Place order & track it</button>
+            <p style="font-size:.8rem;color:var(--muted);margin-top:10px;text-align:center">Demo checkout — order is saved in your browser and tracking is simulated live.</p>
+          </form>
+
+          <aside class="panel panel-dark reveal" id="coSummary" style="--d:.1s">
+            <h2>Your order</h2>
+            <div id="coItems"></div>
+            <div style="border-top:var(--bw);margin-top:10px;padding-top:10px">
+              <div class="sum-row"><span>Subtotal</span><span id="coSub">৳0</span></div>
+              <div class="sum-row"><span>Discount</span><span id="coDisc">—</span></div>
+              <div class="sum-row"><span>Delivery fee</span><span id="coFee">৳40</span></div>
+              <div class="sum-row total"><span>Total</span><span id="coTotal">৳0</span></div>
+            </div>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:14px">📍 Pickup also available at Maskanda Road, Dhaka Bypass Mor · 🕐 Open 24/7</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>
