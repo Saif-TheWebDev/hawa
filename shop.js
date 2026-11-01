@@ -289,9 +289,12 @@
               return '<div class="tl-item ' + cls + '"><span class="tl-dot">' + (i < stage ? "✓" : (i === stage ? s.icon : "")) + '</span><h4>' + s.label + '</h4><p>' + s.desc + "</p></div>";
             }).join("") +
           "</div></div>" +
+          '<div class="rider-card"><span class="rider-avatar">🛵</span><div><h4>Rider: Rahim</h4><p id="riderNote">on the way with your food, in sha Allah 🛣️</p></div></div>' +
           '<div class="track-actions">' +
             '<a class="btn btn-blaze" href="tel:+8801705036161">📞 Call restaurant</a>' +
+            '<a class="btn btn-wa" href="https://wa.me/8801705036161?text=Hi%20Hawa!%20Tracking%20order%20' + order.id + ' 🛵" target="_blank" rel="noopener">💬 WhatsApp us</a>' +
             '<a class="btn btn-cream" href="menu.html?reorder=' + order.id + '">🔁 Re-order</a>' +
+            '<button class="btn btn-ghost" id="shareBtn" type="button">🔗 Copy tracking link</button>' +
           "</div>" +
         "</div>" +
         '<div>' +

@@ -358,3 +358,167 @@ section { scroll-margin-top: 90px; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   HAWA v4 — "HANDMADE" LAYER (100-change wave 2, multi-agent)
+   wobbly borders · tape · polaroids · sticky notes · doodles ·
+   grain · torn edges · Caveat handwriting · local flavor
+   ============================================================ */
+
+/* --- hand-drawn wobbly borders --- */
+.wobbly { border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; }
+.wobbly-2 { border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px; }
+.btn { border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; }
+.dish-card { border-radius: 18px 225px 18px 225px / 225px 18px 225px 18px; }
+.panel, .menu-side, .track-head, .map-card { border-radius: 20px 255px 20px 255px / 255px 20px 255px 20px; }
+
+/* --- handwriting --- */
+.hand { font-family: "Caveat", cursive; font-weight: 600; }
+.hand-lg { font-size: 1.6rem; }
+.hand-xl { font-size: 2.1rem; }
+.note { color: var(--acid); transform: rotate(-2deg); display: inline-block; }
+
+/* --- squiggle underline for headings --- */
+.squiggle { position: relative; display: inline-block; }
+.squiggle::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 10px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='10' viewBox='0 0 120 10'%3E%3Cpath d='M2 6 Q 12 1 22 6 T 42 6 T 62 6 T 82 6 T 102 6 T 122 6' fill='none' stroke='%23ff4d00' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+  background-size: 120px 10px;
+}
+
+/* --- paper grain overlay --- */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 500; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* --- torn paper edge divider --- */
+.torn { height: 22px; background: var(--ink); position: relative; }
+.torn::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--ink-2);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 97% 70%, 94% 35%, 90% 80%, 86% 30%, 82% 65%, 78% 25%, 74% 75%, 70% 35%, 66% 85%, 62% 30%, 58% 70%, 54% 25%, 50% 80%, 46% 35%, 42% 75%, 38% 30%, 34% 85%, 30% 30%, 26% 70%, 22% 25%, 18% 75%, 14% 35%, 10% 80%, 6% 30%, 3% 65%, 0 40%);
+}
+.torn-light { background: var(--paper); }
+.torn-light::after { background: var(--ink); }
+
+/* --- washi tape --- */
+.tape::before {
+  content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-4deg);
+  width: 90px; height: 26px; background: rgba(217, 242, 79, .75);
+  border-left: 2px dashed rgba(0,0,0,.25); border-right: 2px dashed rgba(0,0,0,.25);
+  box-shadow: 0 2px 4px rgba(0,0,0,.3); z-index: 3;
+}
+
+/* --- polaroid photos --- */
+.polaroid {
+  background: var(--paper); color: var(--ink); padding: 12px 12px 40px;
+  border: 1px solid rgba(0,0,0,.2); box-shadow: 5px 6px 0 rgba(0,0,0,.45);
+  position: relative; transition: transform var(--dur) var(--ease);
+}
+.polaroid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: saturate(1.05) contrast(1.02); }
+.polaroid figcaption { position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font-family: "Caveat", cursive; font-size: 1.25rem; font-weight: 600; }
+.polaroid:nth-child(odd) { transform: rotate(-2.5deg); }
+.polaroid:nth-child(even) { transform: rotate(2deg); }
+.polaroid:hover { transform: rotate(0) scale(1.04); z-index: 2; }
+.polaroid-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; padding-top: 14px; }
+
+/* --- sticky-note reviews --- */
+.sticky-wall { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sticky {
+  padding: 22px 20px 18px; position: relative; color: var(--ink);
+  box-shadow: 4px 5px 0 rgba(0,0,0,.4); font-size: .95rem;
+  transition: transform var(--dur) var(--ease);
+}
+.sticky::before { content: ""; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 14px; height: 14px; border-radius: 50%; background: var(--blaze); border: 2px solid rgba(0,0,0,.35); box-shadow: 1px 2px 3px rgba(0,0,0,.4); }
+.sticky:nth-child(1) { background: #ffe066; transform: rotate(-2deg); }
+.sticky:nth-child(2) { background: #b2f2bb; transform: rotate(1.5deg); }
+.sticky:nth-child(3) { background: #ffc9c9; transform: rotate(-1deg); }
+.sticky:hover { transform: rotate(0) translateY(-4px); }
+.sticky .stars { color: #e8590c; letter-spacing: 3px; }
+.sticky blockquote { font-weight: 600; margin: 8px 0; }
+.sticky figcaption { font-family: "Caveat", cursive; font-size: 1.2rem; font-weight: 700; }
+
+/* --- how-it-works steps --- */
+.steps-hand { display: flex; gap: 18px; align-items: stretch; flex-wrap: wrap; }
+.step-hand { flex: 1; min-width: 220px; border: var(--bw); background: var(--card); padding: 22px; position: relative; box-shadow: var(--sh); }
+.step-hand:nth-child(1) { transform: rotate(-1.2deg); }
+.step-hand:nth-child(2) { transform: rotate(.8deg); background: var(--paper); color: var(--ink); box-shadow: 6px 6px 0 var(--acid); }
+.step-hand:nth-child(3) { transform: rotate(-.6deg); box-shadow: 6px 6px 0 var(--blaze); }
+.step-num { font-family: "Caveat", cursive; font-size: 2.6rem; font-weight: 700; color: var(--blaze); line-height: 1; }
+.step-hand:nth-child(2) .step-num { color: #e8590c; }
+.step-hand h3 { font-family: var(--font-display); text-transform: uppercase; margin: 6px 0; font-size: 1.1rem; }
+.step-hand p { font-size: .88rem; opacity: .9; }
+.step-arrow { align-self: center; font-size: 1.8rem; transform: rotate(12deg); }
+
+/* --- doodles --- */
+.doodle { position: absolute; pointer-events: none; }
+.doodle-arrow { width: 90px; height: 60px; }
+
+/* --- light paper section variant --- */
+.section-paper { background: var(--paper); color: var(--ink); }
+.section-paper .section-kicker { color: #e8590c; }
+.section-paper .outline-text { -webkit-text-stroke: 2px var(--ink); }
+
+/* --- slight organic rotations on dish cards --- */
+.dish-card:nth-child(3n+1) { transform: rotate(-.6deg); }
+.dish-card:nth-child(3n+2) { transform: rotate(.5deg); }
+.dish-card:nth-child(3n) { transform: rotate(-.3deg); }
+.dish-card:hover { transform: translate(-3px,-3px) rotate(0); }
+
+/* --- chef note card inside menu grid --- */
+.chef-note {
+  border: var(--bw); background: #ffe8cc; color: var(--ink); padding: 22px;
+  transform: rotate(1.5deg); box-shadow: 5px 5px 0 rgba(0,0,0,.5);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.chef-note .hand { font-size: 1.5rem; color: #d9480f; }
+.chef-note p { font-family: "Caveat", cursive; font-size: 1.25rem; line-height: 1.35; margin-top: 6px; }
+
+/* --- free delivery progress --- */
+.free-progress { margin: 10px 0 4px; font-size: .8rem; font-weight: 700; }
+.free-bar { height: 10px; border: var(--bw-ink); background: #fff; margin-top: 5px; }
+.free-bar > span { display: block; height: 100%; background: var(--green); transition: width .4s var(--ease); }
+
+/* --- whatsapp button --- */
+.btn-wa { background: #25d366; color: #06281a; }
+
+/* --- cart bar wobble to grab attention --- */
+.cart-bar.show { animation: barWobble 3.2s ease-in-out infinite; }
+@keyframes barWobble { 0%,100% { transform: translateX(-50%) rotate(0); } 50% { transform: translateX(-50%) rotate(-.6deg); } }
+
+/* --- toast as sticky note --- */
+.toast { background: #ffe066; color: var(--ink); transform: translate(-50%, 16px) rotate(-2deg); font-family: "Caveat", cursive; font-size: 1.25rem; font-weight: 700; border-radius: 4px 18px 6px 16px; }
+.toast.show { transform: translate(-50%, 0) rotate(-2deg); }
+
+/* --- rider card on tracking --- */
+.rider-card { display: flex; gap: 14px; align-items: center; border: var(--bw); background: var(--paper); color: var(--ink); padding: 14px 16px; box-shadow: var(--sh-ink); margin-bottom: 20px; transform: rotate(-1deg); }
+.rider-avatar { width: 56px; height: 56px; border: var(--bw-ink); border-radius: 50%; background: var(--acid); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+.rider-card h4 { font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; }
+.rider-card p { font-family: "Caveat", cursive; font-size: 1.15rem; color: #5c4a32; }
+
+/* --- hand heart in footer --- */
+.hand-heart { color: var(--blaze); display: inline-block; transform: rotate(-6deg); }
+
+/* --- promo sticker on menu header --- */
+.promo-sticker { position: relative; }
+
+/* --- area chips --- */
+.area-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.area-chip { border: 2px solid var(--line); padding: 4px 12px; font-size: .78rem; font-weight: 600; border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; color: var(--muted); }
+
+/* --- hand-drawn nav underline for desktop --- */
+@media (min-width: 681px) {
+  .nav-link.active { background: transparent; color: var(--acid); border-color: transparent; box-shadow: none; }
+  .nav-link.active::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: 2px; height: 6px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='6' viewBox='0 0 100 6'%3E%3Cpath d='M2 4 Q 15 1 30 4 T 55 4 T 80 4 T 98 4' fill='none' stroke='%23d9f24f' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat; background-size: 100% 6px; }
+  .nav-link { position: relative; }
+}
+
+/* --- responsive tweaks for v4 --- */
+@media (max-width: 980px) {
+  .polaroid-wrap, .sticky-wall { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 680px) {
+  .polaroid-wrap, .sticky-wall { grid-template-columns: 1fr; }
+  .step-arrow { display: none; }
+}
