@@ -299,8 +299,8 @@
         "</div>" +
         '<div>' +
           '<div class="map-card"><svg viewBox="0 0 400 300" role="img" aria-label="Delivery route map">' +
-            '<rect width="400" height="300" fill="#14100a"/>' +
-            '<g stroke="#2c2113" stroke-width="10"><line x1="0" y1="80" x2="400" y2="80"/><line x1="0" y1="170" x2="400" y2="170"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="90" y1="0" x2="90" y2="300"/><line x1="210" y1="0" x2="210" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/></g>' +
+            '<rect width="400" height="300" fill="#efe9dc"/>' +
+            '<g stroke="#d9cfba" stroke-width="10"><line x1="0" y1="80" x2="400" y2="80"/><line x1="0" y1="170" x2="400" y2="170"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="90" y1="0" x2="90" y2="300"/><line x1="210" y1="0" x2="210" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/></g>' +
             '<path id="route" d="M 60 240 L 90 170 L 210 170 L 210 80 L 340 80" fill="none" stroke="#d9f24f" stroke-width="4" stroke-dasharray="8 6"/>' +
             '<circle cx="60" cy="240" r="10" fill="#ff4d00" stroke="#f6eeda" stroke-width="3"/>' +
             '<text x="60" y="268" fill="#f6eeda" font-size="11" text-anchor="middle" font-family="sans-serif">HAWA</text>' +

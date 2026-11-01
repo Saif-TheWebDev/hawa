@@ -522,3 +522,90 @@ body::before {
   .polaroid-wrap, .sticky-wall { grid-template-columns: 1fr; }
   .step-arrow { display: none; }
 }
+
+/* ============================================================
+   HAWA v5 — "WHITE EDITION" + THREE.JS STICKY SCROLL
+   Semantic variables flip: page goes light, text goes dark.
+   ============================================================ */
+:root {
+  --ink: #fbf7ef;        /* page background (light warm white) */
+  --ink-2: #f4eee1;      /* alt section background */
+  --card: #ffffff;
+  --cream: #17120b;      /* text + borders (dark) */
+  --paper: #f6efe3;
+  --muted: #71644f;
+  --acid: #9dbf14;       /* deeper lime for contrast on white */
+  --line: #17120b;
+  --bw: 2px solid #17120b;
+}
+
+body { background: var(--ink); color: var(--cream); }
+::-webkit-scrollbar-track { background: #efe8da; border-left: var(--bw); }
+
+/* components that used ink/cream as the *opposite* role need explicit fixes */
+.cart-btn, .btn-acid, .mini-btn, .add-btn:hover, .pay-opt.selected,
+.cart-bar, .tl-item.done .tl-dot, .sticker, .skip-link {
+  color: #17120b;
+}
+.btn-blaze, .btn-call, .cart-count, .to-top, .add-btn, .mini-btn.blaze,
+.mini-tag.hot, .ticker, .eta-box, .drawer-head, .sticker.blaze, .hero-badge .sticker {
+  color: #fff;
+}
+.drawer { color: #17120b; }
+.drawer-foot { background: #f6efe3; }
+.qty-btn { background: #f6efe3; color: #17120b; }
+.section-paper, .bento-card:nth-child(3), .step-hand:nth-child(2),
+.quote-card:nth-child(2), .rider-card { color: #17120b; }
+.bento-card:nth-child(2) { color: #fff; }
+.btn-ghost { color: #17120b; box-shadow: 6px 6px 0 rgba(23,18,11,.22); }
+.btn-ghost:hover { box-shadow: 9px 9px 0 rgba(23,18,11,.3); }
+.toast { color: #17120b; }
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(251,247,239,.9), rgba(251,247,239,.78) 55%, var(--ink) 98%);
+}
+.hero-sub { color: var(--cream); }
+.hero-chip { background: rgba(255,255,255,.82); }
+.hero-bg { filter: grayscale(.15) contrast(1.05) brightness(1.06); }
+.map-card svg { background: #efe9dc; }
+.torn { background: var(--ink); }
+.torn::after { background: var(--ink-2); }
+.torn-light { background: var(--paper); }
+.torn-light::after { background: var(--ink); }
+body::before { opacity: .035; }
+
+/* ---------- Three.js sticky scroll stage ---------- */
+.sticky-stage {
+  position: relative;
+  height: 340vh;
+  border-bottom: var(--bw);
+  background: linear-gradient(180deg, #ffffff 0%, #fdf6ea 55%, #fbf7ef 100%);
+}
+.sticky-view {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+#sceneCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stage-caption {
+  position: absolute;
+  left: 6%;
+  top: 20%;
+  max-width: 560px;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.stage-caption .section-kicker { color: #d9480f; }
+.stage-caption p.sub { margin-top: 12px; font-weight: 600; color: var(--muted); max-width: 420px; }
+.stage-cta { position: absolute; left: 6%; bottom: 10%; z-index: 3; }
+.stage-hint {
+  position: absolute; right: 5%; bottom: 8%; z-index: 3;
+  font-family: "Caveat", cursive; font-size: 1.5rem; font-weight: 700;
+  color: #8a7a5f; transform: rotate(3deg);
+}
+@media (max-width: 680px) {
+  .sticky-stage { height: 280vh; }
+  .stage-caption { top: 16%; right: 6%; }
+  .stage-hint { display: none; }
+}
