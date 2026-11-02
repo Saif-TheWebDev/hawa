@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 260" role="img" aria-labelledby="title desc">
+<title id="title">Hawa Restaurant and Party Centre</title>
+<desc id="desc">Custom geometric Bangla-inspired Hawa wordmark with a four-color diamond mark.</desc>
+<rect width="820" height="260" fill="none"/>
+<g transform="translate(18 20)">
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M35 30h86v18H72l49 48-16 16-52-51v83h-18V30Z" fill="#f0b51b"/>
+    <path d="M88 30h52v18h-52z" fill="#f0b51b"/>
+    <path d="M36 145h90v18H36z" fill="#f0b51b"/>
+    <path d="M145 32h54v18h-34v27h32v18h-32v50h-20V32Z" fill="#f0b51b"/>
+    <path d="M201 32h18v113h-18z" fill="#f0b51b"/>
+
+    <g transform="translate(232 35)">
+      <rect x="0" y="0" width="108" height="108" rx="3" fill="#f0b51b"/>
+      <path d="M54 54 0 0h108L54 54Z" fill="#17aeb8"/>
+      <path d="M54 54 108 0v108L54 54Z" fill="#315ca7"/>
+      <path d="M54 54 108 108H0L54 54Z" fill="#e61d55"/>
+      <path d="M54 54 0 108V0L54 54Z" fill="#75b83a"/>
+    </g>
+
+    <path d="M365 32h18v113h-18z" fill="#f0b51b"/>
+    <path d="M386 32h54v18h-34v28h32v18h-32v49h-20V32Z" fill="#f0b51b"/>
+    <path d="M447 30h86v18h-49l49 48-16 16-52-51v83h-18V30Z" fill="#f0b51b"/>
+    <path d="M500 30h52v18h-52z" fill="#f0b51b"/>
+    <path d="M448 145h90v18h-90z" fill="#f0b51b"/>
+  </g>
+
+  <text x="294" y="205" text-anchor="middle" fill="#f5f0e8" font-family="Montserrat,Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="7">RESTAURANT &amp;</text>
+  <text x="294" y="236" text-anchor="middle" fill="#f5f0e8" font-family="Montserrat,Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="7">PARTY CENTRE</text>
+</g>
+</svg>
