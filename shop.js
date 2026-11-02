@@ -1,6 +1,6 @@
 /* ============================================================
    HAWA SHOP ENGINE — menu data, cart (localStorage), checkout,
-   order tracking simulation. Shared by menu/checkout/track pages.
+   WhatsApp enquiry handoff. No fake order confirmation or rider tracking.
    ============================================================ */
 (function () {
   "use strict";
@@ -39,11 +39,11 @@
     { id: "sweet", label: "🍰 Sweet & Drinks", emoji: "🍰" }
   ];
 
-  var DELIVERY_FEE = 40, FREE_OVER = 800, PROMO = { HAWA10: 0.10 };
+  /* Delivery prices, discounts and payment must be confirmed by Hawa. */
 
   /* ---------- Cart store ---------- */
-  var CART_KEY = "hawa_cart_v1", ORDERS_KEY = "hawa_orders_v1";
-  function getCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { return []; } }
+  var CART_KEY = "hawa_cart_v1";
+  function getCart() { try { var data = JSON.parse(localStorage.getItem(CART_KEY)) || []; return Array.isArray(data) ? data.filter(function (i) { return i && MENU.some(function (m) { return m.id === i.id; }) && Number.isInteger(i.qty) && i.qty > 0; }).map(function (i) { return { id: i.id, qty: Math.min(i.qty, 50) }; }) : []; } catch (e) { return []; } }
   function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); window.dispatchEvent(new CustomEvent("hawa:cart")); }
   function addToCart(id) {
     var c = getCart(), found = c.find(function (i) { return i.id === id; });
@@ -51,10 +51,8 @@
     saveCart(c); return c;
   }
   function setQty(id, qty) {
-    var c = getCart().filter(function (i) { return i.id !== id || qty > 0; });
-    var item = getCart().find(function (i) { return i.id === id; });
-    if (item && qty > 0) item.qty = qty;
-    if (item && qty > 0) c.push(item);
+    var c = getCart().filter(function (i) { return i.id !== id; });
+    if (qty > 0) c.push({ id: id, qty: Math.min(qty, 50) });
     saveCart(c);
   }
   function removeFromCart(id) { saveCart(getCart().filter(function (i) { return i.id !== id; })); }
@@ -67,22 +65,6 @@
   }
   function getItem(id) { return MENU.find(function (x) { return x.id === id; }); }
   function money(n) { return "৳" + n.toLocaleString("en-BD"); }
-
-  /* ---------- Orders ---------- */
-  function getOrders() { try { return JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch (e) { return []; } }
-  function saveOrders(o) { localStorage.setItem(ORDERS_KEY, JSON.stringify(o)); }
-  function placeOrder(form) {
-    var id = "HW-" + Math.random().toString(36).slice(2, 8).toUpperCase();
-    var order = {
-      id: id, ts: Date.now(), items: getCart(), form: form,
-      subtotal: cartSubtotal(), discount: form.discount || 0, fee: form.fee, total: form.total,
-      status: 0, statusTs: Date.now()
-    };
-    var orders = getOrders(); orders.unshift(order); saveOrders(orders);
-    saveCart([]);
-    return order;
-  }
-  function getOrder(id) { return getOrders().find(function (o) { return o.id === id; }); }
 
   /* ---------- Toast ---------- */
   var toastEl = null, toastTimer = null;
@@ -111,8 +93,8 @@
   window.addEventListener("hawa:cart", updateBadge);
 
   /* ---------- Cart drawer (menu page) ---------- */
-  function openDrawer() { var d = document.getElementById("cartDrawer"); if (d) { renderDrawer(); d.classList.add("open"); document.getElementById("drawerBackdrop").classList.add("show"); document.body.style.overflow = "hidden"; } }
-  function closeDrawer() { var d = document.getElementById("cartDrawer"); if (d) { d.classList.remove("open"); document.getElementById("drawerBackdrop").classList.remove("show"); document.body.style.overflow = ""; } }
+  function openDrawer() { var d = document.getElementById("cartDrawer"); if (d) { renderDrawer(); d.classList.add("open"); document.getElementById("drawerBackdrop").classList.add("show"); document.body.style.overflow = "hidden"; var close = document.getElementById("drawerClose"); if (close) close.focus(); } }
+  function closeDrawer() { var d = document.getElementById("cartDrawer"); if (d && d.classList.contains("open")) { d.classList.remove("open"); document.getElementById("drawerBackdrop").classList.remove("show"); document.body.style.overflow = ""; var trigger = document.getElementById("drawerBtn"); if (trigger) trigger.focus(); } }
   function renderDrawer() {
     var body = document.getElementById("drawerBody"), foot = document.getElementById("drawerFoot");
     var c = getCart();
@@ -126,13 +108,13 @@
       return '<div class="cart-item">' +
         '<div class="ci-emoji" style="background:' + m.color + '">' + m.emoji + '</div>' +
         '<div class="ci-info"><h4>' + m.name + '</h4><div class="ci-price">' + (m.price ? money(m.price) : "Seasonal") + " each</div>" +
-        '<div class="ci-controls"><button class="qty-btn" data-dec="' + m.id + '">−</button><span class="qty-val">' + i.qty + '</span><button class="qty-btn" data-inc="' + m.id + '">+</button></div></div>' +
+        '<div class="ci-controls"><button class="qty-btn" data-dec="' + m.id + '" aria-label="Remove one ' + m.name + '">−</button><span class="qty-val">' + i.qty + '</span><button class="qty-btn" data-inc="' + m.id + '" aria-label="Add one ' + m.name + '">+</button></div></div>' +
         '<button class="ci-remove" data-rm="' + m.id + '" aria-label="Remove ' + m.name + '">🗑️</button></div>';
     }).join("");
-    var sub = cartSubtotal(), fee = sub >= FREE_OVER || sub === 0 ? 0 : DELIVERY_FEE;
+    var sub = cartSubtotal();
     document.getElementById("sumSub").textContent = money(sub);
-    document.getElementById("sumFee").textContent = fee === 0 ? "FREE" : money(fee);
-    document.getElementById("sumTotal").textContent = money(sub + fee);
+    document.getElementById("sumFee").textContent = "Ask Hawa";
+    document.getElementById("sumTotal").textContent = money(sub) + " + delivery";
     body.querySelectorAll("[data-inc]").forEach(function (b) { b.onclick = function () { var it = getCart().find(function (i) { return i.id === b.dataset.inc; }); setQty(b.dataset.inc, it.qty + 1); renderDrawer(); }; });
     body.querySelectorAll("[data-dec]").forEach(function (b) { b.onclick = function () { var it = getCart().find(function (i) { return i.id === b.dataset.dec; }); setQty(b.dataset.dec, it.qty - 1); renderDrawer(); }; });
     body.querySelectorAll("[data-rm]").forEach(function (b) { b.onclick = function () { removeFromCart(b.dataset.rm); renderDrawer(); }; });
@@ -157,7 +139,8 @@
       var inQ = !q || m.name.toLowerCase().indexOf(q) > -1 || (m.bn && m.bn.toLowerCase().indexOf(q) > -1);
       return inCat && inQ;
     });
-    document.getElementById("resultCount").textContent = items.length + " dishes";
+    document.getElementById("resultCount").textContent = items.length + (items.length === 1 ? " dish" : " dishes");
+    if (!items.length) { grid.innerHTML = '<div class="panel" style="grid-column:1/-1;text-align:center"><h2 class="display h-md">Nothing on this page yet.</h2><p>Try another search or browse all categories.</p><button type="button" class="btn btn-ghost" id="clearSearch" style="margin-top:20px">Show all dishes</button></div>'; document.getElementById("clearSearch").onclick = function () { query = ""; activeCat = "all"; var input = document.getElementById("searchInput"); if (input) input.value = ""; renderCats(); renderMenu(); }; return; }
     grid.innerHTML = items.map(function (m, i) {
       var tags = "";
       if (m.popular) tags += '<span class="mini-tag pop">★ Popular</span>';
@@ -172,7 +155,7 @@
         '<div class="dish-body"><div class="dish-top"><h3>' + m.name + '</h3><span class="dish-price">' + (m.price ? money(m.price) : "MKT") + "</span></div>" +
         '<p class="dish-desc">' + m.desc + "</p>" +
         (tags ? '<div class="dish-tags">' + tags + "</div>" : "") +
-        '<button class="add-btn" data-add="' + m.id + '">+ Add to cart</button></div></article>';
+        (m.price ? '<button class="add-btn" data-add="' + m.id + '">Add to request +</button>' : '<a class="add-btn" href="https://wa.me/8801705036161?text=' + encodeURIComponent("Hello Hawa! Could you confirm the price and availability of " + m.name + "?") + '" target="_blank" rel="noopener">Ask for market price</a>') + '</div></article>';
     }).join("");
     grid.querySelectorAll("[data-add]").forEach(function (b) {
       b.onclick = function () {
@@ -180,195 +163,78 @@
         var m = getItem(b.dataset.add);
         toast(m.name + " added 🛒");
         b.textContent = "✓ Added"; b.classList.add("added");
-        setTimeout(function () { b.textContent = "+ Add to cart"; b.classList.remove("added"); }, 1200);
+        setTimeout(function () { b.textContent = "Add to request +"; b.classList.remove("added"); }, 1200);
       };
     });
   }
 
-  /* ---------- Checkout page ---------- */
+  /* ---------- WhatsApp order request: human confirmation required ---------- */
   function initCheckout() {
-    if (!document.getElementById("checkoutForm")) return;
+    var form = document.getElementById("checkoutForm");
+    if (!form) return;
     var cart = getCart();
     var list = document.getElementById("coItems");
     if (!cart.length) {
       document.getElementById("coEmpty").style.display = "block";
-      document.getElementById("checkoutForm").style.display = "none";
+      form.style.display = "none";
       document.getElementById("coSummary").style.display = "none";
       return;
     }
-    function totals() {
-      var sub = cartSubtotal();
-      var code = (document.getElementById("promoInput").value || "").trim().toUpperCase();
-      var disc = PROMO[code] ? Math.round(sub * PROMO[code]) : 0;
-      var fee = sub - disc >= FREE_OVER || sub === 0 ? 0 : DELIVERY_FEE;
-      return { sub: sub, disc: disc, fee: fee, total: sub - disc + fee };
-    }
-    function renderSummary() {
-      var t = totals();
-      document.getElementById("coSub").textContent = money(t.sub);
-      document.getElementById("coDisc").textContent = t.disc ? "−" + money(t.disc) : "—";
-      document.getElementById("coFee").textContent = t.fee === 0 ? "FREE" : money(t.fee);
-      document.getElementById("coTotal").textContent = money(t.total);
-      var msg = document.getElementById("promoMsg");
-      var code = (document.getElementById("promoInput").value || "").trim().toUpperCase();
-      if (code) { msg.textContent = PROMO[code] ? "✔ " + code + " applied — you saved " + money(t.disc) + "!" : "✖ Invalid code"; msg.className = "promo-msg " + (PROMO[code] ? "ok" : "err"); }
-      else { msg.textContent = ""; msg.className = "promo-msg"; }
-    }
     list.innerHTML = cart.map(function (i) {
-      var m = getItem(i.id); if (!m) return "";
-      return '<div class="sum-row"><span>' + m.emoji + " " + m.name + " × " + i.qty + "</span><span>" + (m.price ? money(m.price * i.qty) : "MKT") + "</span></div>";
+      var m = getItem(i.id);
+      return m ? '<div class="sum-row"><span>' + m.name + " × " + i.qty + '</span><span>' + (m.price ? money(m.price * i.qty) : "Ask Hawa") + "</span></div>" : "";
     }).join("");
-    renderSummary();
-    document.getElementById("promoInput").addEventListener("input", renderSummary);
-    document.getElementById("promoApply").onclick = renderSummary;
-
-    document.querySelectorAll(".pay-opt").forEach(function (p) {
-      p.onclick = function () {
-        document.querySelectorAll(".pay-opt").forEach(function (x) { x.classList.remove("selected"); });
-        p.classList.add("selected");
-        document.getElementById("payMethod").value = p.dataset.pay;
-      };
-    });
-
-    document.getElementById("checkoutForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var f = new FormData(e.target);
-      var t = totals();
-      var order = placeOrder({
-        name: f.get("name"), phone: f.get("phone"), address: f.get("address"),
-        area: f.get("area"), note: f.get("note"), pay: f.get("pay") || "Cash on Delivery",
-        discount: t.disc, fee: t.fee, total: t.total
+    var subtotal = cartSubtotal();
+    document.getElementById("coSub").textContent = money(subtotal);
+    document.getElementById("coDisc").textContent = "Confirm";
+    document.getElementById("coFee").textContent = "Confirm";
+    document.getElementById("coTotal").textContent = money(subtotal) + " + delivery";
+    document.querySelectorAll(".pay-opt").forEach(function (option) {
+      option.addEventListener("click", function () {
+        document.querySelectorAll(".pay-opt").forEach(function (node) { node.classList.remove("selected"); node.setAttribute("aria-pressed", "false"); });
+        option.classList.add("selected");
+        option.setAttribute("aria-pressed", "true");
+        document.getElementById("payMethod").value = option.dataset.pay;
       });
-      toast("Order " + order.id + " placed! 🎉");
-      setTimeout(function () { window.location.href = "track.html?id=" + order.id; }, 700);
     });
-  }
-
-  /* ---------- Tracking page ---------- */
-  var STATUSES = [
-    { key: "placed", label: "Order placed", icon: "🧾", desc: "We received your order and sent it to the kitchen." },
-    { key: "confirmed", label: "Confirmed", icon: "✅", desc: "Hawa confirmed your order. Chefs are on it!" },
-    { key: "cooking", label: "Cooking", icon: "🔥", desc: "Fresh masala, fired up — your food is being cooked now." },
-    { key: "onway", label: "Out for delivery", icon: "🛵", desc: "Rider has picked up your order and is on the way." },
-    { key: "delivered", label: "Delivered", icon: "🎉", desc: "Enjoy your meal! Rate your experience on Facebook." }
-  ];
-  var STAGE_DUR = 9000; // ms per stage (demo pace)
-
-  function initTrack() {
-    if (!document.getElementById("trackRoot")) return;
-    var params = new URLSearchParams(location.search);
-    var id = params.get("id");
-    var order = id ? getOrder(id) : getOrders()[0];
-    var root = document.getElementById("trackRoot");
-    if (!order) {
-      root.innerHTML = '<div class="panel" style="text-align:center;padding:60px 20px"><div style="font-size:3.5rem">📭</div><h2 class="h-md display">No order found</h2><p style="color:var(--muted);margin:12px 0 22px">Place an order first, then track it here.</p><a class="btn btn-blaze" href="menu.html">Browse the menu</a></div>';
-      renderHistory(); return;
-    }
-
-    /* progress: advance stages over time (demo simulation, capped at delivered) */
-    var elapsed = Date.now() - order.ts;
-    var stage = Math.min(Math.floor(elapsed / STAGE_DUR), STATUSES.length - 1);
-    if (stage >= STATUSES.length - 1) stage = STATUSES.length - 1;
-
-    var itemsHtml = order.items.map(function (i) {
-      var m = getItem(i.id); return m ? '<div class="sum-row"><span>' + m.emoji + " " + m.name + " × " + i.qty + "</span><span>" + (m.price ? money(m.price * i.qty) : "MKT") + "</span></div>" : "";
-    }).join("");
-
-    root.innerHTML =
-      '<div class="track-head reveal visible">' +
-        '<p class="section-kicker">Live tracking</p>' +
-        '<div class="order-id">' + order.id + '</div>' +
-        '<p style="color:var(--muted);font-size:.9rem">Placed ' + new Date(order.ts).toLocaleString("en-BD") + " · " + order.form.pay + " · " + (order.form.area || "Mymensingh") + "</p>" +
-      "</div>" +
-      '<div class="track-grid">' +
-        '<div>' +
-          '<div class="eta-box"><div class="eta" id="etaVal">' + (stage >= 4 ? "Delivered" : Math.max(5, 35 - stage * 8) + " min") + '</div><p>' + (stage >= 4 ? "Your food arrived. Enjoy!" : "Estimated delivery time") + '</p></div>' +
-          '<div class="panel panel-dark"><h2>Order progress</h2><div class="timeline" id="timeline">' +
-            STATUSES.map(function (s, i) {
-              var cls = i < stage ? "done" : (i === stage ? "current" : "");
-              return '<div class="tl-item ' + cls + '"><span class="tl-dot">' + (i < stage ? "✓" : (i === stage ? s.icon : "")) + '</span><h4>' + s.label + '</h4><p>' + s.desc + "</p></div>";
-            }).join("") +
-          "</div></div>" +
-          '<div class="rider-card"><span class="rider-avatar">🛵</span><div><h4>Rider: Rahim</h4><p id="riderNote">on the way with your food, in sha Allah 🛣️</p></div></div>' +
-          '<div class="track-actions">' +
-            '<a class="btn btn-blaze" href="tel:+8801705036161">📞 Call restaurant</a>' +
-            '<a class="btn btn-wa" href="https://wa.me/8801705036161?text=Hi%20Hawa!%20Tracking%20order%20' + order.id + ' 🛵" target="_blank" rel="noopener">💬 WhatsApp us</a>' +
-            '<a class="btn btn-cream" href="menu.html?reorder=' + order.id + '">🔁 Re-order</a>' +
-            '<button class="btn btn-ghost" id="shareBtn" type="button">🔗 Copy tracking link</button>' +
-          "</div>" +
-        "</div>" +
-        '<div>' +
-          '<div class="map-card"><svg viewBox="0 0 400 300" role="img" aria-label="Delivery route map">' +
-            '<rect width="400" height="300" fill="#efe9dc"/>' +
-            '<g stroke="#d9cfba" stroke-width="10"><line x1="0" y1="80" x2="400" y2="80"/><line x1="0" y1="170" x2="400" y2="170"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="90" y1="0" x2="90" y2="300"/><line x1="210" y1="0" x2="210" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/></g>' +
-            '<path id="route" d="M 60 240 L 90 170 L 210 170 L 210 80 L 340 80" fill="none" stroke="#d9f24f" stroke-width="4" stroke-dasharray="8 6"/>' +
-            '<circle cx="60" cy="240" r="10" fill="#ff4d00" stroke="#f6eeda" stroke-width="3"/>' +
-            '<text x="60" y="268" fill="#f6eeda" font-size="11" text-anchor="middle" font-family="sans-serif">HAWA</text>' +
-            '<circle cx="340" cy="80" r="10" fill="#35d07f" stroke="#f6eeda" stroke-width="3"/>' +
-            '<text x="340" y="60" fill="#f6eeda" font-size="11" text-anchor="middle" font-family="sans-serif">YOU</text>' +
-            '<circle id="rider" cx="60" cy="240" r="8" fill="#ff7a33" stroke="#000" stroke-width="2"><animateMotion dur="9s" repeatCount="indefinite" path="M 60 240 L 90 170 L 210 170 L 210 80 L 340 80"/></circle>' +
-          "</svg>" +
-          '<div class="map-legend"><span>📍 Dhaka Bypass Mor</span><span id="riderStatus">' + STATUSES[stage].label + '</span><span>🏠 ' + (order.form.area || "Your door") + "</span></div>" +
-          "</div>" +
-          '<div class="panel panel-dark" style="margin-top:20px"><h2>Order summary</h2>' + itemsHtml +
-            '<div class="sum-row" style="margin-top:8px"><span>Delivery fee</span><span>' + (order.fee ? money(order.fee) : "FREE") + "</span></div>" +
-            (order.discount ? '<div class="sum-row"><span>Discount</span><span>−' + money(order.discount) + "</span></div>" : "") +
-            '<div class="sum-row total"><span>Total</span><span>' + money(order.total) + "</span></div>" +
-            '<p style="font-size:.85rem;color:var(--muted);margin-top:10px">Deliver to: ' + order.form.address + " · " + order.form.phone + "</p>" +
-          "</div>" +
-        "</div>" +
-      "</div>";
-
-    /* live stage advancement */
-    if (stage < STATUSES.length - 1) {
-      var nextIn = STAGE_DUR - (elapsed % STAGE_DUR);
-      setTimeout(function () {
-        var riderStatus = document.getElementById("riderStatus");
-        var etaVal = document.getElementById("etaVal");
-        var s2 = Math.min(stage + 1, STATUSES.length - 1);
-        if (riderStatus) riderStatus.textContent = STATUSES[s2].label;
-        if (etaVal) etaVal.textContent = s2 >= 4 ? "Delivered" : Math.max(5, 35 - s2 * 8) + " min";
-        var items = document.querySelectorAll("#timeline .tl-item");
-        items.forEach(function (el, i) { el.classList.toggle("done", i < s2); el.classList.toggle("current", i === s2); });
-        var dots = document.querySelectorAll("#timeline .tl-dot");
-        dots.forEach(function (d, i) { d.textContent = i < s2 ? "✓" : (i === s2 ? STATUSES[i].icon : ""); });
-        if (s2 < STATUSES.length - 1) setTimeout(arguments.callee, STAGE_DUR);
-      }, nextIn);
-    }
-    renderHistory();
-  }
-
-  function renderHistory() {
-    var el = document.getElementById("historyList"); if (!el) return;
-    var orders = getOrders();
-    if (!orders.length) { el.innerHTML = '<p style="color:var(--muted)">No past orders yet.</p>'; return; }
-    el.innerHTML = orders.slice(0, 5).map(function (o) {
-      var n = o.items.reduce(function (s, i) { return s + i.qty; }, 0);
-      return '<div class="history-item"><div><div class="h-id">' + o.id + '</div><div class="h-meta">' + new Date(o.ts).toLocaleString("en-BD") + " · " + n + " items · " + money(o.total) + "</div></div>" +
-        '<div style="display:flex;gap:8px"><a class="mini-btn" href="track.html?id=' + o.id + '">Track</a><a class="mini-btn blaze" href="menu.html?reorder=' + o.id + '">Re-order</a></div></div>';
-    }).join("");
-  }
-
-  /* ---------- Re-order ---------- */
-  function applyReorder() {
-    var params = new URLSearchParams(location.search);
-    var rid = params.get("reorder");
-    if (!rid) return;
-    var o = getOrder(rid); if (!o) return;
-    saveCart(o.items.map(function (i) { return { id: i.id, qty: i.qty }; }));
-    toast("Re-ordered " + rid + " 🛒");
-    if (document.getElementById("dishGrid")) updateBadge();
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var fields = new FormData(form);
+      var rows = [
+        "Hello Hawa! I would like to request these dishes:",
+        ""
+      ];
+      cart.forEach(function (i) {
+        var item = getItem(i.id);
+        if (item) rows.push("• " + item.name + " × " + i.qty + (item.price ? " (listed: " + money(item.price * i.qty) + ")" : " (please quote)"));
+      });
+      rows.push(
+        "",
+        "Listed item subtotal: " + money(subtotal) + " (subject to confirmation; delivery extra)",
+        "",
+        "Name: " + String(fields.get("name") || "").trim(),
+        "Phone: " + String(fields.get("phone") || "").trim(),
+        "Address: " + String(fields.get("address") || "").trim(),
+        "Area: " + String(fields.get("area") || "").trim(),
+        "Payment preference: " + String(fields.get("pay") || "Cash on Delivery"),
+        "Notes: " + String(fields.get("note") || "").trim(),
+        "",
+        "Please confirm availability, final total, delivery and payment before I pay."
+      );
+      window.location.href = "https://wa.me/8801705036161?text=" + encodeURIComponent(rows.join("\n"));
+    });
   }
 
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
-    renderCats(); renderMenu(); updateBadge(); initCheckout(); initTrack(); applyReorder();
-    var db = document.getElementById("drawerBtn"), bb = document.getElementById("barBtn");
+    renderCats(); renderMenu(); updateBadge(); initCheckout();
+    var db = document.getElementById("drawerBtn"), bb = document.getElementById("cartBar");
     if (db) db.onclick = openDrawer;
-    if (bb) bb.onclick = function () { window.location.href = "checkout.html"; };
+    if (bb) { var toCheckout = function () { window.location.href = "checkout.html"; }; bb.onclick = toCheckout; bb.addEventListener("keydown", function (event) { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); toCheckout(); } }); }
     var cb = document.getElementById("cartBtn"); if (cb) cb.onclick = function () { window.location.href = "checkout.html"; };
     var dclose = document.getElementById("drawerClose"); if (dclose) dclose.onclick = closeDrawer;
     var dback = document.getElementById("drawerBackdrop"); if (dback) dback.onclick = closeDrawer;
+    document.addEventListener("keydown", function (event) { if (event.key === "Escape") closeDrawer(); });
     var search = document.getElementById("searchInput");
     if (search) search.addEventListener("input", function () { query = search.value; renderMenu(); });
   });
