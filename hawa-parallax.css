@@ -1,0 +1,212 @@
+/* HAWA / DEPTH 03 — restrained parallax layer
+   The goal is depth, not constant motion. Scroll/pointer motion is disabled
+   for reduced-motion users and intentionally reduced on touch screens. */
+
+:root {
+  --hawa-depth-y: 0px;
+  --hawa-depth-x: 0px;
+  --hawa-pointer-x: 0px;
+  --hawa-pointer-y: 0px;
+}
+
+/* Hero: background, typography and edge note occupy different depth planes. */
+.hawa-hero__photo {
+  animation: none;
+  inset: -7% -2% -7% 24%;
+  transform:
+    translate3d(
+      calc(var(--hawa-pointer-x, 0px) * .55),
+      calc(var(--hawa-depth-y, 0px) + var(--hawa-pointer-y, 0px) * .45),
+      0
+    )
+    scale(1.09);
+  will-change: transform;
+}
+.hawa-hero__copy {
+  transform:
+    translate3d(
+      calc(var(--hawa-pointer-x, 0px) * -.12),
+      calc(var(--hawa-depth-y, 0px) * -.16 + var(--hawa-pointer-y, 0px) * -.11),
+      0
+    );
+  will-change: transform;
+}
+.hawa-hero__edge {
+  transform: translate3d(0, calc(var(--hawa-depth-y, 0px) * -.4), 0);
+  will-change: transform;
+}
+
+/* A soft optical layer makes the foreground/background separation more physical. */
+.hawa-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 74% 33%, rgba(255,238,216,.11), transparent 24%),
+    linear-gradient(118deg, transparent 42%, rgba(255,255,255,.045) 56%, transparent 67%);
+  transform: translate3d(calc(var(--hawa-pointer-x, 0px) * .18), calc(var(--hawa-pointer-y, 0px) * .18), 0);
+  mix-blend-mode: screen;
+}
+
+/* Story photography drifts inside the pinned frame, while the copy stays anchored. */
+.hawa-story__photos {
+  inset: -8% -2%;
+  transform: translate3d(0, var(--hawa-story-depth, 0px), 0) scale(1.04);
+  will-change: transform;
+}
+.hawa-story__image {
+  transform: scale(1.12);
+}
+.hawa-story__image.is-active {
+  transform: scale(1.035);
+}
+
+/* Featured menu imagery sits on its own visual plane. */
+.hawa-spotlight__slide figure {
+  overflow: hidden;
+}
+.hawa-spotlight__slide figure img {
+  width: 100%;
+  height: 116%;
+  margin-top: -8%;
+  transform: translate3d(0, var(--hawa-depth-y, 0px), 0) scale(1.045);
+  will-change: transform;
+}
+.hawa-spotlight__slide.is-active figure img {
+  transform: translate3d(0, var(--hawa-depth-y, 0px), 0) scale(1.045);
+}
+.hawa-spotlight__slide figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,245,229,.12), transparent 62%);
+  transform: translate3d(calc(var(--hawa-pointer-x, 0px) * .22), 0, 0);
+}
+
+/* Gallery images glide inside their fixed masks instead of moving the cards. */
+.hawa-gallery-trigger img {
+  height: 116%;
+  margin-top: -8%;
+  transform: translate3d(0, var(--hawa-depth-y, 0px), 0) scale(1.02);
+  will-change: transform;
+  transition: filter .7s ease, transform .18s linear;
+}
+.hawa-gallery-trigger:hover img,
+.hawa-gallery-trigger:focus-visible img {
+  transform: translate3d(0, var(--hawa-depth-y, 0px), 0) scale(1.075);
+}
+
+/* Venue section: background photo has a low-amplitude vertical drift. */
+.gather-image {
+  background-position: 50% calc(50% + var(--hawa-depth-y, 0px));
+  will-change: background-position;
+}
+
+/* Closing signature moves horizontally in the opposite direction to scroll.
+   It feels like a printed masthead passing behind the content. */
+.hawa-outro__signature {
+  transform: translate3d(var(--hawa-depth-x, 0px), 0, 0);
+  will-change: transform;
+}
+.hawa-outro::before {
+  content: "";
+  position: absolute;
+  width: min(38vw, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(36,56,44,.2);
+  border-radius: 50%;
+  left: -12vw;
+  top: 5%;
+  pointer-events: none;
+  transform: translate3d(calc(var(--hawa-depth-x, 0px) * -.25), calc(var(--hawa-depth-y, 0px) * .2), 0);
+}
+
+/* Menu masthead gets one subtle photographic depth cue. */
+.hawa-menu-banner__image {
+  background-position: 50% calc(50% + var(--hawa-depth-y, 0px));
+  background-size: auto 122%;
+  will-change: background-position;
+}
+
+/* Hover perspective only on devices that actually have a fine pointer. */
+@media (hover:hover) and (pointer:fine) {
+  .dish-card {
+    transform:
+      perspective(1100px)
+      rotateX(var(--hawa-tilt-x, 0deg))
+      rotateY(var(--hawa-tilt-y, 0deg))
+      translateY(var(--hawa-card-lift, 0px));
+    transform-style: preserve-3d;
+    transition: transform .32s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .3s;
+  }
+  .dish-card:hover {
+    --hawa-card-lift: -5px;
+  }
+  .dish-card .dish-thumb,
+  .dish-card .dish-body {
+    transform: translateZ(0);
+  }
+  .dish-card:hover .dish-thumb {
+    transform: translateZ(12px);
+  }
+  .dish-card:hover .dish-body {
+    transform: translateZ(8px);
+  }
+  .dish-card .dish-thumb,
+  .dish-card .dish-body {
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+}
+
+/* Touch devices get scroll depth only; no pointer-follow or 3D tilt. */
+@media (max-width: 680px), (pointer:coarse) {
+  .hawa-hero__photo {
+    inset: -4% -6%;
+    transform: translate3d(0, calc(var(--hawa-depth-y, 0px) * .55), 0) scale(1.08);
+  }
+  .hawa-hero__copy,
+  .hawa-hero__edge {
+    transform: none;
+  }
+  .hawa-hero::after {
+    transform: none;
+  }
+  .hawa-story__photos {
+    inset: 0;
+    transform: none;
+  }
+  .hawa-spotlight__slide figure img,
+  .hawa-spotlight__slide.is-active figure img {
+    height: 108%;
+    margin-top: -4%;
+  }
+  .hawa-gallery-trigger img {
+    height: 110%;
+    margin-top: -5%;
+  }
+}
+
+/* Motion preference overrides every depth transform. */
+@media (prefers-reduced-motion: reduce) {
+  .hawa-hero__photo,
+  .hawa-hero__copy,
+  .hawa-hero__edge,
+  .hawa-story__photos,
+  .hawa-spotlight__slide figure img,
+  .hawa-spotlight__slide.is-active figure img,
+  .hawa-gallery-trigger img,
+  .hawa-outro__signature,
+  .hawa-outro::before {
+    transform: none !important;
+  }
+  .gather-image,
+  .hawa-menu-banner__image {
+    background-position: center !important;
+  }
+  .dish-card {
+    transform: none !important;
+  }
+}
