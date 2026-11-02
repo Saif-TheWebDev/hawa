@@ -19,7 +19,6 @@
   var outro = document.querySelector(".hawa-outro");
   var outroSignature = document.querySelector(".hawa-outro__signature");
   var menuBanner = document.querySelector(".hawa-menu-banner__image");
-  var cards = Array.prototype.slice.call(document.querySelectorAll(".dish-card"));
   var raf = 0;
   var pointerRaf = 0;
   var px = 0, py = 0, targetPx = 0, targetPy = 0;
@@ -159,6 +158,16 @@
   if (reduce.addEventListener) reduce.addEventListener("change", function () { resetAll(); scheduleScrollDepth(); });
   if (small.addEventListener) small.addEventListener("change", scheduleScrollDepth);
 
-  cards.forEach(attachCardTilt);
+  function attachAllCardTilts() {
+    document.querySelectorAll(".dish-card").forEach(function (card) {
+      if (card.dataset.depthTiltReady === "1") return;
+      card.dataset.depthTiltReady = "1";
+      attachCardTilt(card);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", attachAllCardTilts);
+  window.addEventListener("hawa:cart", attachAllCardTilts);
+  window.setTimeout(attachAllCardTilts, 120);
   updateScrollDepth();
 })();
