@@ -552,3 +552,18 @@ a{color:inherit;text-decoration:none}
 
 .fresh-inner .ci-emoji{background:#dcecc7;color:#075340;font:700 31px/.8 var(--display)}
 .fresh-inner .ci-emoji span{transform:rotate(-10deg)}
+
+/* HAWA / New six-asset editorial image integration */
+.hawa-new-flavours{background:#fff;padding:90px 0 105px}
+.hawa-new-flavours__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.hawa-new-flavours__card{position:relative;height:clamp(300px,35vw,475px);border-radius:27px;overflow:hidden;isolation:isolate;background:#183c2c}
+.hawa-new-flavours__card::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(5,22,14,.84) 0%,rgba(5,22,14,.2) 57%,transparent 100%)}
+.hawa-new-flavours__card img{height:100%;width:100%;object-fit:cover;transition:transform .8s var(--ease),filter .8s}
+.hawa-new-flavours__card:hover img{transform:scale(1.06);filter:saturate(1.1)}
+.hawa-new-flavours__card>span{position:absolute;left:32px;right:32px;bottom:30px;z-index:2;color:#fff;display:grid;gap:9px}
+.hawa-new-flavours__card small{font:700 10px/1.3 var(--small);letter-spacing:.16em;color:#ffdc8b}
+.hawa-new-flavours__card strong{font:500 clamp(31px,3.3vw,52px)/.99 var(--display);letter-spacing:-.05em;max-width:400px}
+.hawa-new-flavours__card b{font:500 24px var(--body);position:absolute;right:0;bottom:2px}
+.concept-caption{position:absolute;bottom:15px;left:16px;z-index:3;border-radius:20px;background:#06271ed9;color:#fff;padding:9px 12px;font:600 9px/1.3 var(--small);letter-spacing:.02em}
+@media(max-width:760px){.hawa-new-flavours{padding:65px 0 75px}.hawa-new-flavours__grid{grid-template-columns:1fr;gap:16px}.hawa-new-flavours__card{height:360px}}
+@media(max-width:540px){.hawa-new-flavours__card{height:300px;border-radius:20px}.hawa-new-flavours__card>span{left:22px;right:22px;bottom:22px}.hawa-new-flavours__card strong{font-size:36px}}
