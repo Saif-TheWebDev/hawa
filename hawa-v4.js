@@ -113,8 +113,7 @@
   function heroIntro() {
     var tl = gsap.timeline({ defaults: { ease: "power4.out" } });
     tl.from(".v4-hero__title-line > span", { yPercent: 118, duration: 1.15, stagger: .09 })
-      .from(".v4-hero__swoosh path", { drawSVG: 0, duration: .9 }, "<.1")
-      .to("[data-v4-fade]", { opacity: 1, y: 0, duration: .72, stagger: .08 }, "<.15")
+      .to(".v4-hero [data-v4-fade]", { opacity: 1, y: 0, duration: .72, stagger: .08 }, "<.12")
       .from(".v4-circle-link", { scale: .72, opacity: 0, duration: .7 }, "<.15");
     return tl;
   }
@@ -152,6 +151,33 @@
     yPercent: -8,
     ease: "none",
     scrollTrigger: { trigger: ".v4-hero", start: "top top", end: "bottom top", scrub: 1.2 }
+  });
+
+  /* non-hero fade-ups stay tied to their own scroll position */
+  gsap.utils.toArray("[data-v4-fade]").filter(function (el) {
+    return !el.closest(".v4-hero");
+  }).forEach(function (el) {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: .72, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 86%", once: true }
+    });
+  });
+
+  /* keep the home navigation honest as sections change */
+  var homeNavLinks = gsap.utils.toArray(".v4-nav__links a[href^='#']");
+  homeNavLinks.forEach(function (link) {
+    var target = document.querySelector(link.getAttribute("href"));
+    if (!target) return;
+    ScrollTrigger.create({
+      trigger: target,
+      start: "top center",
+      end: "bottom center",
+      onToggle: function (self) {
+        if (!self.isActive) return;
+        homeNavLinks.forEach(function (item) { item.classList.remove("active"); });
+        link.classList.add("active");
+      }
+    });
   });
 
   /* ----- editorial reveals ----- */
