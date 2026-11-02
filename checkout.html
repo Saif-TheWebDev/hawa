@@ -3,40 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout — Hawa Restaurant & Party Centre, Mymensingh</title>
+  <title>Order Enquiry — Hawa Restaurant & Party Centre, Mymensingh</title>
   <meta name="description" content="Prepare a Hawa order request and send it directly via WhatsApp. The restaurant confirms availability, prices and payment." />
   <meta name="theme-color" content="#23382e" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,500..1000&family=Fragment+Mono&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" />
-  <link rel="stylesheet" href="hawa-editorial.css" />
-  <link rel="stylesheet" href="hawa-chapters.css" />
-  <link rel="stylesheet" href="hawa-parallax.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ff4d00'>হ</text></svg>" />
+  <link rel="stylesheet" href="hawa-v4.css" />
+  <link rel="icon" href="assets/hawa-leaf-emblem.svg" type="image/svg+xml" /><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ff4d00'>হ</text></svg>" />
 </head>
-<body>
+<body class="hawa-inner">
   <a class="skip-link" href="#main">Skip to main content</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <header class="nav" id="nav">
-    <div class="nav-inner container">
-      <a href="index.html" class="brand" aria-label="Hawa home">
-        <span class="brand-logo" aria-hidden="true"><span class="brand-monogram bn">হ</span></span>
-        <span class="brand-name">Hawa<small>Order enquiry</small></span>
+  <header class="v4-nav is-solid" id="v4Nav">
+    <div class="container v4-nav__inner">
+      <a class="v4-brand" href="index.html" aria-label="Hawa home">
+        <img class="v4-brand__mark" src="assets/hawa-leaf-emblem.svg" alt="" />
+        <span class="v4-brand__word">Hawa<small>Restaurant &amp; Party Centre</small></span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav class="nav-links" id="navLinks" aria-label="Main">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="menu.html">Menu &amp; order</a>
-        <a class="nav-link" href="track.html">Order help</a>
+      <nav class="v4-nav__links" id="v4NavLinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="track.html">Order help</a>
+        <a href="index.html#gather">Gather</a>
+        <a href="index.html#visit">Visit</a>
       </nav>
-      <div class="nav-actions">
-        <button class="cart-btn" id="cartBtn">🛒 Cart <span class="cart-count" id="cartCount" style="display:none">0</span></button>
-        <a class="btn-call" href="tel:+8801705036161">📞 Call</a>
+      <div class="v4-nav__actions">
+        <button class="v4-nav__cart" id="cartBtn" type="button">Cart <span class="v4-nav__count" id="cartCount" style="display:none">0</span></button>
+        <a class="v4-nav__book" href="https://wa.me/8801705036161" target="_blank" rel="noopener">Talk to Hawa <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+      <button class="v4-menu-btn" id="v4MenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="v4NavLinks"><span></span><span></span></button>
     </div>
   </header>
 
@@ -115,8 +113,9 @@
 
   <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
   <script src="shop.js"></script>
-  <script defer src="hawa-parallax.js"></script>
+  <script src="hawa-v4.js"></script>
 </body>
 </html>
