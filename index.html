@@ -4,295 +4,215 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAWA — Restaurant &amp; Party Centre | Mymensingh</title>
-  <meta name="description" content="Hawa Restaurant & Party Centre, Mymensingh — explore the menu and contact Hawa about dining, takeaway and celebrations at Maskanda Road, Mymensingh. Call +880 1705-036161." />
+  <meta name="description" content="Hawa Restaurant & Party Centre in Mymensingh — food, gatherings and direct order enquiries from Maskanda Road." />
   <link rel="canonical" href="https://hawa-restaurant-omega.vercel.app/" />
-  <meta name="theme-color" content="#23382e" />
+  <meta name="theme-color" content="#10150f" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="HAWA — Mymensingh's own food delivery" />
-  <meta property="og:description" content="Explore Hawa Restaurant & Party Centre in Mymensingh. Food, gatherings and direct order enquiries." />
+  <meta property="og:title" content="HAWA — Restaurant & Party Centre" />
+  <meta property="og:description" content="A place for food, family and moments in Mymensingh." />
   <meta property="og:url" content="https://hawa-restaurant-omega.vercel.app/" />
-  <meta property="og:image" content="https://imagedelivery.net/qIRo83zFfiIySsaoR7E3zQ/places/ee6adb0d-8815-4777-9931-a5e731b4c43e/primary/487c2da6-31e8-4ad9-9e5f-f6093110d1d7/public" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,500..1000&family=Fragment+Mono&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" />
-  <link rel="stylesheet" href="hawa-editorial.css" />
-  <link rel="stylesheet" href="hawa-chapters.css" />
-  <link rel="stylesheet" href="hawa-parallax.css" />
-  <link rel="preload" href="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" as="image" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ff4d00'>হ</text></svg>" />
+  <link rel="stylesheet" href="hawa-v4.css" />
+  <link rel="icon" href="assets/hawa-leaf-emblem.svg" type="image/svg+xml" />
 </head>
-<body data-cinematic="hawa">
+<body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <header class="nav" id="nav">
-    <div class="nav-inner container">
-      <a href="index.html" class="brand" aria-label="Hawa home">
-        <span class="brand-logo" aria-hidden="true"><span class="brand-monogram bn">হ</span></span>
-        <span class="brand-name">Hawa<small>Restaurant & Party Centre</small></span>
+  <div class="v4-loader" id="hawaLoader" aria-hidden="true">
+    <div class="v4-loader__panel"></div>
+    <div class="v4-loader__panel v4-loader__panel--cream"></div>
+    <div class="v4-loader__core">
+      <div class="v4-loader__emblem"><img src="assets/hawa-leaf-emblem.svg" alt="" /></div>
+      <div class="v4-loader__brand">Hawa</div>
+      <div class="v4-loader__meta"><span>Preparing your table</span><span class="v4-loader__count" id="hawaLoadCount">00</span></div>
+      <div class="v4-loader__track"><div class="v4-loader__bar" id="hawaLoadBar"></div></div>
+    </div>
+  </div>
+
+  <header class="v4-nav" id="v4Nav">
+    <div class="container v4-nav__inner">
+      <a class="v4-brand" href="index.html" aria-label="Hawa home">
+        <img class="v4-brand__mark" src="assets/hawa-leaf-emblem.svg" alt="" />
+        <span class="v4-brand__word">Hawa<small>Restaurant &amp; Party Centre</small></span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav class="nav-links" id="navLinks" aria-label="Main">
-        <a class="nav-link active" href="index.html">Home</a>
-        <a class="nav-link" href="menu.html">Menu &amp; order</a>
-        <a class="nav-link" href="track.html">Order help</a>
-        <a class="nav-link" href="#visit">Visit</a>
-        <a class="nav-link" href="#gather">Our space</a>
+      <nav class="v4-nav__links" id="v4NavLinks" aria-label="Main navigation">
+        <a class="active" href="#story">Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#gather">Gather</a>
+        <a href="#visit">Visit</a>
       </nav>
-      <div class="nav-actions">
-        <button class="cart-btn" id="cartBtn">🛒 Cart <span class="cart-count" id="cartCount" style="display:none">0</span></button>
-        <a class="btn-call" href="tel:+8801705036161">📞 Call</a>
+      <div class="v4-nav__actions">
+        <button class="v4-nav__cart" id="cartBtn" type="button">Cart <span class="v4-nav__count" id="cartCount" style="display:none">0</span></button>
+        <a class="v4-nav__book" href="https://wa.me/8801705036161" target="_blank" rel="noopener">Talk to Hawa <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+      <button class="v4-menu-btn" id="v4MenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="v4NavLinks"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="main">
-  <section class="hero hawa-hero" id="home" aria-label="Welcome to Hawa">
-    <div class="hawa-hero__photo" aria-hidden="true"></div>
-    <div class="hawa-hero__shade" aria-hidden="true"></div>
-    <div class="container hawa-hero__inner">
-      <div class="hawa-hero__copy">
-        <p class="hawa-eyebrow hawa-hero__eyebrow"><span class="hawa-eyebrow__line"></span> MYMENSINGH · BANGLADESH <span class="hawa-eyebrow__number">/ 001</span></p>
-        <h1 class="hawa-hero__title">
-          <span class="hawa-hero__line"><span>Good food.</span></span>
-          <span class="hawa-hero__line"><span>Better <em>together.</em></span></span>
+    <section class="v4-hero" id="home">
+      <div class="v4-hero__media" data-v4-parallax="hero"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Warm restaurant interior at Hawa" fetchpriority="high" /></div>
+      <div class="v4-hero__veil" aria-hidden="true"></div>
+      <div class="v4-hero__botanical" aria-hidden="true"></div>
+      <div class="container v4-hero__inner">
+        <p class="v4-hero__eyebrow" data-v4-fade>Mymensingh · Bangladesh · Est. locally</p>
+        <h1 class="v4-hero__title" aria-label="Hawa — where good food becomes a reason to stay">
+          <span class="v4-hero__title-line"><span>Ha<em>wa</em></span></span>
+          <svg class="v4-hero__swoosh" viewBox="0 0 600 110" aria-hidden="true"><path d="M8 76C128 114 264 94 374 58C456 31 526 29 592 51" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg>
         </h1>
-        <p class="hawa-hero__description">An invitation to stay a little longer. Discover the food, the atmosphere, and the joy of a table full of people.</p>
-        <div class="hawa-hero__actions">
-          <a class="hawa-btn hawa-btn--primary" href="menu.html"><span>Discover the menu</span><span aria-hidden="true">↗</span></a>
-          <a class="hawa-btn hawa-btn--quiet" href="#story">Our story <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
-      <div class="hawa-hero__bottom">
-        <span>HAWA <span class="bn">হাওয়া</span> <span class="hawa-hero__bottom-small">Restaurant &amp; Party Centre</span></span>
-        <a href="#story" class="hawa-hero__scroll">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
-      </div>
-    </div>
-    <span class="hawa-hero__edge" aria-hidden="true">FOOD / FAMILY / MOMENTS</span>
-  </section>
-
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>✳ Beef Roast ✳ Kacchi Biryani ✳ Masala Bhuna ✳ Ilish Fry ✳ Sizzling Platter ✳ Chicken Tikka ✳ Thai Curry ✳ Firni ✳</span>
-      <span>✳ Beef Roast ✳ Kacchi Biryani ✳ Masala Bhuna ✳ Ilish Fry ✳ Sizzling Platter ✳ Chicken Tikka ✳ Thai Curry ✳ Firni ✳</span>
-    </div>
-  </div>
-
-  <section class="hawa-story" id="story" aria-label="A story of food and togetherness">
-    <div class="hawa-story__sticky" id="hawaStory">
-      <div class="hawa-story__photos" aria-hidden="true">
-        <img class="hawa-story__image is-active" data-story-image="0" src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="" decoding="async" />
-        <img class="hawa-story__image" data-story-image="1" src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" alt="" loading="lazy" decoding="async" />
-        <img class="hawa-story__image" data-story-image="2" src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" alt="" loading="lazy" decoding="async" />
-      </div>
-      <div class="hawa-story__scrim" aria-hidden="true"></div>
-      <div class="container hawa-story__frame">
-        <div class="hawa-story__top"><span class="hawa-eyebrow"><span class="hawa-eyebrow__line"></span> THE HAWA CHAPTERS</span><span id="hawaStoryCounter">01 / 03</span></div>
-        <div class="hawa-story__chapters">
-          <article class="hawa-story__chapter is-active" data-story-chapter="0">
-            <p class="hawa-story__overline">I. THE PLACE</p>
-            <h2>There’s always<br/><em>room at the table.</em></h2>
-            <p>For conversations that linger and evenings worth remembering. Welcome to Hawa in Mymensingh.</p>
-          </article>
-          <article class="hawa-story__chapter" data-story-chapter="1" aria-hidden="true">
-            <p class="hawa-story__overline">II. THE FOOD</p>
-            <h2>Some things<br/><em>are worth sharing.</em></h2>
-            <p>Familiar flavours, generous plates, and the little ritual of passing a favourite dish around.</p>
-          </article>
-          <article class="hawa-story__chapter" data-story-chapter="2" aria-hidden="true">
-            <p class="hawa-story__overline">III. THE MOMENTS</p>
-            <h2>Every gathering<br/><em>becomes a story.</em></h2>
-            <p>From everyday meals to special occasions, bring your people. We’ll help you start the conversation.</p>
-          </article>
-        </div>
-        <div class="hawa-story__bottom">
-          <span>01 — 03 · SCROLL TO EXPLORE</span>
-          <div class="hawa-story__bar" aria-hidden="true"><span id="hawaStoryProgress"></span></div>
-          <a href="#popular">See what's cooking ↘</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="hawa-ritual" id="perks" aria-labelledby="ritualHeading">
-    <div class="container">
-      <div class="hawa-ritual__heading">
-        <p class="hawa-eyebrow"><span class="hawa-eyebrow__line"></span> A LITTLE MORE HAWA / 002</p>
-        <h2 id="ritualHeading">The table is<br/><em>where it begins.</em></h2>
-        <p>Good food is an invitation. Whether you’re choosing lunch, catching up over dinner, or planning a bigger gathering, there’s space for your story.</p>
-      </div>
-      <div class="hawa-ritual__steps">
-        <article><span class="hawa-ritual__num">01 / EAT</span><h3>Find a<br/><em>favourite.</em></h3><p>Browse the menu and discover something that belongs on your table.</p><a href="menu.html">Explore food ↗</a></article>
-        <article><span class="hawa-ritual__num">02 / TALK</span><h3>Make it<br/><em>yours.</em></h3><p>Send your selections and let the team confirm the details directly.</p><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">Ask on WhatsApp ↗</a></article>
-        <article><span class="hawa-ritual__num">03 / GATHER</span><h3>Bring your<br/><em>people.</em></h3><p>Find out about birthdays, celebrations, and moments made together.</p><a href="#gather">Our space ↗</a></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-paper" id="popular">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><p class="section-kicker">A taste of the menu</p><h2 class="display h-lg">Start with <em>something good.</em></h2></div>
-        <a class="btn btn-blaze" href="menu.html">Explore all dishes ↗</a>
-      </div>
-      <div class="dish-grid" id="popularGrid"></div>
-    </div>
-  </section>
-
-  <div class="torn torn-light" aria-hidden="true"></div>
-
-  <section class="hawa-spotlight" id="spotlight" aria-labelledby="spotlightHeading">
-    <div class="container">
-      <div class="hawa-spotlight__header">
-        <div><p class="hawa-eyebrow"><span class="hawa-eyebrow__line"></span> FROM THE MENU / 002</p><h2 id="spotlightHeading">A closer look<br/><em>at the favourites.</em></h2></div>
-        <p>Every good meal starts with a craving. Browse a few familiar favourites, then explore the full menu.</p>
-      </div>
-      <div class="hawa-spotlight__body" id="hawaSpotlight">
-        <div class="hawa-spotlight__slides">
-          <article class="hawa-spotlight__slide is-active" data-spotlight="0">
-            <figure><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" alt="Biryani photographed on a serving plate" /></figure>
-            <div class="hawa-spotlight__slide-copy"><span>01 / RICE &amp; BIRYANI</span><h3>Kacchi<br/><em>Biryani</em></h3><p>Made for the centre of the table.</p><a href="menu.html">Explore the menu <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="hawa-spotlight__slide" data-spotlight="1" aria-hidden="true">
-            <figure><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" alt="A grilled platter ready to serve" /></figure>
-            <div class="hawa-spotlight__slide-copy"><span>02 / FROM THE GRILL</span><h3>Something<br/><em>smoky.</em></h3><p>A little char. A lot of character.</p><a href="menu.html">Explore the menu <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="hawa-spotlight__slide" data-spotlight="2" aria-hidden="true">
-            <figure><img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Interior atmosphere at Hawa Restaurant" /></figure>
-            <div class="hawa-spotlight__slide-copy"><span>03 / THE HAWA TABLE</span><h3>Good food.<br/><em>Good company.</em></h3><p>Find your reason to gather.</p><a href="#gather">Explore the space <span aria-hidden="true">↗</span></a></div>
-          </article>
-        </div>
-        <div class="hawa-spotlight__controls">
-          <span class="hawa-spotlight__index" id="hawaSpotlightIndex" aria-live="polite">01 <span>/ 03</span></span>
-          <div class="hawa-spotlight__buttons"><button type="button" id="hawaSpotlightPrev" aria-label="Previous featured item">←</button><button type="button" id="hawaSpotlightNext" aria-label="Next featured item">→</button></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="gallery">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><p class="section-kicker">Snapshots</p><h2 class="display h-lg">A few frames <em>from Hawa.</em></h2></div>
-        <span class="hand note hand-lg">A glimpse into the atmosphere</span>
-      </div>
-      <div class="polaroid-wrap">
-        <figure class="polaroid tape reveal"><button type="button" class="hawa-gallery-trigger" data-gallery-open aria-label="View photo: The dining space"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Hawa dining hall at night" loading="lazy" /><span class="hawa-gallery-trigger__label" aria-hidden="true">VIEW IMAGE ↗</span></button><figcaption>The dining space</figcaption></figure>
-        <figure class="polaroid tape reveal" style="--d:.1s"><button type="button" class="hawa-gallery-trigger" data-gallery-open aria-label="View photo: Kacchi biryani"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" alt="Kacchi biryani platter" loading="lazy" /><span class="hawa-gallery-trigger__label" aria-hidden="true">VIEW IMAGE ↗</span></button><figcaption>Kacchi biryani</figcaption></figure>
-        <figure class="polaroid tape reveal" style="--d:.2s"><button type="button" class="hawa-gallery-trigger" data-gallery-open aria-label="View photo: From the grill"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" alt="Grill platter" loading="lazy" /><span class="hawa-gallery-trigger__label" aria-hidden="true">VIEW IMAGE ↗</span></button><figcaption>From the grill</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <dialog class="hawa-lightbox" id="hawaLightbox" aria-label="Photo gallery">
-    <div class="hawa-lightbox__surface">
-      <button type="button" class="hawa-lightbox__close" id="hawaLightboxClose" aria-label="Close photo">CLOSE <span aria-hidden="true">×</span></button>
-      <img id="hawaLightboxImg" alt="" />
-      <p id="hawaLightboxCaption"></p>
-    </div>
-  </dialog>
-
-  <section class="section section-dark" id="gather">
-    <div class="container gather-feature">
-      <div class="reveal">
-        <p class="section-kicker">A place to come together</p>
-        <h2 class="display h-lg">Make room<br/>for <span class="blaze-text">everyone.</span></h2>
-        <p>Some meals are about more than what's on the plate. For a family lunch, an evening with friends or a celebration worth remembering, come find your place at Hawa in Mymensingh.</p>
-        <div class="hero-cta">
-          <a class="btn btn-blaze" href="https://wa.me/8801705036161?text=Hello%20Hawa%2C%20I%20would%20like%20to%20enquire%20about%20your%20party%20centre." target="_blank" rel="noopener">Ask about events</a>
-          <a class="btn btn-ghost" href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">See restaurant updates</a>
-        </div>
-      </div>
-      <div class="gather-image reveal" role="img" aria-label="View of the Hawa restaurant space"></div>
-    </div>
-  </section>
-
-  <section class="section" id="visit">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><p class="section-kicker">Find us</p><h2 class="display h-lg">Find us <em>in Mymensingh.</em></h2></div>
-      </div>
-      <div class="visit-grid">
-        <div class="reveal">
-          <div class="info-list">
-            <div class="info-row"><span class="info-icon">📍</span><div><strong>Address</strong><span>Near Dhaka Bypass, Maskanda Road, Dhaka Bypass Mor, Mymensingh 2200, Bangladesh</span></div></div>
-            <div class="info-row"><span class="info-icon">📞</span><div><strong>Phone</strong><span><a href="tel:+8801705036161">+880 1705-036161</a></span></div></div>
-            <div class="info-row"><span class="info-icon">💬</span><div><strong>WhatsApp</strong><span><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">wa.me/8801705036161</a></span></div></div>
-            <div class="info-row"><span class="info-icon">✉️</span><div><strong>Email</strong><span><a href="mailto:hawatheplace@gmail.com">hawatheplace@gmail.com</a></span></div></div>
-            <div class="info-row"><span class="info-icon">🕐</span><div><strong>Hours</strong><span>Please confirm current hours with the restaurant</span></div></div>
-            <div class="info-row"><span class="info-icon">📘</span><div><strong>Facebook</strong><span><a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">facebook.com/Hawarestauratandpartycentre</a></span></div></div>
+        <div class="v4-hero__subgrid">
+          <p class="v4-hero__desc" data-v4-fade>Where timeless flavours meet a table made for people.</p>
+          <div class="v4-hero__facts" data-v4-fade>
+            <span><small>Location</small><strong>Maskanda Road</strong></span>
+            <span><small>For</small><strong>Meals &amp; gatherings</strong></span>
           </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a class="btn btn-blaze" href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener">🧭 Get directions</a>
-            <a class="btn btn-wa" href="https://wa.me/8801705036161?text=Hi%20Hawa!%20Booking%20the%20party%20centre%20🎉" target="_blank" rel="noopener">🎉 Book party centre</a>
+          <a class="v4-circle-link" data-magnetic href="menu.html">Explore<br/>menu ↗</a>
+        </div>
+      </div>
+      <span class="v4-hero__rail">Food · family · moments</span>
+      <span class="v4-hero__scroll">Scroll to enter <i></i></span>
+    </section>
+
+    <div class="v4-marquee" aria-hidden="true">
+      <div class="v4-marquee__track">
+        <span class="v4-marquee__item">Biryani</span><span class="v4-marquee__item">Roast</span><span class="v4-marquee__item">Grill</span><span class="v4-marquee__item">Gatherings</span><span class="v4-marquee__item">Mymensingh</span>
+        <span class="v4-marquee__item">Biryani</span><span class="v4-marquee__item">Roast</span><span class="v4-marquee__item">Grill</span><span class="v4-marquee__item">Gatherings</span><span class="v4-marquee__item">Mymensingh</span>
+      </div>
+    </div>
+
+    <section class="v4-story" id="story">
+      <div class="container v4-story__grid">
+        <div class="v4-story__copy">
+          <p class="v4-kicker" data-v4-fade>Our story / 01</p>
+          <h2 class="v4-mask"><span class="v4-reveal-line">A taste of</span><span class="v4-reveal-line"><em>home.</em></span></h2>
+          <div class="v4-story__body" data-v4-fade>
+            <p>Hawa is less about rushing through a meal and more about giving people a reason to stay. Familiar flavours, warm light, and enough room for the whole conversation.</p>
+            <a class="v4-text-link" href="#menu">See what's cooking <span>↘</span></a>
           </div>
         </div>
-        <div class="map-frame reveal" style="--d:.12s">
-          <iframe title="Hawa Restaurant on Google Maps" src="https://www.google.com/maps?q=24.7177746,90.4095268&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="v4-story__art">
+          <figure class="v4-story__photo v4-image-reveal"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Hawa dining space" loading="lazy" /></figure>
+          <div class="v4-story__card" aria-hidden="true"><img src="assets/hawa-arch-pattern.svg" alt="" /></div>
+          <img class="v4-story__stamp" src="assets/hawa-stamp.svg" alt="" aria-hidden="true" />
+          <span class="v4-story__caption">A place to sit, eat and stay awhile</span>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="hawa-outro" aria-labelledby="outroHeading">
-    <div class="container hawa-outro__inner">
-      <p class="hawa-eyebrow"><span class="hawa-eyebrow__line"></span> SEE YOU AT HAWA / 004</p>
-      <div class="hawa-outro__row">
-        <h2 id="outroHeading">There's a seat<br/><em>for you.</em></h2>
-        <div class="hawa-outro__side">
-          <p>For lunch with friends, a celebration with family, or just because you felt like coming by.</p>
-          <a class="hawa-btn hawa-btn--primary" href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener">Find your way <span aria-hidden="true">↗</span></a>
-          <a class="hawa-outro__contact" href="https://wa.me/8801705036161" target="_blank" rel="noopener">Or talk to our team ↗</a>
+    </section>
+
+    <section class="v4-menu-showcase" id="menu" aria-label="Featured food">
+      <div class="v4-menu-showcase__sticky">
+        <div class="v4-menu-showcase__left">
+          <div>
+            <p class="v4-kicker">Signature / 02</p>
+            <h2>Made for<br/><em>the table.</em></h2>
+          </div>
+          <div class="v4-menu-showcase__counter"><span id="v4DishCounter">01</span> / 03 · Scroll to taste</div>
+        </div>
+        <div class="v4-menu-showcase__right">
+          <article class="v4-dish-scene is-active" data-v4-dish="0">
+            <div class="v4-dish-scene__image"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" alt="Kacchi biryani" loading="lazy" /></div>
+            <div class="v4-dish-scene__shade"></div>
+            <div class="v4-dish-scene__content">
+              <span class="v4-dish-scene__meta">01 · Rice &amp; biryani</span>
+              <h3>Kacchi<br/><em>Biryani.</em></h3>
+              <p>A familiar centrepiece for a full table.</p>
+              <a href="menu.html">Browse the full menu ↗</a>
+            </div>
+          </article>
+          <article class="v4-dish-scene" data-v4-dish="1" aria-hidden="true">
+            <div class="v4-dish-scene__image"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" alt="Grilled platter" loading="lazy" /></div>
+            <div class="v4-dish-scene__shade"></div>
+            <div class="v4-dish-scene__content">
+              <span class="v4-dish-scene__meta">02 · From the grill</span>
+              <h3>Fire,<br/><em>smoke, char.</em></h3>
+              <p>Something smoky for the people who always reach for one more piece.</p>
+              <a href="menu.html">Browse the full menu ↗</a>
+            </div>
+          </article>
+          <article class="v4-dish-scene" data-v4-dish="2" aria-hidden="true">
+            <div class="v4-dish-scene__image"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Table set inside Hawa" loading="lazy" /></div>
+            <div class="v4-dish-scene__shade"></div>
+            <div class="v4-dish-scene__content">
+              <span class="v4-dish-scene__meta">03 · The table</span>
+              <h3>Come<br/><em>hungry.</em></h3>
+              <p>Then stay for the part that happens after the plates arrive.</p>
+              <a href="#gather">See the gathering space ↘</a>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="hawa-outro__signature" aria-hidden="true"><span>H</span><span>A</span><span>W</span><span>A</span></div>
-    </div>
-  </section>
+    </section>
+
+    <section class="v4-gallery" id="gallery">
+      <div class="container v4-gallery__intro">
+        <div><p class="v4-kicker">Atmosphere / 03</p><h2>Not just<br/>a <em>meal.</em></h2></div>
+        <p>The space matters too. Warm light, familiar food, and tables that feel better when they are full.</p>
+      </div>
+      <div class="v4-gallery__rail" id="v4GalleryRail">
+        <figure class="v4-gallery__panel"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Restaurant interior" loading="lazy" /><span class="v4-gallery__num">01</span><figcaption class="v4-gallery__label">The dining room</figcaption></figure>
+        <figure class="v4-gallery__panel"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg" alt="Biryani dish" loading="lazy" /><span class="v4-gallery__num">02</span><figcaption class="v4-gallery__label">At the centre</figcaption></figure>
+        <figure class="v4-gallery__panel"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg" alt="Grilled food" loading="lazy" /><span class="v4-gallery__num">03</span><figcaption class="v4-gallery__label">From the grill</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="v4-gather" id="gather">
+      <div class="container v4-gather__grid">
+        <div class="v4-gather__image v4-image-reveal"><img src="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg" alt="Hawa Restaurant gathering space" loading="lazy" /></div>
+        <div class="v4-gather__copy">
+          <p class="v4-kicker">Gather / 04</p>
+          <h2>Bring your<br/><em>people.</em></h2>
+          <p>For family lunches, birthdays, conversations that run late, and the kind of occasions that need more than one table.</p>
+          <a class="v4-text-link" href="https://wa.me/8801705036161?text=Hello%20Hawa%2C%20I%20would%20like%20to%20ask%20about%20a%20gathering." target="_blank" rel="noopener">Ask about gatherings <span>↗</span></a>
+          <img class="v4-gather__seal" src="assets/hawa-stamp.svg" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <section class="v4-visit" id="visit">
+      <div class="container">
+        <div class="v4-visit__top">
+          <div><p class="v4-kicker">Visit / 05</p><h2>Find<br/>Hawa.</h2></div>
+          <div class="v4-visit__meta">
+            <div><strong>Address</strong><span>Maskanda Road, Dhaka Bypass Mor, Mymensingh</span></div>
+            <div><strong>Phone</strong><a href="tel:+8801705036161">+880 1705-036161</a></div>
+            <div><strong>WhatsApp</strong><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">Message the team ↗</a></div>
+            <div><strong>Hours</strong><span>Please confirm current hours</span></div>
+          </div>
+        </div>
+        <div class="v4-visit__actions">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener">Get directions ↗</a>
+          <a href="menu.html">Explore the menu ↗</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-logo tape"><span aria-hidden="true" class="brand-monogram bn">হ</span></div>
-      <div class="footer-word">Hawa <span class="blaze-text">হাওয়া</span></div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="menu.html">Order</a>
-        <a href="track.html">Order help</a>
-        <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://wa.me/8801705036161" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="tel:+8801705036161">Call</a>
-      </nav>
-      <p class="footer-small">© <span id="year"></span> Hawa Restaurant & Party Centre · Maskanda Road, Mymensingh · Made with <span class="hand-heart">❤️</span> in ময়মনসিংহ</p>
+  <footer class="v4-footer">
+    <div class="container">
+      <div class="v4-footer__top">
+        <div class="v4-footer__brand">Ha<em>wa.</em></div>
+        <nav class="v4-footer__links" aria-label="Footer">
+          <a href="menu.html">Menu</a><a href="#story">Story</a><a href="#gather">Gather</a><a href="#visit">Visit</a>
+          <a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">Facebook ↗</a>
+          <a href="https://wa.me/8801705036161" target="_blank" rel="noopener">WhatsApp ↗</a>
+        </nav>
+      </div>
+      <div class="v4-footer__bottom"><span>© <span id="year"></span> Hawa Restaurant &amp; Party Centre</span><span>Mymensingh · Bangladesh</span></div>
     </div>
   </footer>
 
   <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
   <script src="shop.js"></script>
-  <script defer src="hawa-chapters.js"></script>
-  <script defer src="hawa-parallax.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var ids = ["kacchi-biryani", "sizzling-platter"];
-      var grid = document.getElementById("popularGrid");
-      if (!grid || !window.HAWA) return;
-      grid.innerHTML = ids.map(function (id) {
-        var m = HAWA.MENU.find(function (x) { return x.id === id; });
-        var thumb = m.img ? '<div class="ph" style="background-image:url(\'' + m.img + '\')"></div><span class="emoji">' + m.emoji + "</span>" : '<span class="emoji">' + m.emoji + "</span>";
-        return '<article class="dish-card"><div class="dish-thumb" style="background:' + m.color + '">' + thumb + '</div>' +
-          '<div class="dish-body"><div class="dish-top"><h3>' + m.name + '</h3><span class="dish-price hand" style="font-size:1.5rem">৳' + m.price + "</span></div>" +
-          '<p class="dish-desc">' + m.desc + '</p><div class="dish-tags"><span class="mini-tag">From the menu</span></div>' +
-          '<button class="add-btn" data-add="' + m.id + '">+ Add — I\'ll take it</button></div></article>';
-      }).join("");
-      grid.querySelectorAll("[data-add]").forEach(function (b) {
-        b.onclick = function () { HAWA.addToCart(b.dataset.add); HAWA.toast(HAWA.MENU.find(function(m){return m.id===b.dataset.add;}).name + " added 🛒"); };
-      });
-    });
-  </script>
+  <script src="hawa-v4.js"></script>
 </body>
 </html>
