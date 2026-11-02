@@ -92,7 +92,7 @@
     gsap.registerPlugin(window.ScrollTrigger);
     const hero=$(".hero");
     if(hero){
-      gsap.timeline({defaults:{ease:"power3.out"}})
+      gsap.timeline({delay:document.documentElement.classList.contains("hawa-intro-on")?1.05:0,defaults:{ease:"power3.out"}})
         .from(".hero-eyebrow",{y:16,opacity:0,duration:.55})
         .from(".hero h1",{y:52,opacity:0,duration:.85},"-=.22")
         .from(".hero-description",{y:22,opacity:0,duration:.62},"-=.46")
@@ -119,6 +119,10 @@
     }
   }
   function start(){
+    if(document.documentElement.classList.contains("hawa-intro-on")){
+      try{sessionStorage.setItem("hawa-fresh-intro","1");}catch(e){}
+      setTimeout(()=>document.documentElement.classList.remove("hawa-intro-on"),1560);
+    }
     initNav();
     renderFeatured();
     animate();
