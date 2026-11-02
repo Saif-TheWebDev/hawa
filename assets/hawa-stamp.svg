@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" fill="none">
+<circle cx="160" cy="160" r="145" stroke="currentColor" stroke-width="2"/>
+<circle cx="160" cy="160" r="118" stroke="currentColor" stroke-width="1" stroke-dasharray="3 9"/>
+<path d="M102 179c17-57 51-91 103-101-6 48-39 84-103 101Z" stroke="currentColor" stroke-width="2"/>
+<text x="160" y="256" text-anchor="middle" font-family="serif" font-size="24" letter-spacing="7" fill="currentColor">HAWA</text>
+</svg>

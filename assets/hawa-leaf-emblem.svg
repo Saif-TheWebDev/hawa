@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+<circle cx="120" cy="120" r="96" stroke="currentColor" stroke-width="1.5" opacity=".45"/>
+<path d="M120 151c-5-38 11-67 45-86-2 34-18 62-45 86Z" stroke="currentColor" stroke-width="2.5"/>
+<path d="M119 151c5-31-7-55-37-72 1 30 14 54 37 72Z" stroke="currentColor" stroke-width="2.5"/>
+<path d="M120 151v28" stroke="currentColor" stroke-width="2.5"/>
+<path d="M96 95c12 14 20 30 23 48M145 83c-13 18-21 37-25 58" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
+</svg>
