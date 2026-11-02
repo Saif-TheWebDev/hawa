@@ -265,3 +265,20 @@ body::before { opacity: 0; }
  *,*::before,*::after { scroll-behavior:auto !important; animation-duration: .01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
  .reveal { opacity:1 !important; transform:none !important; }
 }
+
+/* Finishing details after the legacy handmade layer */
+.step-hand:nth-child(n) { transform: none; background: transparent; color: var(--cream); box-shadow: none; }
+.step-hand:nth-child(2) .step-num { color: var(--blaze); }
+.polaroid figcaption { position: static; inset: auto; text-align: left; }
+.polaroid img { aspect-ratio: auto; }
+.section-paper .section-kicker { color: var(--blaze-2); }
+.dish-body .add-btn { display: block; text-align: center; text-decoration: none; }
+.dish-body .add-btn:focus-visible { outline: 3px solid var(--blaze); outline-offset: 3px; }
+.nav-link.active { color: var(--blaze-2); }
+@media (max-width: 680px) {
+  .hero { display: grid; grid-template-columns: minmax(0,1fr); }
+  .hero-content { grid-row: 1; }
+  .hero-bg { grid-row: 2; }
+  .step-hand:nth-child(n) { min-width: 0; }
+  .footer-logo { width: 64px; height: 64px; }
+}
