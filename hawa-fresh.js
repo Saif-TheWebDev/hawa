@@ -126,7 +126,17 @@
       gsap.from(".menu-banner__photo img",{scale:1.15,opacity:.8,duration:.95,ease:"power3.out",scrollTrigger:{trigger:".menu-banner",start:"top 85%",once:true}});
     }
   }
+  function restoreMissingMedia(){
+    document.querySelectorAll("img[data-fallback]").forEach(function(img){
+      if(img.complete&&img.naturalWidth===0&&img.dataset.fallback){
+        const backup=img.dataset.fallback;
+        delete img.dataset.fallback;
+        img.src=backup;
+      }
+    });
+  }
   function start(){
+    restoreMissingMedia();
     if(document.documentElement.classList.contains("hawa-intro-on")){
       try{sessionStorage.setItem("hawa-fresh-intro","1");}catch(e){}
       setTimeout(()=>document.documentElement.classList.remove("hawa-intro-on"),1560);
