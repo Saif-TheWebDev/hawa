@@ -324,3 +324,26 @@ body.hawa-inner{background:#eee3d1}
  .v4-image-reveal{clip-path:none!important}
  .v4-loader{display:none!important}
 }
+
+/* ---------- MICRO UI ---------- */
+.to-top{
+  position:fixed;right:22px;bottom:22px;z-index:850;width:48px;height:48px;
+  border:1px solid rgba(255,255,255,.45);border-radius:50%;background:var(--v4-forest);
+  color:var(--v4-cream);box-shadow:none;opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .3s,transform .3s,background .3s;
+}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+.to-top:hover{background:var(--v4-red)}
+.toast{
+  position:fixed;left:50%;bottom:26px;z-index:1100;transform:translate(-50%,15px);
+  background:var(--v4-paper);color:var(--v4-ink);border:1px solid rgba(25,34,28,.25);
+  box-shadow:0 20px 50px rgba(13,19,15,.22);padding:12px 17px;font:600 .72rem/1.2 var(--v4-font-sans);
+  letter-spacing:.08em;text-transform:uppercase;opacity:0;pointer-events:none;transition:.3s var(--v4-ease);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.v4-nav__cart:hover,.v4-nav__book:hover{background:var(--v4-paper);color:var(--v4-ink);border-color:var(--v4-paper)}
+.v4-nav__cart:focus-visible,.v4-nav__book:focus-visible,.v4-menu-btn:focus-visible,.v4-circle-link:focus-visible{outline:2px solid var(--v4-copper);outline-offset:4px}
+.hawa-inner .to-top{background:var(--v4-red);border-color:transparent}
+@media(max-width:680px){
+  .to-top{width:42px;height:42px;right:14px;bottom:76px}
+}
