@@ -1,0 +1,81 @@
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/font-0-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/font-1-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/font-2-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/font-3-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Hind Siliguri";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/font-4-subset.woff2) format("woff2");
+  unicode-range: U+0980-09F2, U+09F4-09FF, U+200C-200D;
+}
+@font-face {
+  font-family: "Hind Siliguri";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/font-5-subset.woff2) format("woff2");
+  unicode-range: U+0980-09F2, U+09F4-09FF, U+200C-200D;
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/font-6-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/font-7-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/font-8-subset.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/font-9-subset.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Hind Siliguri";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(assets/fonts/currency.woff2) format("woff2");
+  unicode-range: U+09F3;
+}

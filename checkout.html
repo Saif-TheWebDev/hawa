@@ -1,81 +1,346 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#075040">
-<title>Send a Menu Enquiry | Hawa Restaurant & Party Centre</title>
-<meta name="description" content="Prepare a menu enquiry and send it to Hawa on WhatsApp. This is not an online payment or a confirmed order.">
-<link rel="icon" type="image/svg+xml" href="assets/hawa-logo-icon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Hind+Siliguri:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="hawa-fresh.css"></head>
-<body class="fresh-inner">
-<a href="#main" class="skip-link">Skip to content</a><div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
-<header class="site-header" id="siteHeader"><div class="shell header-layout">
-<a class="brand" href="index.html" aria-label="Hawa home"><img src="assets/hawa-logo-v2.svg" alt="Hawa Restaurant & Party Centre"></a>
-<nav class="primary-nav" id="primaryNav" aria-label="Main navigation"><a href="index.html">Home</a><a href="menu.html">Our menu</a><a href="index.html#categories">Categories</a><a href="index.html#gatherings">Our space</a><a href="index.html#visit">Visit</a></nav>
-<div class="nav-actions"><button id="cartBtn" type="button" class="cart-link" aria-label="Review order request"><span aria-hidden="true">◈</span> Cart <span class="cart-number" id="cartCount" style="display:none">0</span></button><a href="https://wa.me/8801705036161" target="_blank" rel="noopener" class="header-contact">Talk to Hawa ↗</a></div><button class="menu-toggle" id="menuToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button></div></header>
-<main id="main"><section class="inner-hero"><div class="shell"><p class="eyebrow">THE LAST STEP</p><h1>A good meal <em>starts here.</em></h1><p>Make your selection, then send it directly to Hawa. The restaurant confirms the details with you personally.</p></div></section>
-<section class="inner-content"><div class="shell">
-        <div class="steps reveal" aria-hidden="true">
-          <div class="step">1 · Menu</div>
-          <div class="step">2 · Cart</div>
-          <div class="step on">3 · WhatsApp enquiry</div>
-          <div class="step">4 · Confirm with Hawa</div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#075040" />
+    <title>Send a Menu Enquiry | Hawa Restaurant & Party Centre</title>
+    <meta
+      name="description"
+      content="Prepare a menu enquiry and send it to Hawa on WhatsApp. This is not an online payment or a confirmed order."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/hawa-logo-icon.svg" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="aroma.css" />
+  </head>
+  <body class="aroma-inner">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+    <header class="site-header" id="siteHeader">
+      <div class="shell header-layout">
+        <a class="brand" href="index.html"
+          ><img
+            src="assets/hawa-logo-v2.svg"
+            alt=""
+            width="64"
+            height="44"
+          /><span>Hawa<small>RESTAURANT & PARTY CENTRE</small></span></a
+        >
+        <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+          <a href="menu.html">The menu</a
+          ><a href="index.html#gatherings">Gather at Hawa</a
+          ><a href="index.html#visit">Visit us</a
+          ><a class="mobile-contact" href="tel:+8801705036161">Call Hawa ↗</a>
+        </nav>
+        <div class="nav-actions">
+          <button
+            id="drawerBtn"
+            type="button"
+            class="cart-link"
+            aria-label="Open your selection"
+          >
+            Selection <span id="cartCount">0</span></button
+          ><a
+            class="header-contact"
+            href="https://wa.me/8801705036161"
+            target="_blank"
+            rel="noopener"
+            >Talk to Hawa ↗</a
+          >
         </div>
-
-        <div class="panel" id="coEmpty" style="display:none;text-align:center;padding:60px 20px">
-          <div style="font-size:3.5rem">🛒</div>
-          <h2 class="display h-md">Your cart is empty</h2>
-          <p style="color:#607569;margin:12px 0 22px">Choose a favourite from the menu and return to send your request.</p>
-          <a class="btn btn-blaze" href="menu.html">Browse menu →</a>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-controls="primaryNav"
+          aria-expanded="false"
+          aria-label="Open navigation"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <noscript
+        ><p style="padding: 110px 24px 24px">
+          Interactive selection needs JavaScript.
+          <a href="tel:+8801705036161">Call Hawa on +880 1705-036161</a> to ask
+          about the menu.
+        </p></noscript
+      >
+      <section class="inner-hero">
+        <div class="shell">
+          <p class="eyebrow">THE LAST STEP</p>
+          <h1>A good meal <em>starts here.</em></h1>
+          <p>
+            Make your selection, then send it directly to Hawa. The restaurant
+            confirms the details with you personally.
+          </p>
         </div>
+      </section>
+      <section class="inner-content">
+        <div class="shell">
+          <div class="steps reveal" aria-hidden="true">
+            <div class="step">1 · Menu</div>
+            <div class="step">2 · Cart</div>
+            <div class="step on">3 · WhatsApp enquiry</div>
+            <div class="step">4 · Confirm with Hawa</div>
+          </div>
 
-        <div class="checkout-layout">
-          <form class="panel" id="checkoutForm"><p class="checkout-note"><strong>How it works:</strong> This form prepares a WhatsApp message. Your order is <strong>not placed or paid</strong> until Hawa confirms it with you. Prices and availability may change.</p>
-            <h2>Your details</h2>
-            <div class="form-grid">
-              <div class="field"><label for="fName">Full name *</label><input id="fName" name="name" autocomplete="name" required placeholder="e.g. Sohel Rana" /></div>
-              <div class="field"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" autocomplete="tel" required type="tel" placeholder="01XXXXXXXXX" pattern="[0-9+ ]{11,14}" /></div>
-              <div class="field full"><label for="fAddr">Address (for delivery) *</label><input id="fAddr" name="address" autocomplete="street-address" required placeholder="House, road, area — Mymensingh" /></div>
-              <div class="field full"><label for="fArea">Area *</label>
-                <select id="fArea" name="area" required>
-                  <option value="">Select area…</option>
-                  <option>Maskanda / Dhaka Bypass Mor</option>
-                  <option>Ganginar Par</option>
-                  <option>Kismorganj / Courtbari</option>
-                  <option>Town Hall / Ananda Mohan College</option>
-                  <option>Shikaribazar</option>
-                  <option>Mymensingh Sadar</option>
-                  <option>Other (mention in address)</option>
-                </select>
+          <div
+            class="panel"
+            id="coEmpty"
+            style="display: none; text-align: center; padding: 60px 20px"
+          >
+            <div style="font-size: 3.5rem">🛒</div>
+            <h2 class="display h-md">Your cart is empty</h2>
+            <p style="color: #607569; margin: 12px 0 22px">
+              Choose a favourite from the menu and return to send your request.
+            </p>
+            <a class="btn btn-blaze" href="menu.html">Browse menu →</a>
+          </div>
+
+          <div class="checkout-layout">
+            <form class="panel" id="checkoutForm" novalidate>
+              <p class="checkout-note">
+                <strong>How it works:</strong> This form prepares a WhatsApp
+                message. Your order is <strong>not placed or paid</strong> until
+                Hawa confirms it with you. Prices and availability may change.
+              </p>
+              <h2>Your details</h2>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="fName">Full name *</label
+                  ><input
+                    id="fName"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    placeholder="e.g. Sohel Rana"
+                  />
+                </div>
+                <div class="field">
+                  <label for="fPhone">Phone *</label
+                  ><input
+                    id="fPhone"
+                    name="phone"
+                    autocomplete="tel"
+                    required
+                    type="tel"
+                    placeholder="01XXXXXXXXX"
+                    pattern="[0-9+ ]{11,14}"
+                  />
+                </div>
+                <div class="field full">
+                  <label for="fAddr">Address (for delivery) *</label
+                  ><input
+                    id="fAddr"
+                    name="address"
+                    autocomplete="street-address"
+                    required
+                    placeholder="House, road, area — Mymensingh"
+                  />
+                </div>
+                <div class="field full">
+                  <label for="fArea">Area *</label>
+                  <select id="fArea" name="area" required>
+                    <option value="">Select area…</option>
+                    <option>Maskanda / Dhaka Bypass Mor</option>
+                    <option>Ganginar Par</option>
+                    <option>Kismorganj / Courtbari</option>
+                    <option>Town Hall / Ananda Mohan College</option>
+                    <option>Shikaribazar</option>
+                    <option>Mymensingh Sadar</option>
+                    <option>Other (mention in address)</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="fNote">Order note</label
+                  ><textarea
+                    class="resize-none"
+                    id="fNote"
+                    name="note"
+                    rows="2"
+                    placeholder="Extra spicy? No onion? Gate code?"
+                  ></textarea>
+                </div>
               </div>
-              <div class="field full"><label for="fNote">Order note</label><textarea id="fNote" name="note" rows="2" placeholder="Extra spicy? No onion? Gate code?"></textarea></div>
-            </div>
-            <h2 style="margin-top:24px">Preferred payment method</h2><p style="font-size:.85rem;margin:-9px 0 14px;color:var(--muted)">Choose a preference only. Do not send payment until the restaurant confirms.</p>
-            <div class="pay-methods">
-              <button type="button" class="pay-opt selected" data-pay="Cash on Delivery" aria-pressed="true"><span class="p-ico">💵</span> Cash on Delivery</button>
-              <button type="button" class="pay-opt" data-pay="bKash" aria-pressed="false"><span class="p-ico">🩷</span> bKash</button>
-              <button type="button" class="pay-opt" data-pay="Nagad" aria-pressed="false"><span class="p-ico">🧡</span> Nagad</button>
-              <button type="button" class="pay-opt" data-pay="Rocket" aria-pressed="false"><span class="p-ico">🚀</span> Rocket</button>
-            </div>
-            <input type="hidden" name="pay" id="payMethod" value="Cash on Delivery" />
-            <button class="btn btn-blaze btn-block" type="submit" style="margin-top:26px;font-size:1rem;padding:18px">Continue to WhatsApp →</button>
-            <p class="trust-note">You will review and send the message yourself in WhatsApp. No payment is collected on this website.</p>
-          </form>
+              <h2 style="margin-top: 24px">Preferred payment method</h2>
+              <p
+                style="
+                  font-size: 0.85rem;
+                  margin: -9px 0 14px;
+                  color: var(--muted);
+                "
+              >
+                Choose a preference only. Do not send payment until the
+                restaurant confirms.
+              </p>
+              <div class="pay-methods">
+                <button
+                  type="button"
+                  class="pay-opt selected"
+                  data-pay="Cash on Delivery"
+                  aria-pressed="true"
+                >
+                  <span class="p-ico">💵</span> Cash on Delivery
+                </button>
+                <button
+                  type="button"
+                  class="pay-opt"
+                  data-pay="bKash"
+                  aria-pressed="false"
+                >
+                  <span class="p-ico">🩷</span> bKash
+                </button>
+                <button
+                  type="button"
+                  class="pay-opt"
+                  data-pay="Nagad"
+                  aria-pressed="false"
+                >
+                  <span class="p-ico">🧡</span> Nagad
+                </button>
+                <button
+                  type="button"
+                  class="pay-opt"
+                  data-pay="Rocket"
+                  aria-pressed="false"
+                >
+                  <span class="p-ico">🚀</span> Rocket
+                </button>
+              </div>
+              <input
+                type="hidden"
+                name="pay"
+                id="payMethod"
+                value="Cash on Delivery"
+              />
+              <button
+                class="btn btn-blaze btn-block"
+                type="submit"
+                style="margin-top: 26px; font-size: 1rem; padding: 18px"
+              >
+                Preview WhatsApp request →
+              </button>
+              <p class="trust-note">
+                You will review and send the message yourself in WhatsApp. No
+                payment is collected on this website.
+              </p>
+              <div id="requestPreview" class="request-preview" hidden>
+                <h2>Review your message</h2>
+                <pre id="requestText"></pre>
+                <a
+                  id="whatsappLink"
+                  class="button button--dark"
+                  target="_blank"
+                  rel="noopener"
+                  >Open WhatsApp ↗</a
+                >
+                <p>
+                  You still choose whether to send in WhatsApp. This does not
+                  place an order.
+                </p>
+              </div>
+            </form>
 
-          <aside class="panel panel-dark" id="coSummary" style="--d:.1s">
-            <h2>Your order</h2>
-            <div id="coItems"></div>
-            <div style="border-top:var(--bw);margin-top:10px;padding-top:10px">
-              <div class="sum-row"><span>Subtotal</span><span id="coSub">৳0</span></div>
-              <div class="sum-row"><span>Adjustments</span><span id="coDisc">—</span></div>
-              <div class="sum-row"><span>Delivery fee</span><span id="coFee">Confirm</span></div>
-              <div class="sum-row total"><span>Total</span><span id="coTotal">৳0</span></div>
-            </div>
-            <p style="font-size:.82rem;color:var(--muted);margin-top:14px">📍 Please ask the restaurant about pickup, delivery charges and opening hours.</p>
-          </aside>
+            <aside class="panel panel-dark" id="coSummary" style="--d: 0.1s">
+              <h2>Your selection</h2>
+              <div id="coItems"></div>
+              <div
+                style="
+                  border-top: var(--bw);
+                  margin-top: 10px;
+                  padding-top: 10px;
+                "
+              >
+                <div class="sum-row">
+                  <span>Subtotal</span><span id="coSub">৳0</span>
+                </div>
+                <div class="sum-row">
+                  <span>Adjustments</span><span id="coDisc">—</span>
+                </div>
+                <div class="sum-row">
+                  <span>Delivery fee</span><span id="coFee">Confirm</span>
+                </div>
+                <div class="sum-row total">
+                  <span>Estimate</span><span id="coTotal">৳0</span>
+                </div>
+              </div>
+              <p
+                style="
+                  font-size: 0.82rem;
+                  color: var(--muted);
+                  margin-top: 14px;
+                "
+              >
+                📍 Please ask the restaurant about pickup, delivery charges and
+                opening hours.
+              </p>
+            </aside>
+          </div>
         </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-top">
+        <a class="footer-word" href="index.html"
+          >Hawa<span>Follow the aroma.</span></a
+        >
+        <nav aria-label="Footer navigation">
+          <a href="menu.html">Explore the menu ↗</a
+          ><a href="track.html">Enquiry help ↗</a
+          ><a
+            href="https://www.facebook.com/Hawarestauratandpartycentre"
+            target="_blank"
+            rel="noopener"
+            >Facebook ↗</a
+          >
+        </nav>
+        <p>
+          Restaurant & Party Centre<br />Mymensingh, Bangladesh<br /><small
+            >© <span id="year">2026</span> Hawa</small
+          >
+        </p>
+      </div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-</div></section></main>
-<footer class="footer"><div class="shell"><div class="footer-top"><a href="index.html" class="footer-logo"><img src="assets/hawa-logo-v2.svg" alt="Hawa Restaurant & Party Centre"></a><p>Good food.<br>Better together.</p><nav class="footer-nav" aria-label="Footer"><a href="menu.html">Menu</a><a href="index.html">Home</a><a href="track.html">Order help</a><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">WhatsApp ↗</a></nav></div><div class="footer-bottom"><span>© <span id="year"></span> Hawa Restaurant & Party Centre</span><span>Mymensingh, Bangladesh</span></div></div></footer>
-<div id="toast" class="toast" role="status" aria-live="polite"></div><button class="back-top" id="backTop" aria-label="Back to top" type="button">↑</button>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script><script src="shop.js" defer></script><script src="hawa-fresh.js" defer></script>
-</body></html>
+    <script src="shop.js" defer></script>
+    <script src="aroma-ui.js" defer></script>
+    <dialog class="drawer" id="cartDrawer" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <p class="eyebrow">A MEAL IN THE MAKING</p>
+          <h2 id="drawerTitle">Your selection.</h2>
+        </div>
+        <button
+          class="icon-button"
+          id="drawerClose"
+          aria-label="Close selection"
+        >
+          ×
+        </button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
+      <div class="drawer-foot" id="drawerFoot">
+        <div class="sum-row">
+          <span>Listed subtotal</span><strong id="sumSub"></strong>
+        </div>
+        <div class="sum-row">
+          <span>Delivery</span><span id="sumFee">Confirm with Hawa</span>
+        </div>
+        <div class="sum-row total">
+          <span>Estimate</span><span id="sumTotal"></span>
+        </div>
+        <p>
+          Indicative prices. Hawa confirms availability, final prices and
+          delivery. This is an enquiry, not a confirmed order.
+        </p>
+        <a href="checkout.html" class="button button--dark"
+          >Prepare your request <span>↗</span></a
+        >
+      </div>
+    </dialog>
+  </body>
+</html>

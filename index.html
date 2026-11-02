@@ -1,139 +1,346 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#075040">
-<meta name="description" content="Explore dishes and gather at Hawa Restaurant & Party Centre in Mymensingh. Build a menu request and confirm availability with Hawa over WhatsApp.">
-<title>Hawa — Good food. Better together. | Mymensingh</title>
-<link rel="canonical" href="https://hawa-restaurant-omega.vercel.app/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hawa Restaurant & Party Centre — Good food. Better together.">
-<meta property="og:description" content="Browse favourites, discover the dining space and send your menu enquiry directly to Hawa.">
-<meta property="og:url" content="https://hawa-restaurant-omega.vercel.app/">
-<meta property="og:image" content="https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg">
-<link rel="icon" type="image/svg+xml" href="assets/hawa-logo-icon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Hind+Siliguri:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/dish-biryani.jpg">
-<script>try{if(!sessionStorage.getItem("hawa-fresh-intro"))document.documentElement.classList.add("hawa-intro-on")}catch(e){}</script>
-<link rel="stylesheet" href="hawa-fresh.css">
-</head>
-<body class="fresh-home">
-<a href="#main" class="skip-link">Skip to content</a>
-<div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
-<div class="hawa-preloader" id="hawaPreloader" aria-hidden="true"><div class="hawa-preloader__stage"><img src="assets/hawa-logo-v2.svg" width="210" height="120" alt=""><div class="hawa-preloader__meta"><span>FOOD · PEOPLE · MOMENTS</span><span>MYMENSINGH</span></div><div class="hawa-preloader__progress"><span></span></div></div></div>
-
-<header class="site-header" id="siteHeader">
-  <div class="shell header-layout">
-    <a class="brand" href="index.html" aria-label="Hawa Restaurant & Party Centre home"><img src="assets/hawa-logo-v2.svg" width="160" height="54" alt="Hawa Restaurant & Party Centre"></a>
-    <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
-      <a class="is-current" href="index.html" aria-current="page">Home</a>
-      <a href="menu.html">Our menu</a>
-      <a href="#categories">Categories</a>
-      <a href="#gatherings">Our space</a>
-      <a href="#visit">Visit</a>
-    </nav>
-    <div class="nav-actions">
-      <button id="cartBtn" class="cart-link" type="button" aria-label="Review your order request"><span class="cart-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h2l2.1 10.5h10.4l2-7.5H7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9.5" cy="19" r="1.5" fill="currentColor"/><circle cx="17.5" cy="19" r="1.5" fill="currentColor"/></svg></span> Cart <span class="cart-number" id="cartCount" style="display:none">0</span></button>
-      <a href="https://wa.me/8801705036161" target="_blank" rel="noopener" class="header-contact">Talk to Hawa <span aria-hidden="true">↗</span></a>
-    </div>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero" aria-labelledby="heroTitle">
-    <div class="hero-decoration hero-decoration--one" aria-hidden="true"></div><div class="hero-decoration hero-decoration--two" aria-hidden="true"></div>
-    <div class="shell hero-layout">
-      <div class="hero-copy">
-        <p class="eyebrow hero-eyebrow"><span class="eyebrow-rule"></span> RESTAURANT & PARTY CENTRE · MYMENSINGH</p>
-        <h1 id="heroTitle">Good food.<br><span>Better</span><br>together<span class="hero-period">.</span></h1>
-        <p class="hero-description">A little spice, a lot of heart, and room for everyone at the table. Discover what’s cooking at Hawa.</p>
-        <div class="hero-buttons"><a class="button button--yellow" href="menu.html">Explore our menu <span aria-hidden="true">↗</span></a><a class="button button--outline-light" href="#gatherings">Discover our space <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-signoff"><span class="hero-signoff__icon" aria-hidden="true">✳</span><span><strong>Made for sharing</strong><small>Familiar flavours. New memories.</small></span></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#073e32" />
+    <title>Hawa — Follow the aroma · Mymensingh</title>
+    <meta
+      name="description"
+      content="Explore the menu and plan a gathering at Hawa Restaurant & Party Centre, Mymensingh. Prepare a request and confirm details with Hawa."
+    />
+    <link rel="icon" href="assets/hawa-logo-icon.svg" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="aroma.css" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/biryani-preview.webp"
+      imagesrcset="assets/biryani-preview-mobile.webp 900w, assets/biryani-preview.webp 1536w"
+      imagesizes="(max-width: 760px) 115vw, 64vw"
+    />
+  </head>
+  <body class="aroma-home">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="siteHeader">
+      <div class="shell header-layout">
+        <a class="brand" href="index.html"
+          ><img
+            src="assets/hawa-logo-v2.svg"
+            alt=""
+            width="64"
+            height="44"
+          /><span>Hawa<small>RESTAURANT & PARTY CENTRE</small></span></a
+        >
+        <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+          <a href="menu.html">The menu</a
+          ><a href="index.html#gatherings">Gather at Hawa</a
+          ><a href="index.html#visit">Visit us</a
+          ><a class="mobile-contact" href="tel:+8801705036161">Call Hawa ↗</a>
+        </nav>
+        <div class="nav-actions">
+          <button
+            id="drawerBtn"
+            type="button"
+            class="cart-link"
+            aria-label="Open your selection"
+          >
+            Selection <span id="cartCount">0</span></button
+          ><a
+            class="header-contact"
+            href="https://wa.me/8801705036161"
+            target="_blank"
+            rel="noopener"
+            >Talk to Hawa ↗</a
+          >
+        </div>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-controls="primaryNav"
+          aria-expanded="false"
+          aria-label="Open navigation"
+        >
+          <span></span><span></span>
+        </button>
       </div>
-      <div class="hero-visual" aria-label="Featured food">
-        <div class="hero-orbit hero-orbit--back" aria-hidden="true"></div>
-        <div class="hero-platter" data-float data-depth="18"><img src="assets/dish-biryani.jpg" width="800" height="800" alt="Biryani served on a platter" fetchpriority="high"></div>
-        <div class="hero-food-note" data-float data-depth="-12"><span class="hero-food-note__flower" aria-hidden="true">✳</span><strong>FLAVOURS THAT<br>BRING US<br>TOGETHER</strong><small>01 / THE HAWA TABLE</small></div>
-        <div class="hero-venue-chip" data-float data-depth="9"><img src="assets/hero.jpg" width="220" height="220" alt="Inside Hawa's dining space"><span>COME ON IN <b aria-hidden="true">↗</b></span></div>
-        <div class="hero-spark hero-spark--one" aria-hidden="true">✳</div><div class="hero-spark hero-spark--two" aria-hidden="true">✳</div>
-        <div class="hero-orbit hero-orbit--front" aria-hidden="true"></div>
+    </header>
+    <main id="main">
+      <noscript
+        ><p style="padding: 110px 24px 24px">
+          Interactive selection needs JavaScript.
+          <a href="tel:+8801705036161">Call Hawa on +880 1705-036161</a> to ask
+          about the menu.
+        </p></noscript
+      >
+      <section class="aroma-story" id="aromaStory" aria-labelledby="heroTitle">
+        <div class="story-stage" id="storyStage">
+          <div class="light-beam" aria-hidden="true"></div>
+          <div class="stage-grain" aria-hidden="true"></div>
+          <div class="scene-art" aria-hidden="true">
+            <div class="table-fallback"></div>
+            <canvas id="tableScene"></canvas>
+            <div class="platter-shadow"></div>
+            <div class="platter-photo" id="platterPhoto">
+              <img
+                src="assets/biryani-preview.webp"
+                srcset="
+                  assets/biryani-preview-mobile.webp  900w,
+                  assets/biryani-preview.webp        1536w
+                "
+                sizes="(max-width: 760px) 115vw, 64vw"
+                alt=""
+                width="1536"
+                height="1024"
+                fetchpriority="high"
+              />
+            </div>
+            <svg class="steam" viewBox="0 0 300 400">
+              <path d="M90 380C210 290 15 250 145 140S160 50 130 0" />
+              <path d="M165 390C70 310 250 240 180 160S240 65 210 0" />
+              <path d="M215 400C315 310 150 220 240 120" /></svg
+            ><span class="saffron-thread thread-one"></span
+            ><span class="saffron-thread thread-two"></span>
+          </div>
+          <div class="shell stage-content">
+            <div class="story-copy story-copy--opening" id="openingCopy">
+              <p class="eyebrow">RESTAURANT & PARTY CENTRE · MYMENSINGH</p>
+              <h1 id="heroTitle">Follow <br />the <em>aroma.</em></h1>
+              <p class="intro-copy">
+                Let a little curiosity<br />bring you to the table.
+              </p>
+              <a class="button button--yellow" href="menu.html"
+                >Explore the menu <span>↗</span></a
+              ><a class="quiet-link" href="#gatherings"
+                >Or bring your people ↗</a
+              >
+            </div>
+            <div
+              class="story-copy story-copy--aroma"
+              id="aromaCopy"
+              aria-hidden="true"
+              inert
+            >
+              <p class="eyebrow">A LITTLE CLOSER</p>
+              <h2>Good things<br />are <em>in the air.</em></h2>
+              <p>Rice, spice, and something<br />worth slowing down for.</p>
+            </div>
+            <div
+              class="story-copy story-copy--table"
+              id="tableCopy"
+              aria-hidden="true"
+              inert
+            >
+              <p class="eyebrow">THE TABLE COMES TOGETHER</p>
+              <h2>Better<br /><em>together.</em></h2>
+              <p>Start with a favourite.<br />Leave room for one more.</p>
+              <a class="button button--yellow" href="#table"
+                >Find your favourite <span>↓</span></a
+              >
+            </div>
+          </div>
+          <div class="story-bottom shell">
+            <a href="#table" class="story-skip"
+              >SCROLL TO THE TABLE <span>↓</span></a
+            ><span class="image-note"
+              >Food imagery for preview · approval pending</span
+            ><button
+              id="motionToggle"
+              class="motion-toggle"
+              aria-pressed="false"
+            >
+              Pause atmosphere
+            </button>
+          </div>
+          <div class="chapter-dots" aria-hidden="true">
+            <i class="active"></i><i></i><i></i>
+          </div>
+        </div>
+      </section>
+      <section
+        class="table-section shell"
+        id="table"
+        aria-labelledby="tableTitle"
+      >
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">SOMETHING FOR THE TABLE</p>
+            <h2 id="tableTitle">
+              A first taste.<br /><em>Then, your favourites.</em>
+            </h2>
+          </div>
+          <div>
+            <p>
+              Explore a few dishes from the existing menu.<br />Select a dish to
+              take a closer look.
+            </p>
+            <a class="text-arrow" href="menu.html">Explore the full menu ↗</a>
+          </div>
+        </div>
+        <div class="featured-dishes" id="featuredDishes"></div>
+        <p class="prices-disclaimer">
+          Listed prices are indicative. Confirm the current menu, portion sizes
+          and availability with Hawa.
+        </p>
+      </section>
+      <section class="grill-story">
+        <div class="grill-photo">
+          <img
+            src="assets/grill-preview.webp"
+            srcset="
+              assets/grill-preview-mobile.webp  900w,
+              assets/grill-preview.webp        1536w
+            "
+            sizes="(max-width:760px) 100vw,50vw"
+            alt="Existing grill preview image; dish identity awaiting approval"
+            width="1536"
+            height="1024"
+            loading="lazy"
+          /><span class="photo-caption">EXISTING FOOD IMAGE · PREVIEW</span>
+        </div>
+        <div class="grill-copy">
+          <p class="eyebrow">FROM RICE TO THE GRILL</p>
+          <h2>Follow<br />your <em>craving.</em></h2>
+          <p>
+            A fragrant plate of biryani. Something from the grill. Find your own
+            way through the menu.
+          </p>
+          <div class="category-links" id="categories">
+            <a href="menu.html?cat=rice">Rice & biryani <span>↗</span></a
+            ><a href="menu.html?cat=grill">From the grill <span>↗</span></a
+            ><a href="menu.html?cat=curry">Curries & roasts <span>↗</span></a
+            ><a href="menu.html?cat=asian">Chinese & Thai <span>↗</span></a
+            ><a href="menu.html?cat=sweet">Sweets & drinks <span>↗</span></a>
+          </div>
+        </div>
+      </section>
+      <section class="gather-section shell" id="gatherings">
+        <div class="gather-copy">
+          <p class="eyebrow">INSIDE HAWA · MYMENSINGH</p>
+          <h2>Your people.<br /><em>Your occasion.</em></h2>
+          <p>
+            A family meal or a reason to get everyone together. Talk to Hawa
+            about your date, group size and arrangements.
+          </p>
+          <a
+            class="button button--dark"
+            href="https://wa.me/8801705036161?text=Hello%20Hawa%2C%20I%20would%20like%20to%20ask%20about%20a%20gathering."
+            target="_blank"
+            rel="noopener"
+            >Ask about a gathering <span>↗</span></a
+          >
+        </div>
+        <div class="interior-placeholder">
+          <span class="placeholder-corner">THE REAL HAWA</span>
+          <div class="architectural-arch" aria-hidden="true">
+            <span>H</span>
+          </div>
+          <p>Room for your next gathering.</p>
+          <small
+            >Preview photo slot<br />Verified Hawa interior photography
+            needed.</small
+          >
+        </div>
+      </section>
+      <section class="visit-section" id="visit">
+        <div class="shell">
+          <p class="eyebrow">YOUR PLACE AT THE TABLE</p>
+          <h2>Come for the food.<br /><em>Stay for the company.</em></h2>
+          <div class="visit-details">
+            <p>
+              Hawa Restaurant & Party Centre<br />Maskanda Road, Dhaka Bypass
+              Mor<br />Mymensingh, Bangladesh
+            </p>
+            <div>
+              <a class="visit-phone" href="tel:+8801705036161"
+                >+880 1705-036161 ↗</a
+              >
+              <p>Call to confirm opening hours before visiting.</p>
+              <a
+                class="text-arrow"
+                href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268"
+                target="_blank"
+                rel="noopener"
+                >Get directions ↗</a
+              >
+            </div>
+            <a class="button button--yellow" href="menu.html"
+              >Explore the menu <span>↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="shell footer-top">
+        <a class="footer-word" href="index.html"
+          >Hawa<span>Follow the aroma.</span></a
+        >
+        <nav aria-label="Footer navigation">
+          <a href="menu.html">Explore the menu ↗</a
+          ><a href="track.html">Enquiry help ↗</a
+          ><a
+            href="https://www.facebook.com/Hawarestauratandpartycentre"
+            target="_blank"
+            rel="noopener"
+            >Facebook ↗</a
+          >
+        </nav>
+        <p>
+          Restaurant & Party Centre<br />Mymensingh, Bangladesh<br /><small
+            >© <span id="year">2026</span> Hawa</small
+          >
+        </p>
       </div>
-      <a class="hero-scroll" href="#discover">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
-    </div>
-  </section>
-
-  <div class="quick-strip" aria-label="What Hawa offers">
-    <div class="shell quick-strip__inner">
-      <div><span aria-hidden="true">✺</span><p><strong>Something for every craving</strong><small>Explore the full menu</small></p></div>
-      <div><span aria-hidden="true">♨</span><p><strong>Meals worth sharing</strong><small>Rice, roasts and grills</small></p></div>
-      <div><span aria-hidden="true">✧</span><p><strong>Get everyone together</strong><small>Ask about party arrangements</small></p></div>
-    </div>
-  </div>
-
-  <section class="section specials-section" id="discover" aria-labelledby="specialsTitle">
-    <div class="shell">
-      <div class="section-intro"><div><p class="eyebrow eyebrow--green">GOOD THINGS ON THE TABLE / 01</p><h2 class="section-heading" id="specialsTitle">Every craving has<br><em>a happy place.</em></h2></div><p class="section-intro__aside">From warm rice and smoky grills to food made for a crowd. Pick a favourite and ask Hawa to confirm what’s available.</p></div>
-      <div class="specials-grid">
-        <a class="promo promo--sun" href="menu.html?cat=grill">
-          <div class="promo-copy"><span class="promo-mini">FROM THE GRILL</span><h3>Made fresh.<br>Shared warm.</h3><p>Smoky favourites for the table.</p><span class="promo-link">Explore grills <span aria-hidden="true">↗</span></span></div>
-          <div class="promo-photo promo-photo--grill"><img src="assets/dish-grill.jpg" alt="Grilled food" loading="lazy"></div>
-          <span class="promo-scribble promo-scribble--sun" aria-hidden="true">✳</span>
-        </a>
-        <a class="promo promo--fire" href="menu.html?cat=rice">
-          <div class="promo-copy"><span class="promo-mini">RICE & BIRYANI</span><h3>A little<br><em>extra comfort.</em></h3><p>Big flavour. Even better company.</p><span class="promo-link">Explore biryani <span aria-hidden="true">↗</span></span></div>
-          <div class="promo-photo promo-photo--biryani"><img src="assets/dish-biryani.jpg" alt="Biryani with traditional flavours" loading="lazy"></div>
-          <span class="promo-scribble promo-scribble--fire" aria-hidden="true">✷</span>
-        </a>
-        <a class="promo promo--mint" href="#gatherings">
-          <div class="promo-copy"><span class="promo-mini">FOR YOUR PEOPLE</span><h3>Bring the<br>whole crew.</h3><p>Gather around something good.</p><span class="promo-link">Explore our space <span aria-hidden="true">↗</span></span></div>
-          <div class="promo-photo promo-photo--space"><img src="assets/hero.jpg" alt="Hawa dining space" loading="lazy"></div>
-          <span class="promo-scribble promo-scribble--mint" aria-hidden="true">✦</span>
-        </a>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="drawer" id="cartDrawer" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <div>
+          <p class="eyebrow">A MEAL IN THE MAKING</p>
+          <h2 id="drawerTitle">Your selection.</h2>
+        </div>
+        <button
+          class="icon-button"
+          id="drawerClose"
+          aria-label="Close selection"
+        >
+          ×
+        </button>
       </div>
-    </div>
-  </section>
-
-  <section class="section picks-section" id="top-picks" aria-labelledby="picksTitle">
-    <div class="shell">
-      <div class="section-intro section-intro--row"><div><p class="eyebrow eyebrow--green">YOUR NEXT FAVOURITE / 02</p><h2 class="section-heading" id="picksTitle">Straight from <em>the menu.</em></h2></div><a href="menu.html" class="text-arrow">See all dishes <span aria-hidden="true">↗</span></a></div>
-      <div class="picks-grid" id="featuredGrid"></div>
-      <p class="prices-disclaimer">Listed prices are indicative; confirm current prices, availability and delivery fees with Hawa before paying.</p>
-    </div>
-  </section>
-
-  <section class="categories-section" id="categories" aria-labelledby="categoriesTitle">
-    <div class="shell">
-      <div class="categories-top"><div><p class="eyebrow eyebrow--green">FIND YOUR FLAVOUR / 03</p><h2 class="section-heading" id="categoriesTitle">What are you<br><em>craving today?</em></h2></div><p>Choose a category. We’ll take you straight to the good stuff.</p></div>
-      <div class="category-universe">
-        <div class="category-center" aria-hidden="true"><img src="assets/dish-biryani.jpg" alt="" loading="lazy"><div class="category-spin">HAWA · FOOD FOR YOUR PEOPLE · </div></div>
-        <a href="menu.html?cat=rice" class="category-chip category-chip--one"><span class="category-chip__icon" aria-hidden="true">✺</span><strong>Rice & Biryani</strong><small>Warming favourites ↗</small></a>
-        <a href="menu.html?cat=grill" class="category-chip category-chip--two"><span class="category-chip__icon" aria-hidden="true">♨</span><strong>Grills</strong><small>Fire & flavour ↗</small></a>
-        <a href="menu.html?cat=curry" class="category-chip category-chip--three"><span class="category-chip__icon" aria-hidden="true">✳</span><strong>Curries & Roasts</strong><small>Savour every bite ↗</small></a>
-        <a href="menu.html?cat=asian" class="category-chip category-chip--four"><span class="category-chip__icon" aria-hidden="true">✦</span><strong>Chinese & Thai</strong><small>Something different ↗</small></a>
-        <a href="menu.html?cat=sweet" class="category-chip category-chip--five"><span class="category-chip__icon" aria-hidden="true">☼</span><strong>Sweets & Drinks</strong><small>Finish with a smile ↗</small></a>
+      <div class="drawer-body" id="drawerBody"></div>
+      <div class="drawer-foot" id="drawerFoot">
+        <div class="sum-row">
+          <span>Listed subtotal</span><strong id="sumSub"></strong>
+        </div>
+        <div class="sum-row">
+          <span>Delivery</span><span id="sumFee">Confirm with Hawa</span>
+        </div>
+        <div class="sum-row total">
+          <span>Estimate</span><span id="sumTotal"></span>
+        </div>
+        <p>
+          Indicative prices. Hawa confirms availability, final prices and
+          delivery. This is an enquiry, not a confirmed order.
+        </p>
+        <a href="checkout.html" class="button button--dark"
+          >Prepare your request <span>↗</span></a
+        >
       </div>
-      <div class="category-footer"><span>FIND IT. SHARE IT. LOVE IT.</span><a class="button button--dark" href="menu.html">Browse all categories <span aria-hidden="true">↗</span></a></div>
-    </div>
-  </section>
-
-  <section class="section more-picks-section" aria-labelledby="morePicksTitle">
-    <div class="shell"><div class="section-intro section-intro--row"><div><p class="eyebrow eyebrow--green">A LITTLE MORE TO LOVE / 04</p><h2 class="section-heading" id="morePicksTitle">There's always <em>more.</em></h2></div><p class="section-intro__aside">Explore more dishes, collect favourites, then send the list to Hawa for confirmation.</p></div><div class="mini-menu" id="miniMenu"></div></div>
-  </section>
-
-  <section class="gatherings" id="gatherings" aria-labelledby="gatherTitle"><div class="gatherings-photo"><img src="assets/hero.jpg" alt="Hawa Restaurant dining interior" loading="lazy"></div><div class="gatherings-copy"><p class="eyebrow">THE PLACE TO GET TOGETHER / 05</p><h2 class="section-heading" id="gatherTitle">More than<br><em>a meal.</em></h2><p>Family lunches, little celebrations, big conversations. Find a reason to get everyone around the same table.</p><a href="https://wa.me/8801705036161?text=Hello%20Hawa%2C%20I%20would%20like%20to%20ask%20about%20a%20gathering." target="_blank" rel="noopener" class="button button--yellow">Ask about gatherings <span aria-hidden="true">↗</span></a><span class="gatherings-asterisk" aria-hidden="true">✳</span></div></section>
-
-  <section class="visit" id="visit" aria-labelledby="visitTitle"><div class="shell visit-grid"><div><p class="eyebrow eyebrow--green">COME ON OVER / 06</p><h2 class="section-heading" id="visitTitle">See you <em>at Hawa.</em></h2><p>Maskanda Road, Dhaka Bypass Mor, Mymensingh. Call to confirm the opening hours before visiting.</p></div><div class="visit-actions"><a href="https://www.google.com/maps/dir/?api=1&destination=24.7177746,90.4095268" target="_blank" rel="noopener" class="button button--dark">Get directions ↗</a><a href="tel:+8801705036161" class="visit-phone">+880 1705-036161 <span aria-hidden="true">↗</span></a></div></div></section>
-</main>
-
-<footer class="footer"><div class="shell"><div class="footer-top"><a href="index.html" class="footer-logo" aria-label="Hawa home"><img src="assets/hawa-logo-v2.svg" width="178" height="70" alt="Hawa Restaurant & Party Centre"></a><p>Good food.<br>Better together.</p><nav class="footer-nav" aria-label="Footer navigation"><a href="menu.html">Menu</a><a href="#categories">Categories</a><a href="#gatherings">Our space</a><a href="track.html">Order help</a><a href="https://www.facebook.com/Hawarestauratandpartycentre" target="_blank" rel="noopener">Facebook ↗</a><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">WhatsApp ↗</a></nav></div><div class="footer-bottom"><span>© <span id="year"></span> Hawa Restaurant & Party Centre · Mymensingh</span><span>Made for the moments that matter.</span></div></div></footer>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
-<script src="shop.js" defer></script>
-<script src="hawa-fresh.js" defer></script>
-</body></html>
+    </dialog>
+    <dialog class="dish-dialog" id="dishDialog" aria-labelledby="dishTitle">
+      <button
+        class="icon-button"
+        data-close-detail
+        aria-label="Close dish details"
+      >
+        ×
+      </button>
+      <div id="dishDetail"></div>
+    </dialog>
+    <script src="shop.js" defer></script>
+    <script src="aroma-ui.js" defer></script>
+    <script type="module" src="aroma-scene.js"></script>
+  </body>
+</html>

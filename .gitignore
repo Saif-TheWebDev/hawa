@@ -1,1 +1,6 @@
 image-search/
+
+.playwright-cli/
+assets/fonts/*.ttf
+assets/fonts/font-?.woff2
+premium-audit.json

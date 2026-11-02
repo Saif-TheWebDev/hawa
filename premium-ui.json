@@ -1,0 +1,7 @@
+{
+  "profile": "hybrid",
+  "canonicalMap": "UX-CONTRACT.md",
+  "ownership": { "Select/Listbox": "native" },
+  "sourceRoots": ["."],
+  "notes": "Static actionless-button findings require runtime resolution: all handlers are external in shop.js and aroma-ui.js. Historical styles.css is not loaded by active pages."
+}
