@@ -1,4 +1,4 @@
-@font-face{font-family:"Orlean";src:local("Orlean"),local("Orlean-Regular"),local("Orlean Regular");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Orlean";src:local("Orléane"),local("Orlean"),local("Orlean-Regular"),local("Orlean Regular");font-style:normal;font-weight:400;font-display:swap}
 /* HAWA / TYPE ART 05
    Bespoke restaurant system: ink, forest, vermilion, aged paper.
    Type: Instrument Serif + IBM Plex Sans Condensed + Hind Siliguri.
@@ -15,7 +15,7 @@
   --v4-copper:#c98b58;
   --v4-moss:#82916d;
   --v4-line:rgba(31,43,34,.22);
-  --v4-font-display:"Orlean","Poppins",sans-serif;
+  --v4-font-display:"Orléane","Orlean","Bodoni Moda","Poppins",sans-serif;
   --v4-font-small:"Montserrat","Poppins",sans-serif;
   --v4-font-sans:"Poppins",sans-serif;
   --v4-font-bn:"Hind Siliguri",sans-serif;
@@ -384,3 +384,26 @@ h1,h2,h3,.v4-brand__word,.v4-loader__brand,.v4-hero__title,.v4-story h2,.v4-sect
 .v4-brand__word{font-size:1.85rem;text-transform:uppercase;letter-spacing:-.045em}
 @media(max-width:900px){.v5-manifesto__grid{grid-template-columns:1fr}.v5-manifesto__meta{max-width:300px}}
 @media(max-width:680px){.v4-hero::before{inset:10px}.v4-hero__title{font-size:clamp(5.7rem,26vw,9rem)}.v4-hero__wind{left:-15vw;right:-18vw;bottom:12vh;height:20vh}.v5-coordinates{left:15px;bottom:13px}.v5-manifesto{padding:90px 0}.v5-manifesto__grid{gap:35px}.v5-manifesto__quote{font-size:clamp(4.2rem,18vw,7rem)}}
+
+/* ---------- RECREATED HAWA LOGO ---------- */
+.v5-brand-logo{display:block;width:146px;height:auto;line-height:0}
+.v5-brand-logo img{display:block;width:100%;height:auto}
+.v5-loader-logo{width:min(330px,68vw);margin:0 auto 30px}
+.v5-loader-logo img{display:block;width:100%;height:auto}
+.v5-footer-logo{width:min(330px,42vw)}
+.v5-footer-logo img{display:block;width:100%;height:auto}
+.v4-loader__core{width:min(520px,84vw)}
+.v4-loader__brand{display:none}
+.v4-loader__meta{margin-top:20px}
+.v4-nav__inner{grid-template-columns:180px auto 1fr}
+.v4-brand__mark,.v4-brand__word{display:none!important}
+.v4-footer__top{align-items:center}
+@media(max-width:980px){
+  .v4-nav__inner{grid-template-columns:1fr auto}
+  .v5-brand-logo{width:132px}
+}
+@media(max-width:680px){
+  .v5-brand-logo{width:116px}
+  .v5-loader-logo{width:min(280px,78vw)}
+  .v5-footer-logo{width:min(270px,70vw)}
+}
