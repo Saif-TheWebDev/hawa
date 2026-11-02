@@ -141,16 +141,15 @@
       return inCat && inQ;
     });
     document.getElementById("resultCount").textContent = items.length + (items.length === 1 ? " dish" : " dishes");
-    if (!items.length) { grid.innerHTML = '<div class="panel" style="grid-column:1/-1;text-align:center"><h2 class="display h-md">Nothing on this page yet.</h2><p>Try another search or browse all categories.</p><button type="button" class="btn btn-ghost" id="clearSearch" style="margin-top:20px">Show all dishes</button></div>'; document.getElementById("clearSearch").onclick = function () { query = ""; activeCat = "all"; var input = document.getElementById("searchInput"); if (input) input.value = ""; renderCats(); renderMenu(); }; return; }
+    if (!items.length) { grid.innerHTML = '<div class="panel" style="grid-column:1/-1;text-align:center"><h2 class="display h-md">Nothing on this page yet.</h2><p>Try another search or browse all categories.</p><button type="button" class="btn btn-ghost" id="clearSearch" style="margin-top:20px">Show all dishes</button></div>'; document.getElementById("clearSearch").onclick = function () { query = ""; activeCat = "all"; var url = new URL(location.href); url.searchParams.delete("cat"); history.replaceState({}, "", url); var input = document.getElementById("searchInput"); if (input) input.value = ""; renderCats(); renderMenu(); }; return; }
     grid.innerHTML = items.map(function (m, i) {
-      var tags = "";
-      if (m.popular) tags += '<span class="mini-tag pop">★ Popular</span>';
-      if (m.pick) tags += '<span class="mini-tag hot">Chef\'s pick</span>';
-      if (m.spicy) tags += '<span class="mini-tag hot">' + "🌶️".repeat(Math.min(m.spicy, 3)) + "</span>";
-      if (m.seasonal) tags += '<span class="mini-tag">Seasonal</span>';
+      var categories = { rice:"RICE & BIRYANI", grill:"FROM THE GRILL", curry:"CURRIES & ROASTS", asian:"ASIAN FAVOURITES", sweet:"SWEETS & DRINKS" };
+      var tags = '<span class="mini-tag">' + (categories[m.cat] || "FROM THE MENU") + '</span>';
+      if (m.seasonal) tags += '<span class="mini-tag">Market priced</span>';
+      var shortName = m.name.replace(/\([^)]*\)/g, "").trim().split(/\s+/).slice(0,2).join(" ");
       var thumb = m.img
-        ? '<div class="ph" style="background-image:url(\'' + m.img + '\')"></div><span class="emoji">' + m.emoji + "</span>"
-        : '<span class="emoji">' + m.emoji + '</span>';
+        ? '<div class="ph" role="img" aria-label="' + m.name + '" style="background-image:url(' + m.img + ')"></div>'
+        : '<div class="dish-graphic"><span>HAWA / FOOD FOR EVERYONE</span><strong>' + shortName + '</strong><i aria-hidden="true">✳</i></div>';
       return '<article class="dish-card reveal visible" style="--d:' + (i * 0.04) + 's; border-color: var(--cream);">' +
         '<div class="dish-thumb" style="background:' + m.color + '">' + thumb + "</div>" +
         '<div class="dish-body"><div class="dish-top"><h3>' + m.name + '</h3><span class="dish-price">' + (m.price ? money(m.price) : "MKT") + "</span></div>" +
@@ -162,7 +161,7 @@
       b.onclick = function () {
         addToCart(b.dataset.add);
         var m = getItem(b.dataset.add);
-        toast(m.name + " added 🛒");
+        toast(m.name + " added to your request");
         b.textContent = "✓ Added"; b.classList.add("added");
         setTimeout(function () { b.textContent = "Add to request +"; b.classList.remove("added"); }, 1200);
       };
