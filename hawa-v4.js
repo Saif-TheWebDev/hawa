@@ -110,23 +110,20 @@
     });
   }
 
-  function heroIntro() {
-    var tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    tl.from(".v4-hero__title-line > span", { yPercent: 118, duration: 1.15, stagger: .09 })
-      .to(".v4-hero [data-v4-fade]", { opacity: 1, y: 0, duration: .72, stagger: .08 }, "<.12")
-      .from(".v4-circle-link", { scale: .72, opacity: 0, duration: .7 }, "<.15");
-    return tl;
+  var swooshPath = document.querySelector(".v4-hero__swoosh path");
+  var swooshLength = swooshPath ? swooshPath.getTotalLength() : 0;
+  if (swooshPath) {
+    swooshPath.style.strokeDasharray = swooshLength;
+    swooshPath.style.strokeDashoffset = swooshLength;
   }
 
-  /* drawSVG is optional; make the swoosh work without the plugin */
-  if (!gsap.plugins.DrawSVGPlugin) {
-    var path = document.querySelector(".v4-hero__swoosh path");
-    if (path) {
-      var len = path.getTotalLength();
-      path.style.strokeDasharray = len;
-      path.style.strokeDashoffset = len;
-      gsap.to(path, { strokeDashoffset: 0, duration: 1.1, delay: .45, ease: "power3.out" });
-    }
+  function heroIntro() {
+    var tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    tl.from(".v4-hero__title-line > span", { yPercent: 118, duration: 1.15, stagger: .09 });
+    if (swooshPath) tl.to(swooshPath, { strokeDashoffset: 0, duration: 1.05, ease: "power3.out" }, "<.08");
+    tl.to(".v4-hero [data-v4-fade]", { opacity: 1, y: 0, duration: .72, stagger: .08 }, "<.12")
+      .from(".v4-circle-link", { scale: .72, opacity: 0, duration: .7 }, "<.15");
+    return tl;
   }
 
   playLoader().then(function () {
