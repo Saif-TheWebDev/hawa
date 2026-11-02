@@ -7,9 +7,9 @@
 
   /* ---------- Menu data ---------- */
   var IMG = {
-    biryani: "https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg",
-    grill: "https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg",
-    hall: "https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg"
+    biryani: "assets/dish-biryani.jpg",
+    grill: "assets/dish-grill.jpg",
+    hall: "assets/hero.jpg"
   };
 
   var MENU = [
@@ -121,14 +121,15 @@
   }
 
   /* ---------- Menu page rendering ---------- */
-  var activeCat = "all", query = "";
+  var queryCategory = new URLSearchParams(window.location.search).get("cat");
+  var activeCat = CATS.some(function(c){return c.id===queryCategory;}) ? queryCategory : "all", query = "";
   function renderCats() {
     var el = document.getElementById("catList"); if (!el) return;
     el.innerHTML = CATS.map(function (c) {
       return '<button class="cat-btn' + (c.id === activeCat ? " active" : "") + '" data-cat="' + c.id + '">' + c.label + '</button>';
     }).join("");
     el.querySelectorAll(".cat-btn").forEach(function (b) {
-      b.onclick = function () { activeCat = b.dataset.cat; renderCats(); renderMenu(); };
+      b.onclick = function () { activeCat = b.dataset.cat; var url = new URL(location.href); if (activeCat === "all") url.searchParams.delete("cat"); else url.searchParams.set("cat",activeCat); history.replaceState({}, "", url); renderCats(); renderMenu(); };
     });
   }
   function renderMenu() {
