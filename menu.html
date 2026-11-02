@@ -1,103 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order Online — Hawa Restaurant & Party Centre, Mymensingh</title>
-  <meta name="description" content="Browse Hawa Restaurant & Party Centre menu in Mymensingh. Send a request to confirm dishes, prices, payment and delivery." />
-  <meta name="theme-color" content="#23382e" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Hind+Siliguri:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="hawa-v5.css" />
-  <link rel="icon" href="assets/hawa-logo-icon.svg" type="image/svg+xml" /><rect width='100' height='100' fill='%230e0b08'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ff4d00'>হ</text></svg>" />
-</head>
-<body class="hawa-inner">
-  <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
-  <header class="v4-nav is-solid" id="v4Nav">
-    <div class="container v4-nav__inner">
-      <a class="v4-brand v5-brand-logo" href="index.html" aria-label="Hawa home"><img src="assets/hawa-logo-v2.svg" alt="Hawa Restaurant & Party Centre" /></a>
-      <nav class="v4-nav__links" id="v4NavLinks" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a class="active" href="menu.html">Menu</a>
-        <a href="track.html">Order help</a>
-        <a href="index.html#gather">Gather</a>
-        <a href="index.html#visit">Visit</a>
-      </nav>
-      <div class="v4-nav__actions">
-        <button class="v4-nav__cart" id="drawerBtn" type="button">Cart <span class="v4-nav__count" id="cartCount" style="display:none">0</span></button>
-        <a class="v4-nav__book" href="https://wa.me/8801705036161" target="_blank" rel="noopener">Talk to Hawa <span aria-hidden="true">↗</span></a>
-      </div>
-      <button class="v4-menu-btn" id="v4MenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="v4NavLinks"><span></span><span></span></button>
-    </div>
-  </header>
-
-  <main id="main">
-    <div class="page-head">
-      <div class="container">
-        <p class="section-kicker reveal">Hawa · Mymensingh · Menu</p>
-        <h1 class="display h-lg reveal" style="--d:.05s">The <span class="blaze-text">menu</span></h1>
-        <p class="reveal" style="--d:.12s">Browse the selection, then send your request to the restaurant on WhatsApp. Prices, delivery fees and availability are confirmed by the team.</p>
-      </div>
-    </div>
-
-    <section class="hawa-menu-banner" aria-label="About our menu">
-      <div class="container hawa-menu-banner__inner">
-        <div class="hawa-menu-banner__image" role="img" aria-label="Plate of biryani prepared for serving"></div>
-        <div class="hawa-menu-banner__copy">
-          <span class="hawa-eyebrow"><span class="hawa-eyebrow__line"></span> AN INVITATION TO EAT</span>
-          <h2>Made to be<br/><em>passed around.</em></h2>
-          <p>A good meal is better with good company. Find a favourite below, and send a WhatsApp enquiry to confirm what's available.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="search-wrap reveal">
-          <input class="search-input" id="searchInput" type="search" placeholder="Search… try 'biryani', 'রোস্ট', 'thai'…" aria-label="Search dishes" />
-        </div>
-        <div class="menu-layout">
-          <aside class="menu-side reveal" aria-label="Categories">
-            <h3>Categories</h3>
-            <div class="cat-list" id="catList"></div>
-          </aside>
-          <div>
-            <div class="menu-toolbar reveal"><span class="result-count" id="resultCount" aria-live="polite"></span><span class="sticker cream">Enquire before paying</span></div>
-            <div class="dish-grid" id="dishGrid"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="cart-bar" id="cartBar" role="button" tabindex="0" aria-label="View cart and prepare a WhatsApp order">
-    <span><span class="cnt">0 items</span> · <span class="total">৳0</span></span>
-    <span class="go">Review request →</span>
-  </div>
-
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-modal="true" role="dialog">
-    <div class="drawer-head"><h3>Your cart</h3><button class="drawer-close" id="drawerClose" aria-label="Close cart">✕</button></div>
-    <div class="drawer-body" id="drawerBody"></div>
-    <div class="drawer-foot" id="drawerFoot"><p style="font-size:.8rem;margin-bottom:9px">Estimated total. Hawa must confirm prices and delivery before payment.</p>
-      <p class="free-progress">Delivery fees and availability are confirmed by the restaurant.</p>
-      <div class="sum-row"><span>Subtotal</span><span id="sumSub">৳0</span></div>
-      <div class="sum-row"><span>Delivery fee</span><span id="sumFee">৳40</span></div>
-      <div class="sum-row total"><span>Total</span><span id="sumTotal">৳0</span></div>
-      <a class="btn btn-blaze btn-block" href="checkout.html" style="margin-top:14px">Review request →</a>
-    </div>
-  </aside>
-
-  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-  <script src="shop.js"></script>
-  <script src="hawa-v5.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#075040">
+<title>Explore the Menu | Hawa Restaurant & Party Centre</title>
+<meta name="description" content="Browse Hawa's listed dishes in Mymensingh and prepare a direct WhatsApp order request. Availability, prices and payment are confirmed by the team.">
+<link rel="icon" href="assets/hawa-logo-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Hind+Siliguri:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="hawa-fresh.css"></head>
+<body class="fresh-inner"><a href="#main" class="skip-link">Skip to content</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<header class="site-header" id="siteHeader"><div class="shell header-layout">
+<a class="brand" href="index.html" aria-label="Hawa Restaurant home"><img src="assets/hawa-logo-v2.svg" alt="Hawa Restaurant & Party Centre"></a>
+<nav class="primary-nav" id="primaryNav" aria-label="Main navigation"><a href="index.html">Home</a><a class="is-current" href="menu.html" aria-current="page">Our menu</a><a href="index.html#categories">Categories</a><a href="index.html#gatherings">Our space</a><a href="index.html#visit">Visit</a></nav>
+<div class="nav-actions"><button id="drawerBtn" type="button" class="cart-link" aria-label="View your cart"> <span class="cart-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h2l2.1 10.5h10.4l2-7.5H7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9.5" cy="19" r="1.5" fill="currentColor"/><circle cx="17.5" cy="19" r="1.5" fill="currentColor"/></svg></span>Cart <span class="cart-number" id="cartCount" style="display:none">0</span></button>
+<a class="header-contact" href="https://wa.me/8801705036161" target="_blank" rel="noopener">Talk to Hawa ↗</a></div>
+<button class="menu-toggle" id="menuToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button></div></header>
+<main id="main">
+<section class="inner-hero"><div class="shell"><p class="eyebrow">SOMETHING FOR EVERY CRAVING</p><h1>Explore <em>the menu.</em></h1><p>Find your favourites and build a request. Hawa will confirm prices, availability and delivery before you pay.</p></div></section>
+<section class="inner-content"><div class="shell">
+<div class="menu-banner"><div class="menu-banner__copy"><p class="eyebrow">FOOD TO BRING US TOGETHER</p><h2>Big flavour.<br><em>Better shared.</em></h2><p>From biryani to the grill — there's plenty worth exploring.</p></div><div class="menu-banner__photo"><img src="assets/dish-biryani.jpg" loading="lazy" alt="Biryani on the table"></div></div>
+<div class="search-wrap"><input id="searchInput" class="search-input" type="search" placeholder="Search for biryani, roast, kebab..." aria-label="Search dishes"></div>
+<div class="menu-layout"><aside class="menu-side" aria-label="Menu categories"><h3>Find your flavour</h3><div class="cat-list" id="catList"></div></aside>
+<div><div class="menu-toolbar"><span class="result-count" id="resultCount" aria-live="polite"></span><span class="menu-toolbar-note">Confirm your order with Hawa</span></div><div id="dishGrid" class="dish-grid"></div></div></div>
+</div></section></main>
+<div class="cart-bar" id="cartBar" role="button" tabindex="0" aria-label="Review your WhatsApp request"><span><span class="cnt">0 items</span> · <span class="total">৳0</span></span><span class="go">Review request ↗</span></div>
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Your cart">
+<div class="drawer-head"><h3>Your selection</h3><button class="drawer-close" id="drawerClose" aria-label="Close cart">×</button></div>
+<div class="drawer-body" id="drawerBody"></div>
+<div class="drawer-foot" id="drawerFoot">
+<p style="font-size:12px;line-height:1.7">This is a WhatsApp enquiry, not a confirmed order. Hawa will confirm current prices and delivery fees.</p>
+<div class="sum-row"><span>Listed subtotal</span><span id="sumSub">৳0</span></div><div class="sum-row"><span>Delivery fee</span><span id="sumFee">Confirm</span></div><div class="sum-row total"><span>Estimate</span><span id="sumTotal">৳0</span></div>
+<a href="checkout.html" class="btn btn-blaze btn-block" style="margin-top:14px">Continue to order request ↗</a></div></aside>
+<footer class="footer"><div class="shell"><div class="footer-top"><a href="index.html" class="footer-logo"><img src="assets/hawa-logo-v2.svg" alt="Hawa Restaurant & Party Centre"></a><p>Good food.<br>Better together.</p><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="index.html#gatherings">Our space</a><a href="track.html">Order help</a><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">WhatsApp ↗</a></nav></div><div class="footer-bottom"><span>© <span id="year"></span> Hawa Restaurant & Party Centre</span><span>Mymensingh, Bangladesh</span></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script><script src="shop.js" defer></script><script src="hawa-fresh.js" defer></script></body></html>
