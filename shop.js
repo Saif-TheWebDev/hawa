@@ -106,7 +106,7 @@
     body.innerHTML = c.map(function (i) {
       var m = getItem(i.id); if (!m) return "";
       return '<div class="cart-item">' +
-        '<div class="ci-emoji" style="background:' + m.color + '">' + m.emoji + '</div>' +
+        '<div class="ci-emoji"><span>H</span></div>' +
         '<div class="ci-info"><h4>' + m.name + '</h4><div class="ci-price">' + (m.price ? money(m.price) : "Seasonal") + " each</div>" +
         '<div class="ci-controls"><button class="qty-btn" data-dec="' + m.id + '" aria-label="Remove one ' + m.name + '">−</button><span class="qty-val">' + i.qty + '</span><button class="qty-btn" data-inc="' + m.id + '" aria-label="Add one ' + m.name + '">+</button></div></div>' +
         '<button class="ci-remove" data-rm="' + m.id + '" aria-label="Remove ' + m.name + '">🗑️</button></div>';
