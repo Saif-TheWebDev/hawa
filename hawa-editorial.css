@@ -282,3 +282,16 @@ body::before { opacity: 0; }
   .step-hand:nth-child(n) { min-width: 0; }
   .footer-logo { width: 64px; height: 64px; }
 }
+
+/* One ownable brand mark, not a photo crop pretending to be a logo */
+.brand-logo { border-radius: 2px; background: #304638; border: 1px solid #304638; color: #f9eee0; box-shadow: none; }
+.brand-monogram { font-family: "Hind Siliguri", sans-serif; font-size: 2rem; font-weight: 700; line-height: 1; transform: translateY(3px); }
+.footer-logo { display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; background: #f7e8d3; color: #2d4234; border-color: #ddd0ba; border-radius: 2px; }
+.footer-logo .brand-monogram { font-size: 3rem; }
+.brand:hover .brand-logo { background: #a9442b; border-color: #a9442b; }
+@media (prefers-reduced-motion: no-preference) {
+  .brand-logo { transition: background .25s ease; }
+  .gather-image { transition: background-position .85s cubic-bezier(.2,.7,.2,1), filter .6s ease; filter: saturate(.9); }
+  .gather-image:hover { background-position: 54% center; filter: saturate(1); }
+  .section-head .display { text-wrap: balance; }
+}
