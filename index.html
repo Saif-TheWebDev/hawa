@@ -117,34 +117,25 @@
     </div>
   </section>
 
-  <section class="section" id="perks">
+  <section class="hawa-ritual" id="perks" aria-labelledby="ritualHeading">
     <div class="container">
-      <div class="section-head reveal">
-        <div><p class="section-kicker">The Hawa way</p><h2 class="display h-lg">Good food,<br/><span class="blaze-text squiggle">good company.</span></h2></div>
-        <span class="sticker cream tape">Est. Mymensingh</span>
+      <div class="hawa-ritual__heading">
+        <p class="hawa-eyebrow"><span class="hawa-eyebrow__line"></span> A LITTLE MORE HAWA / 002</p>
+        <h2 id="ritualHeading">The table is<br/><em>where it begins.</em></h2>
+        <p>Good food is an invitation. Whether you’re choosing lunch, catching up over dinner, or planning a bigger gathering, there’s space for your story.</p>
       </div>
-      <div class="steps-hand reveal">
-        <div class="step-hand"><span class="step-num">01</span><h3>Explore the menu</h3><p>From slow-cooked favourites to something sweet at the end.</p></div>
-        <span class="step-arrow" aria-hidden="true">➜</span>
-        <div class="step-hand"><span class="step-num">02</span><h3>Talk to our team</h3><p>Send your selection on WhatsApp and check what is available today.</p></div>
-        <span class="step-arrow" aria-hidden="true">➜</span>
-        <div class="step-hand"><span class="step-num">03</span><h3>Confirm together</h3><p>Our team can confirm pricing, payment, pickup or delivery directly.</p></div>
-      </div>
-      <div class="bento" style="margin-top:34px">
-        <div class="bento-card reveal"><div class="bento-ico">🛒</div><h3>Explore the menu</h3><p>Find your favourites and build an order request.</p></div>
-        <div class="bento-card reveal" style="--d:.08s"><div class="bento-ico">🛵</div><h3>Order directly</h3><p>Speak with our team before anything is confirmed.</p></div>
-        <div class="bento-card reveal" style="--d:.16s"><div class="bento-ico">🎉</div><h3>Party centre</h3><p>Make an enquiry about birthdays, celebrations and get-togethers.</p></div>
-        <div class="bento-card reveal" style="--d:.24s"><div class="bento-ico">🕐</div><h3>Come visit</h3><p>Find our restaurant near Dhaka Bypass Mor, Mymensingh.</p></div>
+      <div class="hawa-ritual__steps">
+        <article><span class="hawa-ritual__num">01 / EAT</span><h3>Find a<br/><em>favourite.</em></h3><p>Browse the menu and discover something that belongs on your table.</p><a href="menu.html">Explore food ↗</a></article>
+        <article><span class="hawa-ritual__num">02 / TALK</span><h3>Make it<br/><em>yours.</em></h3><p>Send your selections and let the team confirm the details directly.</p><a href="https://wa.me/8801705036161" target="_blank" rel="noopener">Ask on WhatsApp ↗</a></article>
+        <article><span class="hawa-ritual__num">03 / GATHER</span><h3>Bring your<br/><em>people.</em></h3><p>Find out about birthdays, celebrations, and moments made together.</p><a href="#gather">Our space ↗</a></article>
       </div>
     </div>
   </section>
 
-  <div class="torn" aria-hidden="true"></div>
-
   <section class="section section-paper" id="popular">
     <div class="container">
       <div class="section-head reveal">
-        <div><p class="section-kicker">Most loved</p><h2 class="display h-lg">The dishes <em>you return for.</em></h2></div>
+        <div><p class="section-kicker">A taste of the menu</p><h2 class="display h-lg">Start with <em>something good.</em></h2></div>
         <a class="btn btn-blaze" href="menu.html">Full menu →</a>
       </div>
       <div class="dish-grid" id="popularGrid"></div>
@@ -285,7 +276,7 @@
   <script defer src="hawa-chapters.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var ids = ["beef-roast", "kacchi-biryani", "sizzling-platter"];
+      var ids = ["kacchi-biryani", "sizzling-platter"];
       var grid = document.getElementById("popularGrid");
       if (!grid || !window.HAWA) return;
       grid.innerHTML = ids.map(function (id) {
@@ -293,7 +284,7 @@
         var thumb = m.img ? '<div class="ph" style="background-image:url(\'' + m.img + '\')"></div><span class="emoji">' + m.emoji + "</span>" : '<span class="emoji">' + m.emoji + "</span>";
         return '<article class="dish-card"><div class="dish-thumb" style="background:' + m.color + '">' + thumb + '</div>' +
           '<div class="dish-body"><div class="dish-top"><h3>' + m.name + '</h3><span class="dish-price hand" style="font-size:1.5rem">৳' + m.price + "</span></div>" +
-          '<p class="dish-desc">' + m.desc + '</p><div class="dish-tags"><span class="mini-tag pop">★ Popular</span></div>' +
+          '<p class="dish-desc">' + m.desc + '</p><div class="dish-tags"><span class="mini-tag">From the menu</span></div>' +
           '<button class="add-btn" data-add="' + m.id + '">+ Add — I\'ll take it</button></div></article>';
       }).join("");
       grid.querySelectorAll("[data-add]").forEach(function (b) {
