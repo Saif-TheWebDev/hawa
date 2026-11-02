@@ -15,8 +15,8 @@
   inset: -7% -2% -7% 24%;
   transform:
     translate3d(
-      calc(var(--hawa-pointer-x, 0px) * .55),
-      calc(var(--hawa-depth-y, 0px) + var(--hawa-pointer-y, 0px) * .45),
+      var(--hawa-photo-pointer-x, 0px),
+      calc(var(--hawa-depth-y, 0px) + var(--hawa-photo-pointer-y, 0px)),
       0
     )
     scale(1.09);
@@ -25,14 +25,14 @@
 .hawa-hero__copy {
   transform:
     translate3d(
-      calc(var(--hawa-pointer-x, 0px) * -.12),
-      calc(var(--hawa-depth-y, 0px) * -.16 + var(--hawa-pointer-y, 0px) * -.11),
+      var(--hawa-copy-pointer-x, 0px),
+      calc(var(--hawa-copy-depth-y, 0px) + var(--hawa-copy-pointer-y, 0px)),
       0
     );
   will-change: transform;
 }
 .hawa-hero__edge {
-  transform: translate3d(0, calc(var(--hawa-depth-y, 0px) * -.4), 0);
+  transform: translate3d(0, var(--hawa-edge-depth-y, 0px), 0);
   will-change: transform;
 }
 
@@ -46,7 +46,7 @@
   background:
     radial-gradient(circle at 74% 33%, rgba(255,238,216,.11), transparent 24%),
     linear-gradient(118deg, transparent 42%, rgba(255,255,255,.045) 56%, transparent 67%);
-  transform: translate3d(calc(var(--hawa-pointer-x, 0px) * .18), calc(var(--hawa-pointer-y, 0px) * .18), 0);
+  transform: translate3d(var(--hawa-glow-x, 0px), var(--hawa-glow-y, 0px), 0);
   mix-blend-mode: screen;
 }
 
@@ -83,7 +83,7 @@
   inset: 0;
   pointer-events: none;
   background: linear-gradient(135deg, transparent 40%, rgba(255,245,229,.12), transparent 62%);
-  transform: translate3d(calc(var(--hawa-pointer-x, 0px) * .22), 0, 0);
+  transform: translate3d(var(--hawa-shine-x, 0px), 0, 0);
 }
 
 /* Gallery images glide inside their fixed masks instead of moving the cards. */
@@ -121,7 +121,7 @@
   left: -12vw;
   top: 5%;
   pointer-events: none;
-  transform: translate3d(calc(var(--hawa-depth-x, 0px) * -.25), calc(var(--hawa-depth-y, 0px) * .2), 0);
+  transform: translate3d(var(--hawa-orbit-x, 0px), var(--hawa-orbit-y, 0px), 0);
 }
 
 /* Menu masthead gets one subtle photographic depth cue. */
@@ -165,7 +165,7 @@
 @media (max-width: 680px), (pointer:coarse) {
   .hawa-hero__photo {
     inset: -4% -6%;
-    transform: translate3d(0, calc(var(--hawa-depth-y, 0px) * .55), 0) scale(1.08);
+    transform: translate3d(0, var(--hawa-depth-y-mobile, 0px), 0) scale(1.08);
   }
   .hawa-hero__copy,
   .hawa-hero__edge {
