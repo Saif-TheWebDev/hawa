@@ -7,9 +7,9 @@
 
   /* ---------- Menu data ---------- */
   var IMG = {
-    biryani: "https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg",
-    grill: "https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-grill.jpg",
-    hall: "https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/hero.jpg"
+    biryani: "assets/dish-biryani.jpg",
+    grill: "assets/dish-grill.jpg",
+    hall: "assets/hero.jpg"
   };
 
   var MENU = [
@@ -106,7 +106,7 @@
     body.innerHTML = c.map(function (i) {
       var m = getItem(i.id); if (!m) return "";
       return '<div class="cart-item">' +
-        '<div class="ci-emoji" style="background:' + m.color + '">' + m.emoji + '</div>' +
+        '<div class="ci-emoji"><span>H</span></div>' +
         '<div class="ci-info"><h4>' + m.name + '</h4><div class="ci-price">' + (m.price ? money(m.price) : "Seasonal") + " each</div>" +
         '<div class="ci-controls"><button class="qty-btn" data-dec="' + m.id + '" aria-label="Remove one ' + m.name + '">−</button><span class="qty-val">' + i.qty + '</span><button class="qty-btn" data-inc="' + m.id + '" aria-label="Add one ' + m.name + '">+</button></div></div>' +
         '<button class="ci-remove" data-rm="' + m.id + '" aria-label="Remove ' + m.name + '">🗑️</button></div>';
@@ -121,14 +121,15 @@
   }
 
   /* ---------- Menu page rendering ---------- */
-  var activeCat = "all", query = "";
+  var queryCategory = new URLSearchParams(window.location.search).get("cat");
+  var activeCat = CATS.some(function(c){return c.id===queryCategory;}) ? queryCategory : "all", query = "";
   function renderCats() {
     var el = document.getElementById("catList"); if (!el) return;
     el.innerHTML = CATS.map(function (c) {
       return '<button class="cat-btn' + (c.id === activeCat ? " active" : "") + '" data-cat="' + c.id + '">' + c.label + '</button>';
     }).join("");
     el.querySelectorAll(".cat-btn").forEach(function (b) {
-      b.onclick = function () { activeCat = b.dataset.cat; renderCats(); renderMenu(); };
+      b.onclick = function () { activeCat = b.dataset.cat; var url = new URL(location.href); if (activeCat === "all") url.searchParams.delete("cat"); else url.searchParams.set("cat",activeCat); history.replaceState({}, "", url); renderCats(); renderMenu(); };
     });
   }
   function renderMenu() {
@@ -140,16 +141,15 @@
       return inCat && inQ;
     });
     document.getElementById("resultCount").textContent = items.length + (items.length === 1 ? " dish" : " dishes");
-    if (!items.length) { grid.innerHTML = '<div class="panel" style="grid-column:1/-1;text-align:center"><h2 class="display h-md">Nothing on this page yet.</h2><p>Try another search or browse all categories.</p><button type="button" class="btn btn-ghost" id="clearSearch" style="margin-top:20px">Show all dishes</button></div>'; document.getElementById("clearSearch").onclick = function () { query = ""; activeCat = "all"; var input = document.getElementById("searchInput"); if (input) input.value = ""; renderCats(); renderMenu(); }; return; }
+    if (!items.length) { grid.innerHTML = '<div class="panel" style="grid-column:1/-1;text-align:center"><h2 class="display h-md">Nothing on this page yet.</h2><p>Try another search or browse all categories.</p><button type="button" class="btn btn-ghost" id="clearSearch" style="margin-top:20px">Show all dishes</button></div>'; document.getElementById("clearSearch").onclick = function () { query = ""; activeCat = "all"; var url = new URL(location.href); url.searchParams.delete("cat"); history.replaceState({}, "", url); var input = document.getElementById("searchInput"); if (input) input.value = ""; renderCats(); renderMenu(); }; return; }
     grid.innerHTML = items.map(function (m, i) {
-      var tags = "";
-      if (m.popular) tags += '<span class="mini-tag pop">★ Popular</span>';
-      if (m.pick) tags += '<span class="mini-tag hot">Chef\'s pick</span>';
-      if (m.spicy) tags += '<span class="mini-tag hot">' + "🌶️".repeat(Math.min(m.spicy, 3)) + "</span>";
-      if (m.seasonal) tags += '<span class="mini-tag">Seasonal</span>';
+      var categories = { rice:"RICE & BIRYANI", grill:"FROM THE GRILL", curry:"CURRIES & ROASTS", asian:"ASIAN FAVOURITES", sweet:"SWEETS & DRINKS" };
+      var tags = '<span class="mini-tag">' + (categories[m.cat] || "FROM THE MENU") + '</span>';
+      if (m.seasonal) tags += '<span class="mini-tag">Market priced</span>';
+      var shortName = m.name.replace(/\([^)]*\)/g, "").trim().split(/\s+/).slice(0,2).join(" ");
       var thumb = m.img
-        ? '<div class="ph" style="background-image:url(\'' + m.img + '\')"></div><span class="emoji">' + m.emoji + "</span>"
-        : '<span class="emoji">' + m.emoji + '</span>';
+        ? '<div class="ph" role="img" aria-label="' + m.name + '" style="background-image:url(' + m.img + ')"></div>'
+        : '<div class="dish-graphic"><span>HAWA / FOOD FOR EVERYONE</span><strong>' + shortName + '</strong><i aria-hidden="true">✳</i></div>';
       return '<article class="dish-card reveal visible" style="--d:' + (i * 0.04) + 's; border-color: var(--cream);">' +
         '<div class="dish-thumb" style="background:' + m.color + '">' + thumb + "</div>" +
         '<div class="dish-body"><div class="dish-top"><h3>' + m.name + '</h3><span class="dish-price">' + (m.price ? money(m.price) : "MKT") + "</span></div>" +
@@ -161,7 +161,7 @@
       b.onclick = function () {
         addToCart(b.dataset.add);
         var m = getItem(b.dataset.add);
-        toast(m.name + " added 🛒");
+        toast(m.name + " added to your request");
         b.textContent = "✓ Added"; b.classList.add("added");
         setTimeout(function () { b.textContent = "Add to request +"; b.classList.remove("added"); }, 1200);
       };
