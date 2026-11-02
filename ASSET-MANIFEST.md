@@ -1,27 +1,27 @@
-# Asset inventory and authenticity
+# Hawa image inventory and provenance
 
-| Exact file | Use | Status |
+Generated food imagery was explicitly requested by the user on 2 November 2026. The built-in image-generation tool created four distinct assets; no paid asset purchase was made. Generated food is labelled as illustrative on the site and in image alternatives.
+
+| Exact runtime filename | Intended use | Provenance |
 |---|---|---|
-| assets/dish-biryani.jpg | Persistent hero photograph and single biryani menu entry | Existing 1536×1024 repository image; owner authorized redesign/use, specific documentary identity unverified; visibly identified as preview imagery |
-| assets/dish-grill.jpg | Single Chicken Tikka entry and grill editorial image | Existing repository image; no longer assigned to Sizzling Platter; preview label |
-| assets/hero.jpg | Excluded from all active pages | Contains another restaurant name; cannot represent Hawa |
-| assets/hawa-logo-v2.svg | Existing brand mark, with adjacent readable Hawa text | Preserved unmodified; approval history unknown |
-| assets/hawa-logo-icon.svg | Existing favicon | Preserved |
-| assets/hawa-arch-pattern.svg, hawa-leaf-emblem.svg, hawa-stamp.svg, hawa-wind-lines.svg | Archived unused legacy decorations | Not loaded |
-| three.module.min.js, three.core.min.js | Existing Three.js runtime | MIT license header preserved |
-| assets/fonts/* | Self-hosted Cormorant Garamond, Manrope, Hind Siliguri | OFL license copies accompany files |
+| assets/hawa-biryani-ai-v2.webp | Transparent whole-platter hero; Kacchi Biryani | Generated illustration, 1400px wide, alpha preserved |
+| assets/hawa-biryani-ai-v2-small.webp | Mobile hero and catalogue/details | 700px derivative of the same generated image |
+| assets/hawa-grill-ai-v2.webp | Gathering food image; Sizzling Platter | Generated mixed grill illustration, 1400px wide |
+| assets/hawa-grill-ai-v2-small.webp | Featured Sizzling Platter and catalogue/details | 700px derivative |
+| assets/hawa-beef-ai-v2.webp | Beef Roast source image | Generated brass-bowl beef illustration, 1400px wide |
+| assets/hawa-beef-ai-v2-small.webp | Beef Roast featured/menu/details | 700px derivative |
+| assets/hawa-firni-ai-v2.webp | Firni editorial section | Generated terracotta-bowl firni illustration, 1400px wide |
+| assets/hawa-firni-ai-v2-small.webp | Firni menu and responsive editorial image | 700px derivative |
+| assets/grill-preview.webp | Existing Chicken Tikka image only | Existing repository image; specific documentary identity unverified |
+| assets/hero.jpg | Excluded from active pages | Contains another restaurant name; must not represent Hawa |
+| assets/hawa-logo-v2.svg, assets/hawa-logo-icon.svg | Existing logo and favicon | Preserved unmodified; readable Hawa text alongside |
+| assets/fonts/*subset.woff2, assets/fonts/currency.woff2 | Self-hosted fonts | Cormorant Garamond, Manrope, Hind Siliguri; OFL files accompany assets |
 
-No newly generated business imagery or paid assets. Atmospheric table geometry is a conceptual scene, not Hawa's furniture.
+Original generated PNGs and exact prompts are included in the user's outputs/hawa-food-images directory. WebP files are resize/compression derivatives only. No generated food is described as a documentary photograph of Hawa's actual dishes. Chicken Tikka and Sizzling Platter use distinct images. Dishes without images use readable text entries.
 
-## Exact remaining capture brief
-- Signature biryani: actual portion and serving ware, 3/4 front camera at 35–45 degrees, 50–85mm lens, warm large softbox on camera left, dark neutral background, entire plate with 15% margin, 3000px minimum. One top view plus matching 24-angle orbit and an empty plate/background frame. Color reference card in a separate frame. Required for a convincing food model/cutout, not optional proof of 3D.
-- Each featured dish: a unique 2400px image with dish name, portion and date; same lighting. Especially Chicken Tikka and Sizzling Platter separately.
-- Interior/exterior: 3000px wide daylight and evening images showing recognisable Hawa signage; owner confirms location and rights. No unrelated premises or identifiable guests without consent.
-- Serving/preparation: 6–10 second silent clips, 1080p/25–30fps, stable camera, no mandatory autoplay; permission for any identifiable staff.
-- Current menu: owner-approved names, descriptions, BDT prices, seasonal items, portion sizes; current phone/address/map pin and gathering details. Existing data are carried forward as indicative, not independently verified.
-
-## Optimized derivatives
-- assets/biryani-preview.webp (1536×1024), assets/biryani-preview-mobile.webp (900×600): format/size derivatives of dish-biryani.jpg only, no content substitution.
-- assets/grill-preview.webp (1536×1024), assets/grill-preview-mobile.webp (900×600): derivatives of dish-grill.jpg only.
-- assets/fonts/font-0-subset.woff2 through font-9-subset.woff2: licensed font subsets. Latin display/body and separate Bengali unicode ranges; currency.woff2 contains only the BDT glyph to avoid loading a full Bengali font for prices.
-- Original files remain in the repository. Preview bundle ships only runtime font subsets; font TTF/intermediate conversions are local build intermediates.
+## Remaining authentic capture brief
+- Actual signature dish: full serving ware and portion, warm camera-left softbox, 35–45 degree elevated camera, 3000px minimum and clean 15% margin; matching top view and 24-angle orbit if a rotatable model is needed.
+- Distinct actual images of each dish, labelled with dish name, portion and date.
+- Real interior/exterior images with recognisable Hawa signage and confirmed rights. No substitute premises or invented guests.
+- Optional 6–10 second real preparation/serving clips with permission for identifiable staff.
+- Owner-confirmed current menu, portion sizes, prices, hours, location and contact details. Existing values remain indicative; no new business facts were inferred from generated assets.

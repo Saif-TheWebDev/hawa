@@ -1,18 +1,20 @@
 # Hawa — Follow the aroma
 
-Review-only redesign of Hawa Restaurant & Party Centre. Production remains unchanged.
+Food-led website revision for Hawa Restaurant & Party Centre. Deploy target: the existing hawa-restaurant project in Saif PRO, https://hawa-restaurant-omega.vercel.app/ . The user requested this improvement and previously authorized publishing to Vercel. See VERIFICATION.md for this revision's checks and the deployment record in the delivered review.
 
 ## Run locally
-From this directory run `python -m http.server 4173 --bind 127.0.0.1`, then open http://127.0.0.1:4173/ . No npm install/build is required. Use an HTTP server for ES modules, not file://.
+Run `python -m http.server 4173 --bind 127.0.0.1` in this directory, then open http://127.0.0.1:4173/ . No framework or npm build is required.
 
-## Architecture
-- index.html + aroma-scene.js: three-stage scroll story. True table geometry; layered food photography.
-- aroma-ui.js: shared navigation, dish details, motion coordination and image fallback.
-- shop.js: existing menu data/schema, hardened cart and validated WhatsApp request preview.
-- aroma.css / fonts.css: single active visual system; self-hosted OFL fonts.
-- menu.html / checkout.html / track.html: menu, enquiry preparation, direct contact.
-- `?no3d` exercises the still/table fallback. Reduced-motion skips WebGL initialization.
+## Active architecture
+- index.html: food-led homepage, three featured dishes, firni, gathering and visit sections.
+- feast-motion.js: lightweight pointer/scroll parallax, float pause, reduced motion.
+- aroma-ui.js: shared navigation, native dish dialog and image fallbacks.
+- shop.js: existing 15 menu records, persistent selection, stable quantity updates, validated WhatsApp enquiry preview.
+- fonts.css / aroma.css / feast.css: shared styling; feast.css is the current visual override on all four pages.
+- menu.html + feast-menu.css: search, filters, distinct image cards and text catalogue.
+- checkout.html / track.html: enquiry preparation and contact help.
+- assets/hawa-*-ai-v2*.webp: explicitly authorized generated food illustrations; exact prompts in assets/GENERATED-FOOD-PROMPTS.md.
 
-Read DESIGN.md, ART-DIRECTION.md, ASSET-MANIFEST.md, UX-CONTRACT.md and VERIFICATION.md before publishing. Original JPEGs and older redesign files are retained as history but are not the active site. The interior placeholder and photographic food layer are explicit limits pending authentic capture.
+Older aroma-scene.js / Three.js and legacy assets remain in repository history but are not loaded by active pages. No rotatable food model is claimed. No fabricated interior is used.
 
-No backend, payment processing, live inventory, order confirmation or tracking is implied. Test WhatsApp links by inspecting the local preview; do not send test messages.
+No backend, payment processing, live inventory, order confirmation or tracking is implied. Tests inspect the WhatsApp preview without sending messages.

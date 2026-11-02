@@ -1,8 +1,8 @@
 # Hawa interaction contract
-Visual contract: DESIGN.md. Business evidence: user brief, HAWA-AUDIT-2026-11.md, existing shop.js data. Owner has authorized redesign; production publishing remains explicitly prohibited pending approval.
+Visual contract: DESIGN.md. Business evidence: user brief, HAWA-AUDIT-2026-11.md, existing shop.js data. Owner has authorized the redesign and requested publishing to Vercel. The later request explicitly authorizes generated food imagery.
 
 ## Canonical owners
-- Menu data and cart: shop.js, existing hawa_cart_v1 storage schema, max 50 per dish. Storage failure uses in-memory cart and announces non-persistence. No private customer data stored.
+- Menu data and cart: shop.js, existing hawa_cart_v1 storage schema, max 50 per dish. Quantity updates preserve item order. Storage failure uses in-memory cart and announces non-persistence. No private customer data stored.
 - Dialogs: shared native dialog behavior in aroma-ui.js; modal focus containment, Escape, focus restoration. Drawer is a native dialog.
 - Form: shop.js validation with inline associated errors and local message preview. No network submit; only explicit WhatsApp link transfers entered data. Native area select uses OS behavior, accepted for this simple enquiry.
 - Scrollbar: aroma.css global tokens with forced-color fallback.

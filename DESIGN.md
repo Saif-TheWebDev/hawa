@@ -1,45 +1,45 @@
 ---
 version: alpha
 colors:
-  primary: "#073e32"
-  emerald: "#073e32"
-  charcoal: "#09271f"
-  cream: "#f4eedf"
-  saffron: "#edc76b"
+  primary: "#064633"
+  emerald: "#064633"
+  charcoal: "#072f24"
+  cream: "#fbf7eb"
+  saffron: "#f1c54d"
   brass: "#ac8550"
-  muted: "#596151"
+  muted: "#59614f"
 typography:
   display:
     fontFamily: "Cormorant Garamond, Georgia, serif"
   body:
     fontFamily: "Manrope, Hind Siliguri, Arial, sans-serif"
 rounded:
-  control: "4px"
+  control: "30px"
 spacing:
   unit: "8px"
 ---
 # Hawa — Follow the aroma
 
 ## Overview
-A warm, surreal invitation to a real restaurant in Mymensingh. A single photographed platter crosses an emerald stage and settles into a shared table composition. This is a hybrid: expressive homepage, practical menu and enquiry pages. The source is production commit 8ae7961; no production changes are authorized.
+Food leads the experience. A complete brass biryani platter fills the emerald opening; confident Manrope headlines and Cormorant accents carry the invitation through cream menu surfaces, firni editorial photography and a warm gathering section. This revision responds to the user's rejection of the sparse table scene and explicit request to create and use food images. Publishing to the existing Vercel project is authorized by the user's earlier instruction.
 
 ## Colors
-Runtime source: aroma.css :root. Emerald and charcoal frame the food; cream supports reading; saffron marks the primary action. Brass belongs to atmospheric serving ware, not decorative interface chrome. Materials are inspired by existing imagery, whose documentary provenance is unverified.
+Canonical tokens: feast.css :root, loaded after aroma.css on all four active pages. Deep emerald, warm cream and saffron frame the generated food illustrations. Brass, linen and terracotta appear in the imagery. They are an art direction, not evidence of Hawa's actual serving ware.
 
 ## Typography
-Cormorant Garamond regular/italic gives aroma its flowing expression. Manrope 400–700 makes task text clear. Hind Siliguri supplies Bengali support. All are Google Fonts OFL, self-hosted with license files. Display 64–150px desktop, 62–82px mobile; body 16px/1.7. No local-only fonts. Labels at least 12px.
+Manrope 400–700 for navigation, body and bold homepage headlines. Cormorant Garamond supplies expressive accents and menu titles. Hind Siliguri supplies Bengali support. Self-hosted Google Fonts with OFL licenses and separate currency glyph subset. Explicit word spacing preserves readability in large tracked headlines. Typical mobile body copy is 13–14px; small category labels are secondary to clear names and prices.
 
 ## Layout
-Wide asymmetric opening, persistent right-side platter, generous left-side copy. 3 short scroll chapters; native scrolling, no snap or forced delays. On mobile food is in the first screen, story length shortened. Menu uses a readable list rather than pretending every unphotographed item has a picture.
+An immediate food-and-headline opening with accessible menu and gathering actions. Ordinary document scrolling; no long pinned runway. Three featured dishes have large distinct images, readable prices, details and direct add actions. Firni and gathering compositions vary image scale. The menu starts with a compact title, search and category controls, followed by image cards and text rows for dishes without assets. All pages share header, footer, cart and enquiry styling.
 
 ## Elevation & Depth
-One three.js scene supplies actual geometric table, plates and warm lighting. Food remains layered photography, not a rotatable model. CSS fallback is immediately visible. Perspective reactions are restrained; scroll motion is reversible. Reduced motion presents a still first scene and ordinary document sections.
+The transparent biryani cutout retains its complete vessel, soft contact shadow and directional lighting. Restrained pointer/scroll parallax and a slow float add depth. Pause and reduced-motion controls are supported. This is layered generated imagery, not a rotatable food model. The previous bare Three.js table is no longer loaded; its source is retained only as historical implementation.
 
 ## Shapes
-Controls are gently squared, lines quiet. No repeated circular promotional cards. A physical oval table is narrative content rather than card decoration.
+Full serving vessels rather than artificial oval crops. Rounded primary actions, quiet rules, gentle image corners, one arched gathering image. Existing logo is retained beside readable Hawa text.
 
 ## Components
-Shared header/footer, native dialogs for selection and dish detail, one cart store and one toast. Homepage and menu use the same dish data. Request form previews a WhatsApp message before its explicit external handoff. Focus and scrollbar colors share the system.
+Shared data and cart in shop.js; native dialogs and navigation in aroma-ui.js; hero motion in feast-motion.js. Food details and direct add actions use the same records as the catalogue. Quantity updates preserve row order. Checkout previews a WhatsApp enquiry and requires the visitor's explicit handoff.
 
 ## Do's and Don'ts
-Preserve the existing SVG identity, accompanied by readable Hawa text; this is a legibility treatment, not an approved replacement logo. Do not invent interiors, claims, food models, customer reviews, prices or successful orders. No sound, loader, cursor replacement, scroll-jacking or repeated entrance reveals.
+Keep generated imagery honestly identified. Do not invent interiors, reviews, popularity, real-time stock, payment collection or confirmed orders. Keep existing menu prices indicative pending confirmation. Preserve immediate navigation, visible focus, reversible cart controls and reduced motion. Do not reintroduce a long loader, empty table runway, repeated circular food crops or scroll-jacking.

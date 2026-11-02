@@ -7,7 +7,10 @@
 
   /* ---------- Menu data ---------- */
   var IMG = {
-    biryani: "assets/biryani-preview.webp",
+    biryani: "assets/hawa-biryani-ai-v2.webp",
+    mixedGrill: "assets/hawa-grill-ai-v2.webp",
+    beef: "assets/hawa-beef-ai-v2.webp",
+    firni: "assets/hawa-firni-ai-v2.webp",
     grill: "assets/grill-preview.webp",
     hall: "assets/hero.jpg",
   };
@@ -21,7 +24,9 @@
       cat: "curry",
       emoji: "🥩",
       color: "#7a2e12",
-      desc: "Spicy, slow-cooked beef — listed on the existing menu.",
+      img: IMG.beef,
+      generated: true,
+      desc: "Spicy, slow-cooked beef.",
       spicy: 2,
       popular: true,
     },
@@ -69,6 +74,7 @@
       emoji: "🍚",
       color: "#b3541e",
       img: IMG.biryani,
+      generated: true,
       desc: "Saffron basmati, marinated mutton, fried onion & boiled egg — the traditional way.",
       popular: true,
       pick: true,
@@ -126,6 +132,8 @@
       cat: "grill",
       emoji: "🔥",
       color: "#991f0a",
+      img: IMG.mixedGrill,
+      generated: true,
       desc: "Mixed grill for the table — tikka, kebab & wings on a hot iron plate.",
       popular: true,
     },
@@ -169,6 +177,8 @@
       cat: "sweet",
       emoji: "🍮",
       color: "#8a6d3f",
+      img: IMG.firni,
+      generated: true,
       desc: "Creamy rice-pudding dessert, chilled & lightly sweet.",
     },
     {
@@ -243,10 +253,13 @@
     return c;
   }
   function setQty(id, qty) {
-    var c = getCart().filter(function (i) {
-      return i.id !== id;
-    });
-    if (qty > 0) c.push({ id: id, qty: Math.min(qty, 50) });
+    var c = getCart()
+      .map(function (i) {
+        return i.id === id ? { id: id, qty: Math.min(qty, 50) } : i;
+      })
+      .filter(function (i) {
+        return i.qty > 0;
+      });
     saveCart(c);
   }
   function removeFromCart(id) {
@@ -487,64 +500,77 @@
       };
       return;
     }
-    grid.innerHTML = items
-      .map(function (m, i) {
-        var categories = {
-          rice: "RICE & BIRYANI",
-          grill: "FROM THE GRILL",
-          curry: "CURRIES & ROASTS",
-          asian: "ASIAN FAVOURITES",
-          sweet: "SWEETS & DRINKS",
-        };
-        var tags =
-          '<span class="mini-tag">' +
-          (categories[m.cat] || "FROM THE MENU") +
-          "</span>";
-        if (m.seasonal) tags += '<span class="mini-tag">Market priced</span>';
-        var shortName = m.name
-          .replace(/\([^)]*\)/g, "")
-          .trim()
-          .split(/\s+/)
-          .slice(0, 2)
-          .join(" ");
-        var thumb = m.img
-          ? '<div class="ph" role="img" aria-label="' +
-            m.name +
-            '" style="background-image:url(' +
-            m.img +
-            ')"></div>'
-          : '<div class="dish-graphic"><span>HAWA / FOOD FOR EVERYONE</span><strong>Photo<br>to come</strong><i aria-hidden="true">✳</i></div>';
-        return (
-          '<article class="dish-card reveal visible" style="--d:' +
-          i * 0.04 +
-          's; border-color: var(--cream);">' +
-          (m.img ? '<div class="dish-thumb">' + thumb + "</div>" : "") +
-          '<div class="dish-body"><div class="dish-top"><h3>' +
+    function renderDish(m) {
+      var categories = {
+        rice: "RICE & BIRYANI",
+        grill: "FROM THE GRILL",
+        curry: "CURRIES & ROASTS",
+        asian: "CHINESE & THAI",
+        sweet: "SWEETS & DRINKS",
+      };
+      var category = categories[m.cat] || "FROM THE MENU";
+      var image = m.img
+        ? '<div class="dish-thumb"><img src="' +
+          (m.generated ? m.img.replace(".webp", "-small.webp") : m.img) +
+          '" width="700" height="467" loading="lazy" decoding="async" alt="' +
           m.name +
-          '</h3><span class="dish-price">' +
-          (m.price ? money(m.price) : "MKT") +
-          "</span></div>" +
-          '<p class="dish-desc">' +
-          m.desc +
-          "</p>" +
-          (tags ? '<div class="dish-tags">' + tags + "</div>" : "") +
-          (m.price
-            ? '<button type="button" class="add-btn" data-add="' +
-              m.id +
-              '">Add to request +</button>'
-            : '<a class="add-btn" href="https://wa.me/8801705036161?text=' +
-              encodeURIComponent(
-                "Hello Hawa! Could you confirm the price and availability of " +
-                  m.name +
-                  "?",
-              ) +
-              '" target="_blank" rel="noopener">Ask for market price</a>') +
-          '<span class="selection-status" data-selected="' +
+          (m.generated
+            ? " — AI-created food illustration"
+            : " — illustrative food image") +
+          '"></div>'
+        : "";
+      var action = m.price
+        ? '<button type="button" class="add-btn" data-add="' +
           m.id +
-          '"></span></div></article>'
-        );
-      })
-      .join("");
+          '">Add to request +</button>'
+        : '<a class="add-btn" href="https://wa.me/8801705036161?text=' +
+          encodeURIComponent(
+            "Hello Hawa! Could you confirm the price and availability of " +
+              m.name +
+              "?",
+          ) +
+          '" target="_blank" rel="noopener">Ask for market price ↗</a>';
+      return (
+        '<article class="dish-card ' +
+        (m.img ? "dish-card--pictured" : "dish-card--text") +
+        '">' +
+        image +
+        '<div class="dish-body"><p class="dish-category">' +
+        category +
+        '</p><div class="dish-top"><h3>' +
+        m.name +
+        '</h3><span class="dish-price">' +
+        (m.price ? money(m.price) : "Market price") +
+        '</span></div><p class="dish-desc">' +
+        m.desc +
+        '</p><div class="dish-actions">' +
+        action +
+        '<span class="selection-status" data-selected="' +
+        m.id +
+        '"></span></div></div></article>'
+      );
+    }
+    var pictured = items.filter(function (m) {
+      return !!m.img;
+    });
+    var textDishes = items.filter(function (m) {
+      return !m.img;
+    });
+    grid.innerHTML =
+      (pictured.length
+        ? '<div class="menu-picture-grid">' +
+          pictured.map(renderDish).join("") +
+          "</div>"
+        : "") +
+      (textDishes.length
+        ? (pictured.length
+            ? '<h2 class="menu-more-title">More for your table.</h2>'
+            : "") +
+          '<div class="menu-text-grid">' +
+          textDishes.map(renderDish).join("") +
+          "</div>"
+        : "");
+    updateSelectionStatus();
     grid.querySelectorAll("[data-add]").forEach(function (b) {
       b.onclick = function () {
         addToCart(b.dataset.add);

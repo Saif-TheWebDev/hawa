@@ -12,12 +12,13 @@
     <link rel="icon" href="assets/hawa-logo-icon.svg" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="aroma.css" />
+    <link rel="stylesheet" href="feast.css" />
     <link
       rel="preload"
       as="image"
-      href="assets/biryani-preview.webp"
-      imagesrcset="assets/biryani-preview-mobile.webp 900w, assets/biryani-preview.webp 1536w"
-      imagesizes="(max-width: 760px) 115vw, 64vw"
+      href="assets/hawa-biryani-ai-v2.webp"
+      imagesrcset="assets/hawa-biryani-ai-v2-small.webp 700w, assets/hawa-biryani-ai-v2.webp 1400w"
+      imagesizes="(max-width:760px) 100vw, 60vw"
     />
   </head>
   <body class="aroma-home">
@@ -74,90 +75,68 @@
           about the menu.
         </p></noscript
       >
-      <section class="aroma-story" id="aromaStory" aria-labelledby="heroTitle">
-        <div class="story-stage" id="storyStage">
-          <div class="light-beam" aria-hidden="true"></div>
-          <div class="stage-grain" aria-hidden="true"></div>
-          <div class="scene-art" aria-hidden="true">
-            <div class="table-fallback"></div>
-            <canvas id="tableScene"></canvas>
-            <div class="platter-shadow"></div>
-            <div class="platter-photo" id="platterPhoto">
+      <section class="feast-hero" id="aromaStory" aria-labelledby="heroTitle">
+        <div class="feast-stage" id="feastStage">
+          <div class="feast-grain" aria-hidden="true"></div>
+          <span class="hero-watermark" aria-hidden="true">HAWA</span>
+          <div class="shell feast-layout">
+            <div class="feast-copy">
+              <p class="eyebrow"><span></span> MYMENSINGH, BANGLADESH</p>
+              <h1 id="heroTitle">
+                <span class="hero-follow">Follow</span> the <em>aroma.</em>
+              </h1>
+              <p class="feast-intro">
+                A little spice. A table full of favourites. Good food tastes
+                better together.
+              </p>
+              <div class="feast-actions">
+                <a class="button button--yellow" href="menu.html"
+                  >Explore the menu <span>↗</span></a
+                ><a class="feast-secondary" href="#gatherings"
+                  >Plan a gathering ↗</a
+                >
+              </div>
+            </div>
+            <div class="feast-food" id="feastFood">
+              <div class="food-halo" aria-hidden="true"></div>
               <img
-                src="assets/biryani-preview.webp"
+                src="assets/hawa-biryani-ai-v2.webp"
                 srcset="
-                  assets/biryani-preview-mobile.webp  900w,
-                  assets/biryani-preview.webp        1536w
+                  assets/hawa-biryani-ai-v2-small.webp  700w,
+                  assets/hawa-biryani-ai-v2.webp       1400w
                 "
-                sizes="(max-width: 760px) 115vw, 64vw"
-                alt=""
+                sizes="(max-width:760px) 100vw, 60vw"
+                alt="AI-created illustration of mutton biryani on a brass platter"
                 width="1536"
                 height="1024"
                 fetchpriority="high"
               />
-            </div>
-            <svg class="steam" viewBox="0 0 300 400">
-              <path d="M90 380C210 290 15 250 145 140S160 50 130 0" />
-              <path d="M165 390C70 310 250 240 180 160S240 65 210 0" />
-              <path d="M215 400C315 310 150 220 240 120" /></svg
-            ><span class="saffron-thread thread-one"></span
-            ><span class="saffron-thread thread-two"></span>
-          </div>
-          <div class="shell stage-content">
-            <div class="story-copy story-copy--opening" id="openingCopy">
-              <p class="eyebrow">RESTAURANT & PARTY CENTRE · MYMENSINGH</p>
-              <h1 id="heroTitle">Follow <br />the <em>aroma.</em></h1>
-              <p class="intro-copy">
-                Let a little curiosity<br />bring you to the table.
-              </p>
-              <a class="button button--yellow" href="menu.html"
-                >Explore the menu <span>↗</span></a
-              ><a class="quiet-link" href="#gatherings"
-                >Or bring your people ↗</a
-              >
-            </div>
-            <div
-              class="story-copy story-copy--aroma"
-              id="aromaCopy"
-              aria-hidden="true"
-              inert
-            >
-              <p class="eyebrow">A LITTLE CLOSER</p>
-              <h2>Good things<br />are <em>in the air.</em></h2>
-              <p>Rice, spice, and something<br />worth slowing down for.</p>
-            </div>
-            <div
-              class="story-copy story-copy--table"
-              id="tableCopy"
-              aria-hidden="true"
-              inert
-            >
-              <p class="eyebrow">THE TABLE COMES TOGETHER</p>
-              <h2>Better<br /><em>together.</em></h2>
-              <p>Start with a favourite.<br />Leave room for one more.</p>
-              <a class="button button--yellow" href="#table"
-                >Find your favourite <span>↓</span></a
-              >
+              <div class="food-caption">
+                <span>RICE, SPICE & EVERYTHING NICE</span
+                ><strong>Kacchi biryani</strong
+                ><a href="menu.html?cat=rice">Find your favourite ↗</a>
+              </div>
             </div>
           </div>
-          <div class="story-bottom shell">
-            <a href="#table" class="story-skip"
-              >SCROLL TO THE TABLE <span>↓</span></a
-            ><span class="image-note"
-              >Food imagery for preview · approval pending</span
-            ><button
-              id="motionToggle"
-              class="motion-toggle"
-              aria-pressed="false"
-            >
-              Pause atmosphere
+          <div class="shell feast-hero-bottom">
+            <a href="#table">A TASTE OF HAWA <span>↓</span></a>
+            <p>Restaurant & Party Centre</p>
+            <button id="feastMotion" aria-pressed="false" type="button">
+              Pause motion
             </button>
-          </div>
-          <div class="chapter-dots" aria-hidden="true">
-            <i class="active"></i><i></i><i></i>
           </div>
         </div>
       </section>
+      <div class="flavour-strip" id="categories">
+        <div class="shell">
+          <span>WHAT ARE YOU CRAVING?</span
+          ><a href="menu.html?cat=rice">Biryani ↗</a
+          ><a href="menu.html?cat=grill">Grills ↗</a
+          ><a href="menu.html?cat=curry">Curries ↗</a
+          ><a href="menu.html?cat=asian">Chinese & Thai ↗</a
+          ><a href="menu.html?cat=sweet">Something sweet ↗</a>
+        </div>
+      </div>
       <section
         class="table-section shell"
         id="table"
@@ -165,82 +144,76 @@
       >
         <div class="section-intro">
           <div>
-            <p class="eyebrow">SOMETHING FOR THE TABLE</p>
-            <h2 id="tableTitle">
-              A first taste.<br /><em>Then, your favourites.</em>
-            </h2>
+            <p class="eyebrow">GOOD FOOD. BETTER COMPANY.</p>
+            <h2 id="tableTitle">Come hungry.<br /><em>Leave happy.</em></h2>
           </div>
           <div>
             <p>
-              Explore a few dishes from the existing menu.<br />Select a dish to
-              take a closer look.
+              From a fragrant biryani to a sizzling platter.<br />Make a little
+              room for your favourites.
             </p>
-            <a class="text-arrow" href="menu.html">Explore the full menu ↗</a>
+            <a class="text-arrow" href="menu.html">View the full menu ↗</a>
           </div>
         </div>
         <div class="featured-dishes" id="featuredDishes"></div>
         <p class="prices-disclaimer">
-          Listed prices are indicative. Confirm the current menu, portion sizes
-          and availability with Hawa.
+          AI-created food illustrations. Actual presentation may vary. Confirm
+          current prices and availability with Hawa.
         </p>
       </section>
-      <section class="grill-story">
-        <div class="grill-photo">
+      <section class="sweet-story">
+        <div class="sweet-photo">
           <img
-            src="assets/grill-preview.webp"
+            src="assets/hawa-firni-ai-v2.webp"
             srcset="
-              assets/grill-preview-mobile.webp  900w,
-              assets/grill-preview.webp        1536w
+              assets/hawa-firni-ai-v2-small.webp  700w,
+              assets/hawa-firni-ai-v2.webp       1400w
             "
-            sizes="(max-width:760px) 100vw,50vw"
-            alt="Existing grill preview image; dish identity awaiting approval"
+            sizes="(max-width:760px) 100vw, 55vw"
+            alt="AI-created illustration of firni in terracotta bowls"
             width="1536"
             height="1024"
             loading="lazy"
-          /><span class="photo-caption">EXISTING FOOD IMAGE · PREVIEW</span>
+          />
         </div>
-        <div class="grill-copy">
-          <p class="eyebrow">FROM RICE TO THE GRILL</p>
-          <h2>Follow<br />your <em>craving.</em></h2>
+        <div class="sweet-copy">
+          <p class="eyebrow">SAVE A LITTLE ROOM</p>
+          <h2>End on<br />a <em>sweet note.</em></h2>
           <p>
-            A fragrant plate of biryani. Something from the grill. Find your own
-            way through the menu.
+            One more spoonful. A little longer at the table.<br />Discover
+            firni, borhani and more from the menu.
           </p>
-          <div class="category-links" id="categories">
-            <a href="menu.html?cat=rice">Rice & biryani <span>↗</span></a
-            ><a href="menu.html?cat=grill">From the grill <span>↗</span></a
-            ><a href="menu.html?cat=curry">Curries & roasts <span>↗</span></a
-            ><a href="menu.html?cat=asian">Chinese & Thai <span>↗</span></a
-            ><a href="menu.html?cat=sweet">Sweets & drinks <span>↗</span></a>
-          </div>
+          <a class="button button--dark" href="menu.html?cat=sweet"
+            >Sweets & drinks <span>↗</span></a
+          ><span class="sweet-word" aria-hidden="true">মিষ্টিমুখ</span>
         </div>
       </section>
-      <section class="gather-section shell" id="gatherings">
-        <div class="gather-copy">
-          <p class="eyebrow">INSIDE HAWA · MYMENSINGH</p>
-          <h2>Your people.<br /><em>Your occasion.</em></h2>
-          <p>
-            A family meal or a reason to get everyone together. Talk to Hawa
-            about your date, group size and arrangements.
-          </p>
-          <a
-            class="button button--dark"
-            href="https://wa.me/8801705036161?text=Hello%20Hawa%2C%20I%20would%20like%20to%20ask%20about%20a%20gathering."
-            target="_blank"
-            rel="noopener"
-            >Ask about a gathering <span>↗</span></a
-          >
-        </div>
-        <div class="interior-placeholder">
-          <span class="placeholder-corner">THE REAL HAWA</span>
-          <div class="architectural-arch" aria-hidden="true">
-            <span>H</span>
+      <section class="gather-feast" id="gatherings">
+        <div class="shell gather-feast-layout">
+          <div>
+            <p class="eyebrow">HAWA RESTAURANT & PARTY CENTRE</p>
+            <h2>Bring your people.<br /><em>We’ll talk food.</em></h2>
+            <p>
+              Family lunches. Birthdays. A reason to get together.<br />Tell
+              Hawa your date and group size to discuss the arrangements.
+            </p>
+            <a
+              class="button button--yellow"
+              href="https://wa.me/8801705036161?text=Hello%20Hawa%2C%20I%20would%20like%20to%20ask%20about%20a%20gathering."
+              target="_blank"
+              rel="noopener"
+              >Let’s plan your gathering <span>↗</span></a
+            >
           </div>
-          <p>Room for your next gathering.</p>
-          <small
-            >Preview photo slot<br />Verified Hawa interior photography
-            needed.</small
-          >
+          <div class="gather-food">
+            <img
+              src="assets/hawa-grill-ai-v2.webp"
+              alt="Illustrative mixed grill for sharing, AI-created"
+              width="1536"
+              height="1024"
+              loading="lazy"
+            /><span>MORE FLAVOUR. MORE COMPANY.</span>
+          </div>
         </div>
       </section>
       <section class="visit-section" id="visit">
@@ -341,6 +314,6 @@
     </dialog>
     <script src="shop.js" defer></script>
     <script src="aroma-ui.js" defer></script>
-    <script type="module" src="aroma-scene.js"></script>
+    <script src="feast-motion.js" defer></script>
   </body>
 </html>

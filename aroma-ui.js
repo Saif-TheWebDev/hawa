@@ -3,7 +3,7 @@
   "use strict";
   const $ = (s) => document.querySelector(s),
     $$ = (s) => [...document.querySelectorAll(s)];
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+
   const header = $("#siteHeader"),
     nav = $("#primaryNav"),
     toggle = $("#menuToggle");
@@ -63,19 +63,26 @@
     detail = $("#dishDialog");
   const money = (n) => "৳" + n.toLocaleString("en-BD");
   if (featured && window.HAWA) {
-    const ids = ["kacchi-biryani", "chicken-tikka", "sizzling-platter"];
+    const ids = ["kacchi-biryani", "sizzling-platter", "beef-roast"];
     featured.innerHTML = ids
       .map((id) => {
         const m = HAWA.MENU.find((x) => x.id === id);
-        return `<article class="featured-dish"><button type="button" data-detail="${id}">${m.img ? `<div class="dish-image"><img src="${m.img.replace(".webp", "-mobile.webp")}" width="1536" height="1024" loading="lazy" alt="${m.name} preview imagery"></div>` : '<div class="unpictured"><strong>For the<br>whole table.</strong><small>Dish photograph to come</small></div>'}<h3>${m.name}</h3><div class="featured-meta"><span>Listed ${money(m.price)}</span><span>Discover ↗</span></div></button></article>`;
+        return `<article class="featured-dish"><button class="featured-photo" type="button" data-detail="${id}" aria-label="Take a closer look ↗: ${m.name}"><img src="${m.img.replace(".webp", "-small.webp")}" width="1536" height="1024" loading="lazy" alt="AI-created ${m.name} illustration"><span>TAKE A CLOSER LOOK ↗</span></button><div class="featured-info"><p>${m.cat === "rice" ? "RICE & BIRYANI" : m.cat === "grill" ? "FROM THE GRILL" : "SLOW & SPICED"}</p><div class="featured-title"><h3>${m.name}</h3><strong>${money(m.price)}</strong></div><div class="featured-bottom"><button class="dish-more" data-detail="${id}" type="button">Dish details ↗</button><button class="featured-add" data-feature-add="${id}" type="button">Add to request +</button></div></div></article>`;
       })
       .join("");
     featured.addEventListener("click", (e) => {
+      const add = e.target.closest("[data-feature-add]");
+      if (add) {
+        const m = HAWA.MENU.find((x) => x.id === add.dataset.featureAdd);
+        HAWA.addToCart(m.id);
+        HAWA.toast(m.name + " added to your request");
+        return;
+      }
       const b = e.target.closest("[data-detail]");
       if (!b) return;
       const m = HAWA.MENU.find((x) => x.id === b.dataset.detail);
       $("#dishDetail").innerHTML =
-        `${m.img ? `<img src="${m.img.replace(".webp", "-mobile.webp")}" width="1536" height="1024" alt="Existing food preview image">` : ""}<p class="eyebrow">FROM THE EXISTING MENU</p><h2 id="dishTitle">${m.name}</h2><p>${m.desc}</p><p class="detail-price">Listed ${money(m.price)}</p><p class="detail-note">Confirm current price, portion and availability with Hawa.${m.img ? " Food image awaiting identity approval." : " Unique dish photography needed."}</p><button type="button" class="button button--dark" id="detailAdd">Add to request +</button><p id="detailStatus" role="status"></p>`;
+        `${m.img ? `<img src="${m.generated ? m.img.replace(".webp", "-small.webp") : m.img}" width="1536" height="1024" alt="Illustrative food image">` : ""}<p class="eyebrow">FROM THE HAWA MENU</p><h2 id="dishTitle">${m.name}</h2><p>${m.desc}</p><p class="detail-price">Listed ${money(m.price)}</p><p class="detail-note">Confirm current price, portion and availability with Hawa.${m.img ? " Illustrative food image; actual presentation may vary." : ""}</p><button type="button" class="button button--dark" id="detailAdd">Add to request +</button><p id="detailStatus" role="status"></p>`;
       detail.showModal();
       $("#detailAdd").onclick = () => {
         HAWA.addToCart(m.id);
@@ -85,116 +92,24 @@
     });
     $("[data-close-detail]").onclick = () => detail.close();
   }
-  const stage = $("#storyStage"),
-    story = $("#aromaStory");
-  if (stage) {
-    let frame = 0,
-      px = 0,
-      py = 0,
-      paused = false;
-    const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-    const smooth = (a, b, v) => {
-      const t = clamp((v - a) / (b - a));
-      return t * t * (3 - 2 * t);
-    };
-    function draw() {
-      frame = 0;
-      const mobile = innerWidth <= 760;
-      const progress = reduced.matches
-        ? 0
-        : clamp(
-            -story.getBoundingClientRect().top /
-              Math.max(1, story.offsetHeight - innerHeight),
-          );
-      const table = smooth(0.48, 0.95, progress);
-      const drift = Math.sin(progress * Math.PI);
-      stage.style.setProperty("--p", progress);
-      stage.style.setProperty("--table", table);
-      stage.style.setProperty(
-        "--food-x",
-        `${(mobile ? -8 : -60) * progress + (paused ? 0 : px * 7)}px`,
-      );
-      stage.style.setProperty(
-        "--food-y",
-        `${(mobile ? 35 : 10) * progress + (paused ? 0 : py * 6) - drift * 24}px`,
-      );
-      stage.style.setProperty("--food-r", `${-9 + progress * 8}deg`);
-      stage.style.setProperty(
-        "--food-scale",
-        1 + drift * 0.045 - progress * (mobile ? 0.18 : 0.3),
-      );
-      const weights = [
-        1 - smooth(0.23, 0.4, progress),
-        smooth(0.25, 0.42, progress) * (1 - smooth(0.6, 0.73, progress)),
-        smooth(0.63, 0.79, progress),
-      ];
-      ["openingCopy", "aromaCopy", "tableCopy"].forEach((id, i) => {
-        const el = document.getElementById(id),
-          visible = weights[i] > 0.01;
-        el.style.opacity = weights[i];
-        el.style.visibility = visible ? "visible" : "hidden";
-        el.inert = weights[i] < 0.5;
-        el.setAttribute("aria-hidden", String(weights[i] < 0.5));
-      });
-      $$(".chapter-dots i").forEach((el, i) =>
-        el.classList.toggle(
-          "active",
-          i === (progress < 0.32 ? 0 : progress < 0.7 ? 1 : 2),
-        ),
-      );
-      dispatchEvent(
-        new CustomEvent("hawa:scene", {
-          detail: {
-            progress,
-            table,
-            px: paused ? 0 : px,
-            py: paused ? 0 : py,
-            reduced: reduced.matches,
-          },
-        }),
-      );
-    }
-    function schedule() {
-      if (!frame) frame = requestAnimationFrame(draw);
-    }
-    addEventListener("scroll", schedule, { passive: true });
-    addEventListener("resize", schedule);
-    reduced.addEventListener("change", schedule);
-    stage.addEventListener("pointermove", (e) => {
-      if (e.pointerType === "mouse" && !reduced.matches) {
-        px = e.clientX / innerWidth - 0.5;
-        py = e.clientY / innerHeight - 0.5;
-        schedule();
-      }
-    });
-    stage.addEventListener("pointerleave", () => {
-      px = py = 0;
-      schedule();
-    });
-    $("#motionToggle").onclick = () => {
-      paused = !paused;
-      stage.classList.toggle("atmosphere-paused", paused);
-      $("#motionToggle").setAttribute("aria-pressed", String(paused));
-      $("#motionToggle").textContent = paused
-        ? "Resume atmosphere"
-        : "Pause atmosphere";
-      schedule();
-    };
-    addEventListener("hawa:scene-ready", schedule);
-    draw();
+  // Capture failures for images created later by filters or dish details, too.
+  function failedImage(img) {
+    if (img.dataset.failed) return;
+    img.dataset.failed = "true";
+    img.style.visibility = "hidden";
+    const note = document.createElement("span");
+    note.className = "image-error";
+    note.textContent = "Image unavailable";
+    img.parentElement.append(note);
   }
-  // Handle errors that happened before deferred UI code as well as later failures.
+  document.addEventListener(
+    "error",
+    (e) => {
+      if (e.target instanceof HTMLImageElement) failedImage(e.target);
+    },
+    true,
+  );
   $$("img").forEach((img) => {
-    const failed = () => {
-      if (img.dataset.failed) return;
-      img.dataset.failed = "true";
-      img.style.visibility = "hidden";
-      const note = document.createElement("span");
-      note.className = "image-error";
-      note.textContent = "Image unavailable";
-      img.parentElement.append(note);
-    };
-    img.addEventListener("error", failed, { once: true });
-    if (img.complete && !img.naturalWidth) failed();
+    if (img.complete && !img.naturalWidth) failedImage(img);
   });
 })();
