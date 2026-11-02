@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+<g stroke="currentColor" stroke-width="1" opacity=".22">
+<path d="M0 800V440C0 197 197 0 440 0h320c243 0 440 197 440 440v360"/>
+<path d="M150 800V470c0-177 143-320 320-320h260c177 0 320 143 320 320v330"/>
+<path d="M300 800V500c0-111 89-200 200-200h200c111 0 200 89 200 200v300"/>
+<path d="M450 800V530c0-44 36-80 80-80h140c44 0 80 36 80 80v270"/>
+</g>
+</svg>
