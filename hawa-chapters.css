@@ -298,3 +298,49 @@ button:focus-visible,a:focus-visible { outline: 3px solid #e1a162; outline-offse
   .hawa-story__bar { display:none; }
   .hawa-spotlight__slide,.hawa-spotlight__slide.is-active,.hawa-spotlight__slide figure img { transition:none;transform:none; }
 }
+
+/* MENU PAGE — compact image-led art-direction panel, not another card grid */
+.hawa-menu-banner { background:#183228;border-bottom:1px solid #3b4e3f; }
+.hawa-menu-banner__inner { display:grid;grid-template-columns:.9fr 1.1fr;min-height:350px;align-items:stretch; }
+.hawa-menu-banner__image {
+  min-height:350px;background:url("https://raw.githubusercontent.com/Saif-TheWebDev/hawa/49137b22867bd2de13409fc429922b8b724df001/assets/dish-biryani.jpg") center/cover no-repeat;
+  filter:saturate(.85);
+}
+.hawa-menu-banner__copy { color:#fff5e5;align-self:center;padding:55px clamp(28px,6vw,92px); }
+.hawa-menu-banner__copy .hawa-eyebrow { color:#d1bb9f; }
+.hawa-menu-banner__copy h2 {
+  color:#fff6e8;font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:600;font-size:clamp(3.6rem,5.5vw,6.9rem);line-height:.82;letter-spacing:-.055em;margin:24px 0;
+}
+.hawa-menu-banner__copy h2 em { color:#deb793;font-weight:500; }
+.hawa-menu-banner__copy p { max-width:440px;line-height:1.65;color:#e4dccf;font-size:.93rem; }
+
+/* The closing is a real invitation; large expressive lettering is the motion */
+.hawa-outro { position:relative;overflow:hidden;background:#c3aa8d;color:#25392c;padding:clamp(90px,11vw,175px) 0 20px; }
+.hawa-outro__inner { position:relative; }
+.hawa-outro__row { display:flex;align-items:end;justify-content:space-between;gap:55px;margin:40px 0 110px; }
+.hawa-outro h2 { font-family:"Cormorant Garamond",Georgia,serif;line-height:.78;letter-spacing:-.065em;font-weight:600;font-size:clamp(6.4rem,12vw,14rem);color:#203229; }
+.hawa-outro h2 em { color:#fdf1df;font-weight:500; }
+.hawa-outro__side { max-width:255px;margin-bottom:10px;display:flex;flex-direction:column;gap:18px; }
+.hawa-outro__side p { font-size:.93rem;line-height:1.65; }
+.hawa-outro__side .hawa-btn--primary { background:#23372c;border-color:#23372c;color:#fff5e8; }
+.hawa-outro__side .hawa-btn--primary:hover { background:#a9442b;border-color:#a9442b;color:#fff; }
+.hawa-outro__contact { color:#21372b;font-size:.75rem;font-weight:700;align-self:start;border-bottom:1px solid currentColor;padding-bottom:5px; }
+.hawa-outro__signature { display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(34,53,43,.45);font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(8rem,19.4vw,24rem);line-height:.85;letter-spacing:-.07em;font-weight:700;color:#253a2e; }
+.hawa-outro__signature span:nth-child(even) { color:#f4e4d1; }
+
+@media (max-width:1050px) {
+  .hawa-outro__row { gap:30px; }
+  .hawa-outro h2 { font-size:clamp(6.2rem,11vw,11rem); }
+}
+@media (max-width:680px) {
+  .hawa-menu-banner__inner { grid-template-columns:1fr; }
+  .hawa-menu-banner__image { min-height:225px; }
+  .hawa-menu-banner__copy { padding:40px 0 50px; }
+  .hawa-menu-banner__copy h2 { font-size:clamp(4rem,12vw,5.3rem); }
+  .hawa-outro { padding-top:75px; }
+  .hawa-outro__row { display:block;margin:32px 0 80px; }
+  .hawa-outro h2 { font-size:clamp(6rem,15vw,8.5rem); }
+  .hawa-outro__side { margin-top:42px;max-width:350px; }
+  .hawa-outro__signature { font-size:clamp(4.5rem,19vw,8.5rem); }
+}
