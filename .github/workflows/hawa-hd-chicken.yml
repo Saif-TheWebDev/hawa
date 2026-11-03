@@ -1,0 +1,40 @@
+name: Replace blurry menu photograph with full-resolution Chicken Biryani
+on:
+  push:
+    paths:
+      - '.github/workflows/hawa-hd-chicken.yml'
+permissions:
+  contents: write
+jobs:
+  restore-hd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/hawa-follow-the-aroma
+      - name: Download and optimize source image
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          curl -fL --retry 4 --retry-delay 2 -A 'HawaRestaurantMenu/1.0 (image optimization)' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Chicken_Biryani_%2801%29.jpg' -o /tmp/chicken-source.jpg
+          python3 - <<'PY'
+          from PIL import Image,ImageOps
+          im=Image.open('/tmp/chicken-source.jpg').convert('RGB')
+          print('Source resolution:', im.size)
+          assert im.width >= 1400, 'Source image too small'
+          im.thumbnail((1600,1300), Image.Resampling.LANCZOS)
+          im.save('assets/hawa-chicken-biryani.jpg','JPEG',quality=88,optimize=True,progressive=True,subsampling=0)
+          print('Output resolution:', im.size)
+          PY
+          cat > assets/CHICKEN-BIRYANI-CREDIT.md <<'EOF'
+          Chicken Biryani photograph: Nahid Sultan, "Chicken Biryani (01).jpg", Wikimedia Commons.
+          https://commons.wikimedia.org/wiki/File:Chicken_Biryani_(01).jpg
+          Licensed under Creative Commons Attribution-ShareAlike 4.0:
+          https://creativecommons.org/licenses/by-sa/4.0/
+          Optimized/downscaled for website use.
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/hawa-chicken-biryani.jpg assets/CHICKEN-BIRYANI-CREDIT.md
+          git commit -m "Replace blurry 200px thumbnail with 1600px chicken biryani photo"
+          git push origin HEAD:codex/hawa-follow-the-aroma
