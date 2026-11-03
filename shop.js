@@ -90,7 +90,7 @@
       cat: "rice",
       emoji: "🍗",
       color: "#c07a1f",
-      img: "assets/hawa-chicken-biryani.jpg",
+      img: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Chicken_Biryani_%2801%29.jpg?width=1600",
       generated: false,
       desc: "Classic comfort biryani served with borhani, raita & salad.",
       spicy: 1,
