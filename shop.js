@@ -554,7 +554,9 @@
         (m.price ? money(m.price) : "Market price") +
         '</span></div><p class="dish-desc">' +
         m.desc +
-        '</p><div class="dish-actions">' +
+        '</p>' +
+        (m.id === "chicken-biryani" ? '<p style="font-size:10px;line-height:1.5;margin:0 0 8px;opacity:.65">Photo: <a href="https://commons.wikimedia.org/wiki/File:Chicken_Biryani_(01).jpg" target="_blank" rel="noopener">Nahid Sultan</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>' : '') +
+        '<div class="dish-actions">' +
         action +
         '<span class="selection-status" data-selected="' +
         m.id +
