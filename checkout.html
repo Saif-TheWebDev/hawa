@@ -7,7 +7,7 @@
     <title>Send a Menu Enquiry | Hawa Restaurant & Party Centre</title>
     <meta
       name="description"
-      content="Prepare a menu enquiry and send it to Hawa on WhatsApp. This is not an online payment or a confirmed order."
+      content="Prepare a local menu request preview. This is not an online payment or a confirmed order."
     />
     <link rel="icon" type="image/svg+xml" href="assets/hawa-logo-icon.svg" />
     <link rel="stylesheet" href="fonts.css" />
@@ -31,7 +31,7 @@
           <a href="menu.html">The menu</a
           ><a href="index.html#gatherings">Gather at Hawa</a
           ><a href="index.html#visit">Visit us</a
-          ><a class="mobile-contact" href="tel:+8801705036161">Call Hawa ↗</a>
+          ><a class="mobile-contact" href="menu.html">Browse the menu ↗</a>
         </nav>
         <div class="nav-actions">
           <button
@@ -41,13 +41,7 @@
             aria-label="Open your selection"
           >
             Selection <span id="cartCount">0</span></button
-          ><a
-            class="header-contact"
-            href="https://wa.me/8801705036161"
-            target="_blank"
-            rel="noopener"
-            >Talk to Hawa ↗</a
-          >
+          ><span class="header-contact" aria-label="WhatsApp chat unavailable">WhatsApp unavailable</span>
         </div>
         <button
           class="menu-toggle"
@@ -65,8 +59,7 @@
       <noscript
         ><p style="padding: 110px 24px 24px">
           Interactive selection needs JavaScript.
-          <a href="tel:+8801705036161">Call Hawa on +880 1705-036161</a> to ask
-          about the menu.
+          Browse the menu for listed dishes.
         </p></noscript
       >
       <section class="inner-hero">
@@ -74,8 +67,7 @@
           <p class="eyebrow">THE LAST STEP</p>
           <h1>A good meal <em>starts here.</em></h1>
           <p>
-            Make your selection, then send it directly to Hawa. The restaurant
-            confirms the details with you personally.
+            Make your selection and preview the request. No message is sent to the restaurant.
           </p>
         </div>
       </section>
@@ -84,8 +76,8 @@
           <div class="steps reveal" aria-hidden="true">
             <div class="step">1 · Menu</div>
             <div class="step">2 · Cart</div>
-            <div class="step on">3 · WhatsApp enquiry</div>
-            <div class="step">4 · Confirm with Hawa</div>
+            <div class="step on">3 · Request preview</div>
+            <div class="step">4 · Visit to confirm</div>
           </div>
 
           <div
@@ -96,7 +88,7 @@
             <div style="font-size: 3.5rem">🛒</div>
             <h2 class="display h-md">Your cart is empty</h2>
             <p style="color: #607569; margin: 12px 0 22px">
-              Choose a favourite from the menu and return to send your request.
+              Choose a favourite from the menu and return to preview your request.
             </p>
             <a class="btn btn-blaze" href="menu.html">Browse menu →</a>
           </div>
@@ -104,9 +96,7 @@
           <div class="checkout-layout">
             <form class="panel" id="checkoutForm" novalidate>
               <p class="checkout-note">
-                <strong>How it works:</strong> This form prepares a WhatsApp
-                message. Your order is <strong>not placed or paid</strong> until
-                Hawa confirms it with you. Prices and availability may change.
+                <strong>How it works:</strong> This form prepares a local request preview. It <strong>does not send</strong> your details, place an order or collect payment. Prices and availability may change.
               </p>
               <h2>Your details</h2>
               <div class="form-grid">
@@ -118,18 +108,6 @@
                     autocomplete="name"
                     required
                     placeholder="e.g. Sohel Rana"
-                  />
-                </div>
-                <div class="field">
-                  <label for="fPhone">Phone *</label
-                  ><input
-                    id="fPhone"
-                    name="phone"
-                    autocomplete="tel"
-                    required
-                    type="tel"
-                    placeholder="01XXXXXXXXX"
-                    pattern="[0-9+ ]{11,14}"
                   />
                 </div>
                 <div class="field full">
@@ -222,26 +200,15 @@
                 type="submit"
                 style="margin-top: 26px; font-size: 1rem; padding: 18px"
               >
-                Preview WhatsApp request →
+                Preview request →
               </button>
               <p class="trust-note">
-                You will review and send the message yourself in WhatsApp. No
-                payment is collected on this website.
+                Your request preview remains on this device. No message is sent and no payment is collected.
               </p>
               <div id="requestPreview" class="request-preview" hidden>
                 <h2>Review your message</h2>
                 <pre id="requestText"></pre>
-                <a
-                  id="whatsappLink"
-                  class="button button--dark"
-                  target="_blank"
-                  rel="noopener"
-                  >Open WhatsApp ↗</a
-                >
-                <p>
-                  You still choose whether to send in WhatsApp. This does not
-                  place an order.
-                </p>
+                <button id="copyRequest" class="button button--dark" type="button">Copy request</button><p>You can copy the request for your records. This does not place an order or open any chat.</p>
               </div>
             </form>
 
