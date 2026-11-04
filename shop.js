@@ -1,6 +1,6 @@
 /* ============================================================
    HAWA SHOP ENGINE — menu data, cart (localStorage), checkout,
-   WhatsApp enquiry handoff. No fake order confirmation or rider tracking.
+   Local request preview. No chat redirect, order confirmation or rider tracking.
    ============================================================ */
 (function () {
   "use strict";
@@ -534,13 +534,7 @@
         ? '<button type="button" class="add-btn" data-add="' +
           m.id +
           '">Add to request +</button>'
-        : '<a class="add-btn" href="https://wa.me/8801705036161?text=' +
-          encodeURIComponent(
-            "Hello Hawa! Could you confirm the price and availability of " +
-              m.name +
-              "?",
-          ) +
-          '" target="_blank" rel="noopener">Ask for market price ↗</a>';
+        : '<span class="add-btn" aria-label="Please visit the restaurant to ask for the current price">Ask in person for price</span>';
       return (
         '<article class="dish-card ' +
         (m.img ? "dish-card--pictured" : "dish-card--text") +
@@ -600,7 +594,7 @@
     });
   }
 
-  /* ---------- WhatsApp order request: human confirmation required ---------- */
+  /* ---------- Local-only request preview; no external messaging ---------- */
   function initCheckout() {
     var form = document.getElementById("checkoutForm");
     if (!form) return;
@@ -674,11 +668,7 @@
         }
         var good = !!input.value.trim() && input.checkValidity();
         input.setAttribute("aria-invalid", String(!good));
-        error.textContent = good
-          ? ""
-          : input.name === "phone"
-            ? "Enter a valid phone number, including the area code."
-            : "Please complete this field.";
+        error.textContent = good ? "" : "Please complete this field.";
         if (!good) invalid.push(input);
       });
       if (invalid.length) {
@@ -709,7 +699,6 @@
           " (subject to confirmation; delivery extra)",
         "",
         "Name: " + String(fields.get("name") || "").trim(),
-        "Phone: " + String(fields.get("phone") || "").trim(),
         "Address: " + String(fields.get("address") || "").trim(),
         "Area: " + String(fields.get("area") || "").trim(),
         "Payment preference: " +
@@ -720,11 +709,22 @@
       );
       var preview = document.getElementById("requestPreview");
       document.getElementById("requestText").textContent = rows.join("\n");
-      document.getElementById("whatsappLink").href =
-        "https://wa.me/8801705036161?text=" +
-        encodeURIComponent(rows.join("\n"));
       preview.hidden = false;
-      document.getElementById("whatsappLink").focus();
+      var copy = document.getElementById("copyRequest");
+      copy.onclick = function () {
+        var message = document.getElementById("requestText").textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(message).then(function () {
+            copy.textContent = "Copied ✓";
+          }).catch(function () {
+            window.prompt("Copy your request:", message);
+          });
+        } else {
+          window.prompt("Copy your request:", message);
+        }
+      };
+      copy.textContent = "Copy request";
+      copy.focus();
     });
   }
 
